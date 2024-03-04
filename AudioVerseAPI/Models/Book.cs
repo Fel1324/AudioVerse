@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AudioVerse.Models;
 
-[Table("Book")]
+[Table("Livro")]
 public class Book 
 {
     [Key]
