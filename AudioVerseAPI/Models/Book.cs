@@ -38,4 +38,6 @@ public class Book
     public bool Active { get; set; }
 
     public ICollection<Favoritos> Favoritos { get; set; }
+    public ICollection<genreBook> genreBook { get; set; }
+    public ICollection<authorBook> authorBook { get; set; }
 }

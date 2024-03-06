@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using AudioVerseAPI.Models;
+
 namespace AudioVerse.Models;
 
 [Table("Author")]
@@ -32,4 +34,6 @@ public class Author
     [Display(Name = "Ativo")]
     [Required(ErrorMessage = "Por favor, informe se o autor está ativo ou não.")]
     public bool Active { get; set; }
+
+    public ICollection<authorBook> authorBook { get; set; }
 }
