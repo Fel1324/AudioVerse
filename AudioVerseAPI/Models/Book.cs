@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using AudioVerseAPI.Models;
+
 namespace AudioVerse.Models;
 
 [Table("Livro")]
@@ -34,4 +36,6 @@ public class Book
 
     [Required(ErrorMessage = "Por favor, informe se o livro está ativo ou não.")]
     public bool Active { get; set; }
+
+    public ICollection<Favoritos> Favoritos { get; set; }
 }

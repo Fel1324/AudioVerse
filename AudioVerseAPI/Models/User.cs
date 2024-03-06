@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+using AudioVerseAPI.Models;
+
 namespace AudioVerse.Models;
 
 [Table("User")]
@@ -30,4 +32,5 @@ public class User
     [StringLength(8, ErrorMessage = "A data de nascimento deve conter no máximo 8 caracteres")]
     public DateTime YearBirth { get; set; }
 
+    public ICollection<Favoritos> Favoritos { get; set; }
 }
