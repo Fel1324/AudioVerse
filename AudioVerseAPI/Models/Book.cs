@@ -10,6 +10,7 @@ namespace AudioVerse.Models;
 public class Book 
 {
     [Key]
+    [Required]
     public int Id { get; set; }
 
     [Display(Name = "Título do livro")]
