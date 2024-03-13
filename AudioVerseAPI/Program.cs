@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
 
-builder.Services.AddDbContext<AudioVerseContext>(opts =>
+builder.Services.AddDbContext<AudioVerseAPI.Data.AudioVerse>(opts =>
     opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Add services to the container.

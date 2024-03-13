@@ -4,14 +4,13 @@ using AudioVerseAPI.Models;
 
 namespace AudioVerseAPI.Data;
 
-public class AudioVerseContext : DbContext
+public class AudioVerse : DbContext
 {
-    public AudioVerseContext(DbContextOptions<AudioVerseContext> opts)
+    public AudioVerse(DbContextOptions<AudioVerse> opts)
         : base(opts)
     {
         
     }
-    #region AudioVerse deu erro, então coloquei "AudioVerseContext", que aparentemente funcionou.
-    public DbSet<AudioVerseContext> AudioVerses { get; set; }
-    #endregion
+    
+    public DbSet<AudioVerse> AudioVerses { get; set; }
 }
