@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AudioVerseAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class CriandoTabelaDeLivros : Migration
+    public partial class CriandoTabelaDeLivro : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -94,6 +94,33 @@ namespace AudioVerseAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "AuthorBook",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AuthorId = table.Column<int>(type: "int", nullable: false),
+                    BookId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuthorBook", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AuthorBook_Author_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "Author",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AuthorBook_Book_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Book",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Chapter",
                 columns: table => new
                 {
@@ -145,39 +172,6 @@ namespace AudioVerseAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "AuthorBook",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AuthorId = table.Column<int>(type: "int", nullable: false),
-                    BookId = table.Column<int>(type: "int", nullable: false),
-                    AuthorId1 = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AuthorBook", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AuthorBook_Author_AuthorId1",
-                        column: x => x.AuthorId1,
-                        principalTable: "Author",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_AuthorBook_Book_BookId",
-                        column: x => x.BookId,
-                        principalTable: "Book",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AuthorBook_User_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "Favorite",
                 columns: table => new
                 {
@@ -208,11 +202,6 @@ namespace AudioVerseAPI.Migrations
                 name: "IX_AuthorBook_AuthorId",
                 table: "AuthorBook",
                 column: "AuthorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AuthorBook_AuthorId1",
-                table: "AuthorBook",
-                column: "AuthorId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AuthorBook_BookId",

@@ -58,4 +58,3 @@ public class AudioVerseContext : DbContext
             .HasForeignKey(b => b.BookId);
     }
 }
-
