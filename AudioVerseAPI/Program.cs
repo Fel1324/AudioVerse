@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var ConnectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
+var connectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
 
 builder.Services.AddDbContext<AudioVerseAPI.Data.AudioVerseContext>(opts =>
-    opts.UseMySql(ConnectionString, ServerVersion.AutoDetect(ConnectionString)));
+    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 // Add services to the container.
 

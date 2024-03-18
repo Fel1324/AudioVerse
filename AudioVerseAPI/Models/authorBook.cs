@@ -14,7 +14,7 @@ public class AuthorBook
     [Required(ErrorMessage = "Por favor informe o nome do autor")]
     public int AuthorId { get; set; }
     [ForeignKey("AuthorId")]
-    public User? User { get; set; }
+    public Author? Author { get; set; }
 
     [Display(Name = "Livro")]
     [Required(ErrorMessage = "Por favor, informe o nome do livro")]

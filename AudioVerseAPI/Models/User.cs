@@ -30,5 +30,5 @@ public class User
     [StringLength(8, ErrorMessage = "A data de nascimento deve conter no máximo 8 caracteres")]
     public DateTime YearBirth { get; set; }
 
-    public ICollection<Favorite>? Favorites { get; set; }
+    public ICollection<Favorite>? Favorite { get; set; }
 }
