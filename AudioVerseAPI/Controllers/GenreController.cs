@@ -1,4 +1,5 @@
-﻿using AudioVerseAPI.Models;
+﻿using AudioVerseAPI.Data;
+using AudioVerseAPI.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,14 +10,18 @@ namespace AudioVerseAPI.Controllers;
 public class GenreController : ControllerBase
 {
 
-    private static List<Genre> genres = new List<Genre>();
-    private static int id = 0;
+    private AudioVerseContext _context;
+
+    public GenreController(AudioVerseContext context)
+    {
+        _context = context;
+    }
 
     [HttpPost]
     public IActionResult AddGenre([FromBody] Genre genre)
     {
-        genre.Id = id++;
-        genres.Add(genre);
+        _context.Genres.Add(genre);
+        _context.SaveChanges();
         return CreatedAtAction(nameof(RecoverGenreById),
             new { id = genre.Id },
             genre);
@@ -26,13 +31,13 @@ public class GenreController : ControllerBase
     public IEnumerable<Genre> RecoverGenre([FromQuery] int skip = 0,
         [FromQuery] int take = 50)
     {
-        return genres.Skip(skip).Take(take);
+        return _context.Genres.Skip(skip).Take(take);
     }
 
     [HttpGet("{id}")]
     public IActionResult RecoverGenreById(int id)
     {
-        var genre = genres.FirstOrDefault(genre => genre.Id == id);
+        var genre = _context.Genres.FirstOrDefault(genre => genre.Id == id);
         if (genre == null) return NotFound();
         return Ok(genre);
     }

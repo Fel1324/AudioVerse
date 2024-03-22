@@ -1,4 +1,5 @@
-﻿using AudioVerseAPI.Models;
+﻿using AudioVerseAPI.Data;
+using AudioVerseAPI.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,14 +10,18 @@ namespace AudioVerseAPI.Controllers;
 public class BookController : ControllerBase
 {
 
-    private static List<Book> books = new List<Book>();
-    private static int id = 0;
+    private AudioVerseContext _context;
+
+    public BookController(AudioVerseContext context)
+    {
+        _context = context;
+    }
 
     [HttpPost]
     public IActionResult AddBook([FromBody] Book book)
     {
-        book.Id = id++;
-        books.Add(book);
+        _context.Books.Add(book);
+        _context.SaveChanges();
         return CreatedAtAction(nameof(RecoverBookById),
             new { id = book.Id},
             book);
@@ -26,13 +31,13 @@ public class BookController : ControllerBase
     public IEnumerable<Book> RecoverBook([FromQuery] int skip = 0,
         [FromQuery] int take = 50)
     {
-        return books.Skip(skip).Take(take);
+        return _context.Books.Skip(skip).Take(take);
     }
 
     [HttpGet("{id}")]
     public IActionResult RecoverBookById (int id)
     {
-        var book = books.FirstOrDefault(book => book.Id == id);
+        var book = _context.Books.FirstOrDefault(book => book.Id == id);
         if (book == null) return NotFound();
         return Ok(book);
     }
