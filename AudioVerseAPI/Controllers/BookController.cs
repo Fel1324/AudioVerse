@@ -13,22 +13,27 @@ public class BookController : ControllerBase
     private static int id = 0;
 
     [HttpPost]
-    public void AdicionaBook([FromBody] Book book)
+    public IActionResult AddBook([FromBody] Book book)
     {
         book.Id = id++;
         books.Add(book);
-        Console.WriteLine(book.Title);
+        return CreatedAtAction(nameof(RecoverBookById),
+            new { id = book.Id},
+            book);
     }
 
     [HttpGet]
-    public IEnumerable<Book> RecuperaBooks()
+    public IEnumerable<Book> RecoverBook([FromQuery] int skip = 0,
+        [FromQuery] int take = 50)
     {
-        return books;
+        return books.Skip(skip).Take(take);
     }
 
     [HttpGet("{id}")]
-    public Book? RecuperaBookPorId (int id)
+    public IActionResult RecoverBookById (int id)
     {
-        return books.FirstOrDefault(book => book.Id == id);
+        var book = books.FirstOrDefault(book => book.Id == id);
+        if (book == null) return NotFound();
+        return Ok(book);
     }
 }
