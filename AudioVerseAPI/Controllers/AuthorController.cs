@@ -1,5 +1,8 @@
 ﻿using AudioVerseAPI.Data;
+using AudioVerseAPI.Data.Dtos;
 using AudioVerseAPI.Models;
+
+using AutoMapper;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,15 +14,19 @@ public class AuthorController : ControllerBase
 {
 
     private AudioVerseContext _context;
+    private IMapper _mapper;
 
-    public AuthorController(AudioVerseContext context)
+    public AuthorController(AudioVerseContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
 
     [HttpPost]
-    public IActionResult AddAuthor([FromBody] Author author)
+    public IActionResult AddAuthor(
+        [FromBody] CreateAuthorDto authorDto)
     {
+        Author author = _mapper.Map<Author>(authorDto);
         _context.Authors.Add(author);
         _context.SaveChanges();
         return CreatedAtAction(nameof(RecoverAuthorById),
