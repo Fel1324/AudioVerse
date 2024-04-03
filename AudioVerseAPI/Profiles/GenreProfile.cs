@@ -10,5 +10,6 @@ public class GenreProfile : Profile
     public GenreProfile()
     {
         CreateMap<CreateGenreDto, Genre>();
+        CreateMap<UpdateGenreDto, Genre>();
     }
 }

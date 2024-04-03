@@ -48,5 +48,17 @@ public class AuthorController : ControllerBase
         if (author == null) return NotFound();
         return Ok(author);
     }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateAuthor(int id, [FromBody]
+        UpdateAuthorDto authorDto)
+    {
+        var author = _context.Authors.FirstOrDefault(
+            author => author.Id == id);
+        if (author == null) return NotFound();
+        _mapper.Map(authorDto, author);
+        _context.SaveChanges();
+        return NoContent();
+    }
 }
 

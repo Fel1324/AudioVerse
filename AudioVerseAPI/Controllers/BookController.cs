@@ -44,8 +44,21 @@ public class BookController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult RecoverBookById (int id)
     {
-        var book = _context.Books.FirstOrDefault(book => book.Id == id);
+        var book = _context.Books
+            .FirstOrDefault(book => book.Id == id);
         if (book == null) return NotFound();
         return Ok(book);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateBook(int id, [FromBody]
+        UpdateBookDto bookDto)
+    {
+        var book = _context.Books.FirstOrDefault(
+            book => book.Id == id);
+        if (book == null) return NotFound();
+        _mapper.Map(bookDto, book);
+        _context.SaveChanges();
+        return NoContent();
     }
 }

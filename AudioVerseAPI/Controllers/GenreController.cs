@@ -48,5 +48,17 @@ public class GenreController : ControllerBase
         if (genre == null) return NotFound();
         return Ok(genre);
     }
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateGenre(int id, [FromBody]
+        UpdateGenreDto genreDto)
+    {
+        var genre = _context.Genres.FirstOrDefault(
+            genre => genre.Id == id);
+        if (genre == null) return NotFound();
+        _mapper.Map(genreDto, genre);
+        _context.SaveChanges();
+        return NoContent();
+    }
 }
 

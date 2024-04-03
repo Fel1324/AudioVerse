@@ -10,5 +10,6 @@ public class AuthorProfile : Profile
     public AuthorProfile()
     {
         CreateMap<CreateAuthorDto, Author>();
+        CreateMap<UpdateAuthorDto, Author>();
     }
 }
