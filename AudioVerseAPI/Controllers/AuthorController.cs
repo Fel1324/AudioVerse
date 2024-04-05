@@ -35,18 +35,20 @@ public class AuthorController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Author> RecoverAuthor([FromQuery] int skip = 0,
+    public IEnumerable<ReadAuthorDto> RecoverAuthor([FromQuery] int skip = 0,
         [FromQuery] int take = 50)
     {
-        return _context.Authors.Skip(skip).Take(take);
+        return _mapper.Map<List<ReadAuthorDto>>(_context.Authors.Skip(skip).Take(take));
     }
 
     [HttpGet("{id}")]
     public IActionResult RecoverAuthorById(int id)
     {
-        var author = _context.Authors.FirstOrDefault(author => author.Id == id);
+        var author = _context.Authors.
+            FirstOrDefault(author => author.Id == id);
         if (author == null) return NotFound();
-        return Ok(author);
+        var authorDto = _mapper.Map<ReadAuthorDto>(author);
+        return Ok(authorDto);
     }
 
     [HttpPut("{id}")]
@@ -57,6 +59,17 @@ public class AuthorController : ControllerBase
             author => author.Id == id);
         if (author == null) return NotFound();
         _mapper.Map(authorDto, author);
+        _context.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteAuthor(int id)
+    {
+        var author = _context.Authors.FirstOrDefault(
+            author => author.Id == id);
+        if (author == null) return NotFound();
+        _context.Remove(author);
         _context.SaveChanges();
         return NoContent();
     }

@@ -35,18 +35,20 @@ public class GenreController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Genre> RecoverGenre([FromQuery] int skip = 0,
+    public IEnumerable<ReadGenreDto> RecoverGenre([FromQuery] int skip = 0,
         [FromQuery] int take = 50)
     {
-        return _context.Genres.Skip(skip).Take(take);
+        return _mapper.Map<List<ReadGenreDto>>(_context.Genres.Skip(skip).Take(take));
     }
 
     [HttpGet("{id}")]
     public IActionResult RecoverGenreById(int id)
     {
-        var genre = _context.Genres.FirstOrDefault(genre => genre.Id == id);
+        var genre = _context.Genres
+            .FirstOrDefault(genre => genre.Id == id);
         if (genre == null) return NotFound();
-        return Ok(genre);
+        var genreDto = _mapper.Map<ReadGenreDto>(genre);
+        return Ok(genreDto);
     }
 
     [HttpPut("{id}")]
@@ -57,6 +59,17 @@ public class GenreController : ControllerBase
             genre => genre.Id == id);
         if (genre == null) return NotFound();
         _mapper.Map(genreDto, genre);
+        _context.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteGenre(int id)
+    {
+        var genre = _context.Genres.FirstOrDefault(
+            genre => genre.Id == id);
+        if (genre == null) return NotFound();
+        _context.Remove(genre);
         _context.SaveChanges();
         return NoContent();
     }

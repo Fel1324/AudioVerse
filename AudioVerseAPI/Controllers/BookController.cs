@@ -35,10 +35,10 @@ public class BookController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Book> RecoverBook([FromQuery] int skip = 0,
+    public IEnumerable<ReadBookDto> RecoverBook([FromQuery] int skip = 0,
         [FromQuery] int take = 50)
     {
-        return _context.Books.Skip(skip).Take(take);
+        return _mapper.Map<List<ReadBookDto>>(_context.Books.Skip(skip).Take(take));
     }
 
     [HttpGet("{id}")]
@@ -47,7 +47,8 @@ public class BookController : ControllerBase
         var book = _context.Books
             .FirstOrDefault(book => book.Id == id);
         if (book == null) return NotFound();
-        return Ok(book);
+        var bookDto = _mapper.Map<ReadBookDto>(book);
+        return Ok(bookDto);
     }
 
     [HttpPut("{id}")]
@@ -58,6 +59,17 @@ public class BookController : ControllerBase
             book => book.Id == id);
         if (book == null) return NotFound();
         _mapper.Map(bookDto, book);
+        _context.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteBook(int id)
+    {
+        var book = _context.Books.FirstOrDefault(
+            book => book.Id == id);
+        if (book == null) return NotFound();
+        _context.Remove(book);
         _context.SaveChanges();
         return NoContent();
     }
