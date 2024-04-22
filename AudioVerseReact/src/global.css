@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+
+  list-style: none;
+}
+
+:root{
+  /* GENERAL COLORS */
+  --link-color: #4A91B9;
+
+  /* LIGHT THEME */
+  --neutral-bg-light-color: #FFF;
+  --neutral-txt-light-color: #000;
+  --body-bg-light-color: #F9F2E6;
+  --chapters-bg-light-color: #EECBAC;
+  --current-chapter-bg-light-color: #F5BA86;
+  --search-bg-light-color: #EECBAC;
+  --btn-bg-light-color: #EECBAC;
+  --btn-bg-light-color-focus: #BF844D;
+  --icon-light-color: #BF844D;
+  --audio-bg-light-color: #35210F;
+  --menu-txt-light-color: #35210F;
+  --menu-bg-light-color: #F4D6B9;
+  --menu-btn-bg-light-color: #E9B281;
+  --first-special-light-color: #5B3B1D;
+  --second-special-light-color: #69421D;
+  --third-special-light-color: #90643C;
+  --fourth-special-light-color: #BB6618;
+  --placeholder-light-color: #35210F;
+  --book-mark-light-color: #69421D;
+
+  /* DARK THEME */
+
+
+  /* TYPOGRAPHY */
+  --logo-title-font: "Baskervville", serif;
+  --default-font: "EB Garamond", serif;
+}
+
+
+html, body{
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+
+  background-color: var(--body-bg-color);
+
+  font-family: var(--default-font);
+}
