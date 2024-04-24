@@ -1,0 +1,33 @@
+.header{
+  padding: 1rem;
+  
+  & > .header__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > div{
+      display: flex;
+      gap: 1.25rem;
+
+      & > .header__button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: var(--btn-bg-light-color);
+
+        width: 2.25rem;
+        height: 2.25rem;
+      }
+
+      & > .openSearch{
+        border-radius: 50%;
+      }
+
+      & > .openMenu{
+        border-radius: .375rem;
+      }
+    }
+  }
+}

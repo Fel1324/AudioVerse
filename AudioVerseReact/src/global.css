@@ -49,7 +49,11 @@ html, body{
   height: auto;
   min-height: 100vh;
 
-  background-color: var(--body-bg-color);
+  background-color: var(--body-bg-light-color);
 
   font-family: var(--default-font);
+}
+
+button{
+  background: none;
 }
