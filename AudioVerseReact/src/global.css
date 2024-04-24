@@ -57,3 +57,7 @@ html, body{
 button{
   background: none;
 }
+
+img{
+  vertical-align: top;
+}

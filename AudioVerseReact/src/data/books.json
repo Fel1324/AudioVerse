@@ -1,20 +1,26 @@
 [
   {
+    "id": 1, 
     "image": "./src/assets/img/books/memorias-postumas.jpg"
   },
   {
-    "image": "./src/assets/img/books/a-cartomante.jpg"
+    "id": 2,
+    "image": "./src/assets/img/books/memorias-postumas.jpg"
   },
   {
-    "image": "./src/assets/img/books/casa-velha.jpg"
+    "id": 3,
+    "image": "./src/assets/img/books/memorias-postumas.jpg"
   },
   {
-    "image": "./src/assets/img/books/dom-casmurro.jpg"
+    "id": 4,
+    "image": "./src/assets/img/books/memorias-postumas.jpg"
   },
   {
-    "image": "./src/assets/img/books/quincas-borbas.jpg"
+    "id": 5,
+    "image": "./src/assets/img/books/memorias-postumas.jpg"
   },
   {
-    "image": "./src/assets/img/books/o-espelho.jpg"
+    "id": 6,
+    "image": "./src/assets/img/books/memorias-postumas.jpg"
   }
 ]
