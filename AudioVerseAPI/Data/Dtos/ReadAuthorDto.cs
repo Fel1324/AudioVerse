@@ -14,6 +14,4 @@ public class ReadAuthorDto
     public string? Biography { get; set; }
 
     public bool Active { get; set; }
-
-    public ICollection<AuthorBook>? AuthorBook { get; set; }
 }

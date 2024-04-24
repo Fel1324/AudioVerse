@@ -12,14 +12,13 @@ public class GenreBook
 
     [Display(Name = "Nome do gênero")]
     [Required(ErrorMessage = "Por favor, informe o gênero.")]
-    [StringLength(20, ErrorMessage = "O gênero deve possuir no máximo 20 caracteres")]
     public int GenreId { get; set; }
     [ForeignKey("GenreId")]
-    public Genre? Genre { get; set; }
+    public Genre Genre { get; set; }
 
     [Display(Name = "Livro")]
     [Required(ErrorMessage = "Por favor, informe o nome do livro")]
     public int BookId { get; set; }
     [ForeignKey("BookId")]
-    public Book? Book { get; set; }
+    public Book Book { get; set; }
 }

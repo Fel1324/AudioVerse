@@ -14,11 +14,11 @@ public class AuthorBook
     [Required(ErrorMessage = "Por favor informe o nome do autor")]
     public int AuthorId { get; set; }
     [ForeignKey("AuthorId")]
-    public Author? Author { get; set; }
+    public Author Author { get; set; }
 
     [Display(Name = "Livro")]
     [Required(ErrorMessage = "Por favor, informe o nome do livro")]
     public int BookId { get; set; }
     [ForeignKey("BookId")]
-    public Book? Book { get; set; }
+    public Book Book { get; set; }
 }

@@ -16,8 +16,4 @@ public class ReadBookDto
     public string? BookImage { get; set; }
 
     public bool Active { get; set; }
-
-    public ICollection<Favorite>? Favorite { get; set; }
-    public ICollection<GenreBook>? GenreBook { get; set; }
-    public ICollection<AuthorBook>? AuthorBook { get; set; }
 }

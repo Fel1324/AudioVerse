@@ -14,11 +14,11 @@ public class Favorite
     [Required(ErrorMessage = "Por favor, informe o nome de usuario")]
     public int UserId { get; set; }
     [ForeignKey("UserId")]
-    public User? User { get; set; }
+    public User User { get; set; }
 
     [Display(Name = "Livro")]
     [Required(ErrorMessage = "Por favor, informe o nome do livro")]
     public int BookId { get; set; }
     [ForeignKey("BookId")]
-    public Book? Book { get; set; }
+    public Book Book { get; set; }
 }
