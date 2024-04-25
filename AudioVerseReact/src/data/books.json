@@ -1,26 +1,38 @@
 [
   {
     "id": 1, 
-    "image": "./src/assets/img/books/memorias-postumas.jpg"
+    "image": "./src/assets/img/books/memorias-postumas.jpg",
+    "title": "Memórias postumas de Brás Cubas",
+    "author": "Machado de Assis"
   },
   {
     "id": 2,
-    "image": "./src/assets/img/books/memorias-postumas.jpg"
+    "image": "./src/assets/img/books/memorias-postumas.jpg",
+    "title": "Dom casmurro",
+    "author": "Machado de Assis"
   },
   {
     "id": 3,
-    "image": "./src/assets/img/books/memorias-postumas.jpg"
+    "image": "./src/assets/img/books/memorias-postumas.jpg",
+    "title": "A cartomante",
+    "author": "Machado de Assis"
   },
   {
     "id": 4,
-    "image": "./src/assets/img/books/memorias-postumas.jpg"
+    "image": "./src/assets/img/books/memorias-postumas.jpg",
+    "title": "Casa velha",
+    "author": "Machado de Assis"
   },
   {
     "id": 5,
-    "image": "./src/assets/img/books/memorias-postumas.jpg"
+    "image": "./src/assets/img/books/memorias-postumas.jpg",
+    "title": "O espelho",
+    "author":"Machado de Assis"
   },
   {
     "id": 6,
-    "image": "./src/assets/img/books/memorias-postumas.jpg"
+    "image": "./src/assets/img/books/memorias-postumas.jpg",
+    "title": "Quincas Borba",
+    "author": "Machado de Assis"
   }
-]
+] 

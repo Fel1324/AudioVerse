@@ -1,6 +1,8 @@
+import styles from "./Book.module.css";
+
 export function Book(props){
   return (
-    <li>
+    <li className={styles.book}>
       <img src={props.image} alt="" />
     </li>
   )

@@ -1,0 +1,17 @@
+.footer{
+  width: 100%;
+
+  padding: 1.25rem 1rem;
+
+  text-align: center;
+
+  & > p{
+    display: inline-flex;
+    gap: .375rem;
+
+    color: var(--second-special-light-color);
+
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
