@@ -61,3 +61,10 @@ button{
 img{
   vertical-align: top;
 }
+
+.main{
+  width: 100%;
+
+  height: auto;
+  min-height: calc(100vh - 12.375rem);
+}

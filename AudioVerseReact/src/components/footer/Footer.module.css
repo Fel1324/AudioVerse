@@ -1,17 +1,21 @@
 .footer{
   width: 100%;
 
-  padding: 1.25rem 1rem;
+  padding: 2rem 1rem;
+  margin-top: 1.75rem;
 
   text-align: center;
 
   & > p{
-    display: inline-flex;
-    gap: .375rem;
-
     color: var(--second-special-light-color);
 
     font-weight: 500;
     font-size: 1rem;
+
+    & > .link{
+      color: var(--link-color);
+
+      text-decoration: none;
+    }
   }
 }

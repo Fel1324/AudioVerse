@@ -21,7 +21,7 @@ export function Home(){
     <>
       <Header />
 
-      <main className={styles.home}>
+      <main className={`${styles.home} main`}>
         <div className={styles.home__container}>
           <div className={styles.home__filters}>
             <button className={styles.filters__button}>
