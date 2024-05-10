@@ -35,6 +35,7 @@ public class Book
     [Required(ErrorMessage = "Por favor, informe se o livro está ativo ou não.")]
     public bool Active { get; set; }
 
+    public virtual ICollection<Chapter> Chapter { get; set; } /*colocar 'chapters' caso de errado*/
     public ICollection<Favorite>? Favorite { get; set; }
     public ICollection<GenreBook>? GenreBook { get; set; }
     public ICollection<AuthorBook>? AuthorBook { get; set; }

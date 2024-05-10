@@ -8,6 +8,7 @@ namespace AudioVerseAPI.Models;
 public class Chapter
 {
     [Key]
+    [Required]
     public int Id { get; set; }
 
     [Display(Name = "Nome do capítulo")]
@@ -23,5 +24,5 @@ public class Chapter
     [Required(ErrorMessage = "Por favor, informe o nome do livro")]
     public int BookId { get; set; }
     [ForeignKey("BookId")]
-    public Book Book { get; set; }
+    public virtual Book Books { get; set; }
 }
