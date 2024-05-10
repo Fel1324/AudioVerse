@@ -24,6 +24,7 @@
   --btn-bg-light-color: #EECBAC;
   --btn-bg-light-color-focus: #BF844D;
   --icon-light-color: #BF844D;
+  --copyright-light-color: #BF844D;
   --audio-bg-light-color: #35210F;
   --menu-txt-light-color: #35210F;
   --menu-bg-light-color: #F4D6B9;
@@ -34,6 +35,7 @@
   --fourth-special-light-color: #BB6618;
   --placeholder-light-color: #35210F;
   --book-mark-light-color: #69421D;
+  --body-gradient-light-color: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6  50%, #EDCDAF80 100%);
 
   /* DARK THEME */
 
@@ -49,9 +51,23 @@ html, body{
   height: auto;
   min-height: 100vh;
 
-  background-color: var(--body-bg-light-color);
-
   font-family: var(--default-font);
+
+  background: var(--body-gradient-light-color);
+}
+
+div#root{
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main{
+  flex-grow: 1;
 }
 
 button{
@@ -60,11 +76,4 @@ button{
 
 img{
   vertical-align: top;
-}
-
-.main{
-  width: 100%;
-
-  height: auto;
-  min-height: calc(100vh - 12.375rem);
 }

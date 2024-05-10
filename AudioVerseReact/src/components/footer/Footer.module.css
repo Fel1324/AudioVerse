@@ -1,21 +1,28 @@
 .footer{
+  color: var(--copyright-light-color);
+
   width: 100%;
 
-  padding: 2rem 1rem;
-  margin-top: 1.75rem;
+  padding: 1rem;
+  /* margin-top: 1.75rem; */
 
   text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
 
   & > p{
-    color: var(--second-special-light-color);
-
-    font-weight: 500;
-    font-size: 1rem;
-
     & > .link{
       color: var(--link-color);
 
       text-decoration: none;
     }
+  }
+
+  & > .footer__copyright{
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
+  
+    margin-top: .75rem;
   }
 }
