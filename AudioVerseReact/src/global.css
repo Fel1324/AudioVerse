@@ -35,6 +35,7 @@
   --fourth-special-light-color: #BB6618;
   --placeholder-light-color: #35210F;
   --book-mark-light-color: #69421D;
+  --banner-light-color: #FCEBDC;
   --body-gradient-light-color: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6  50%, #EDCDAF80 100%);
 
   /* DARK THEME */
@@ -67,7 +68,15 @@ div#root{
 }
 
 .main{
+  width: 100%;
+
   flex-grow: 1;
+}
+
+.container{
+  width: 100%;
+
+  padding: 1rem;
 }
 
 button{
