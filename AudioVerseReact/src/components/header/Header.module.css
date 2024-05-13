@@ -19,14 +19,14 @@
 
         width: 2.25rem;
         height: 2.25rem;
-      }
-
-      & > .openSearch{
-        border-radius: 50%;
-      }
-
-      & > .openMenu{
-        border-radius: .375rem;
+      
+        &.openSearch{
+          border-radius: 50%;
+        }
+  
+        &.openMenu{
+          border-radius: .375rem;
+        }
       }
     }
   }

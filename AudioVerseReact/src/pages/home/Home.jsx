@@ -1,5 +1,6 @@
 import { Header } from "../../components/header/Header.jsx";
 import { Footer } from "../../components/footer/Footer.jsx";
+import { BookFilter } from "../../components/book-filter/BookFilter.jsx";
 
 import icons from "../../assets/icons.js";
 import styles from "./Home.module.css";
@@ -18,7 +19,10 @@ export function Home(){
         </section>
 
         <div className={`${styles.home__container} container`}>
-
+          <section>
+            <BookFilter name="Gênero" />
+            <BookFilter name="Autor" />
+          </section>
         </div>
       </main>
 

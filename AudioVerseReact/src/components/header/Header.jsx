@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Search, Menu } from "lucide-react";
 
 import logo from "../../assets/img/logo.svg";
+import icons from "../../assets/icons.js";
 import styles from "./Header.module.css";
 
 export function Header(){
@@ -14,11 +14,11 @@ export function Header(){
 
         <div>
           <button className={`${styles.header__button} ${styles.openSearch}`} aria-label="Abrir barra de pesquisa">
-            <Search color="var(--icon-light-color)" strokeWidth={2.5} />
+            <img src={icons.search} alt="" />
           </button>
 
           <button className={`${styles.header__button} ${styles.openMenu}`} aria-label="Abrir menu lateral">
-            <Menu color="var(--icon-light-color)" strokeWidth={2.5} />
+            <img src={icons.openmenu} alt="" />
           </button>
         </div>
       </div>
