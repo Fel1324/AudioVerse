@@ -36,6 +36,8 @@
   --placeholder-light-color: #35210F;
   --book-mark-light-color: #69421D;
   --banner-light-color: #FCEBDC;
+  --first-box-shadow-light-color: #F1D0B3;
+  --second-box-shadow-light-color: #F1D0B3CC;
   --body-gradient-light-color: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6  50%, #EDCDAF80 100%);
 
   /* DARK THEME */

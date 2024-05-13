@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import copy from "../../assets/img/icons/copy.svg";
-import styles from "./Footer.module.css"
+import icons from "../../assets/icons.js";
+import styles from "./Footer.module.css";
 
 export function Footer(){
   return (
@@ -11,7 +11,7 @@ export function Footer(){
       </p>
 
       <div className={styles.footer__copyright}>
-        <img src={copy} alt="" />
+        <img src={icons.copy} alt="" />
         <span>Domínio público</span>
       </div>
     </footer>
