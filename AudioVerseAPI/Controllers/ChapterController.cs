@@ -27,7 +27,7 @@ public class ChapterController : ControllerBase
         Chapter chapter = _mapper.Map<Chapter>(dto);
         _context.Chapters.Add(chapter);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(RetrieveChapterById), new { Id = chapter.Id }, chapter);
+        return CreatedAtAction(nameof(RetrieveChapterById), new { bookId = chapter.BookId }, chapter);
     }
 
     [HttpGet]
@@ -36,10 +36,10 @@ public class ChapterController : ControllerBase
         return _mapper.Map<List<ReadChapterDto>>(_context.Chapters.ToList());
     }
 
-    [HttpGet("{id}")]
-    public IActionResult RetrieveChapterById(int id)
+    [HttpGet("{bookId}")]
+    public IActionResult RetrieveChapterById(int bookId)
     {
-        Chapter chapter = _context.Chapters.FirstOrDefault(chapter => chapter.Id == id);
+        Chapter chapter = _context.Chapters.FirstOrDefault(chapter => chapter.BookId == bookId);
         if (chapter != null)
         {
             ReadChapterDto chapterDto = _mapper.Map<ReadChapterDto>(chapter);
