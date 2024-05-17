@@ -1,0 +1,8 @@
+.filter{
+    color: var(--second-special-light-color);
+
+    font-weight: 500;
+    font-size: 1.5rem;
+
+    display: flex;
+}

@@ -1,8 +1,10 @@
 import { ChevronDown } from "../../components/icons/ChevronDown.jsx";
 
+import styles from "./BookFilter.module.css";
+
 export function BookFilter({ name }){
     return (
-        <button aria-label={`Abrir filtro de ${name}`}>
+        <button className={styles.filter} aria-label={`Abrir filtro de ${name}`}>
             {name}
             <span>
                 <ChevronDown />

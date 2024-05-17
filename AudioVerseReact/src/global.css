@@ -82,6 +82,8 @@ div#root{
 }
 
 button{
+  font-family: var(--default-font);
+
   background: none;
 }
 
