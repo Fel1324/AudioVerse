@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { Search } from "../../components/icons/Search.jsx";
+import { OpenMenu } from "../../components/icons/OpenMenu.jsx";
+
 
 import logo from "../../assets/img/logo.svg";
-import icons from "../../assets/icons.js";
 import styles from "./Header.module.css";
 
 export function Header(){
@@ -14,11 +16,11 @@ export function Header(){
 
         <div>
           <button className={`${styles.header__button} ${styles.openSearch}`} aria-label="Abrir barra de pesquisa">
-            <img src={icons.search} alt="" />
+            <Search />
           </button>
 
           <button className={`${styles.header__button} ${styles.openMenu}`} aria-label="Abrir menu lateral">
-            <img src={icons.openmenu} alt="" />
+            <OpenMenu />
           </button>
         </div>
       </div>
