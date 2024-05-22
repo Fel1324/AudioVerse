@@ -1,7 +1,13 @@
-.book:first-child{
+.book{
+  & > img{
+    width: 100%;
+  }
+}
+
+/* .book:first-child{
   margin-left: 10px;
 }
 
 .book:last-child{
   margin-right: 1.875rem;
-}
+} */
