@@ -1,5 +1,7 @@
 using AudioVerseAPI.Data;
+using AudioVerseAPI.Models;
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,11 @@ var connectionString = builder.Configuration.GetConnectionString("AudioVerseConn
 
 builder.Services.AddDbContext<AudioVerseAPI.Data.AudioVerseContext>(opts =>
     opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services
+    .AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<AudioVerseContext>()
+    .AddDefaultTokenProviders(); 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Add services to the container.
