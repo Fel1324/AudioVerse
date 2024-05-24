@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 
 import { Header } from "../../components/header/Header.jsx";
 import { Footer } from "../../components/footer/Footer.jsx";
-import { Book } from "../../components/book/Book.jsx";
-import { BookFilter } from "../../components/book-filter/BookFilter.jsx";
+import { Audiobook } from "../../components/audiobooks/audiobook/Audiobook.jsx";
+import { AudiobookFilter } from "../../components/audiobooks/audiobook-filter/AudiobookFilter.jsx";
+import { AudiobookCarousel } from "../../components/audiobooks/audiobook-carousel/AudiobookCarousel.jsx";
 import { Star } from "../../components/icons/Star.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { HeadPhones } from "../../components/icons/HeadPhones.jsx";
@@ -15,7 +16,7 @@ export function Home(){
     {
       id: 1,
       name: "Dom casmurro",
-      bookCover: "https://ia801802.us.archive.org/7/items/dom_casmurro_2102_librivox/domcasmurro_2102.jpg",
+      audiobookCover: "https://ia801802.us.archive.org/7/items/dom_casmurro_2102_librivox/domcasmurro_2102.jpg",
       author: "Machado de Assis",
       synopsis: "Dom Casmurro é um dos mais famosos romances escritos por Machado de Assis, publicado em 1899. Ele conta a história de Bento Santiago, o narrador da história que, como em uma autobiografia, se compõe de relatos desde sua mocidade até os dias em que está escrevendo o livro. Entre esses dois momentos, Bento escreve sobre suas reminiscências da juventude, sua vida no seminário, seu caso com Capitu e o ciúme desse relacionamento, que se torna o enredo central da trama. - Resumo escrito por Leni",
       parentalRating: 15
@@ -23,7 +24,7 @@ export function Home(){
     {
       id: 2,
       name: "Senhora",
-      bookCover: "https://ia800204.us.archive.org/32/items/LibrivoxCdCoverArt20/Senhora_1206.jpg",
+      audiobookCover: "https://ia800204.us.archive.org/32/items/LibrivoxCdCoverArt20/Senhora_1206.jpg",
       author: "José de Alencar",
       synopsis: "Senhora é um dos mais importantes clássicos da literatura brasileira, e o terceiro livro do mesmo autor que analisa a situação da mulher na sociedade brasileira do século XIX. Através da história de amor e separação entre Aurélia e Fernando, o autor critica a decadência da elite cortesã, a importância dada ao dinheiro e os casamentos por interesse. O romance, dividido em quatro partes, reflete este objetivo em sua própria estrutura, em que imita uma transação comercial: preço, quitação, posse, resgate.",
       parentalRating: 15
@@ -31,7 +32,7 @@ export function Home(){
     {
       id: 3,
       name: "Senhora",
-      bookCover: "https://ia800204.us.archive.org/32/items/LibrivoxCdCoverArt20/Senhora_1206.jpg",
+      audiobookCover: "https://ia800204.us.archive.org/32/items/LibrivoxCdCoverArt20/Senhora_1206.jpg",
       author: "José de Alencar",
       synopsis: "Senhora é um dos mais importantes clássicos da literatura brasileira, e o terceiro livro do mesmo autor que analisa a situação da mulher na sociedade brasileira do século XIX. Através da história de amor e separação entre Aurélia e Fernando, o autor critica a decadência da elite cortesã, a importância dada ao dinheiro e os casamentos por interesse. O romance, dividido em quatro partes, reflete este objetivo em sua própria estrutura, em que imita uma transação comercial: preço, quitação, posse, resgate.",
       parentalRating: 15
@@ -39,7 +40,7 @@ export function Home(){
     {
       id: 4,
       name: "Dom casmurro",
-      bookCover: "https://ia801802.us.archive.org/7/items/dom_casmurro_2102_librivox/domcasmurro_2102.jpg",
+      audiobookCover: "https://ia801802.us.archive.org/7/items/dom_casmurro_2102_librivox/domcasmurro_2102.jpg",
       author: "Machado de Assis",
       synopsis: "Dom Casmurro é um dos mais famosos romances escritos por Machado de Assis, publicado em 1899. Ele conta a história de Bento Santiago, o narrador da história que, como em uma autobiografia, se compõe de relatos desde sua mocidade até os dias em que está escrevendo o livro. Entre esses dois momentos, Bento escreve sobre suas reminiscências da juventude, sua vida no seminário, seu caso com Capitu e o ciúme desse relacionamento, que se torna o enredo central da trama. - Resumo escrito por Leni",
       parentalRating: 15
@@ -47,7 +48,7 @@ export function Home(){
     {
       id: 5,
       name: "Dom casmurro",
-      bookCover: "https://ia801802.us.archive.org/7/items/dom_casmurro_2102_librivox/domcasmurro_2102.jpg",
+      audiobookCover: "https://ia801802.us.archive.org/7/items/dom_casmurro_2102_librivox/domcasmurro_2102.jpg",
       author: "Machado de Assis",
       synopsis: "Dom Casmurro é um dos mais famosos romances escritos por Machado de Assis, publicado em 1899. Ele conta a história de Bento Santiago, o narrador da história que, como em uma autobiografia, se compõe de relatos desde sua mocidade até os dias em que está escrevendo o livro. Entre esses dois momentos, Bento escreve sobre suas reminiscências da juventude, sua vida no seminário, seu caso com Capitu e o ciúme desse relacionamento, que se torna o enredo central da trama. - Resumo escrito por Leni",
       parentalRating: 15
@@ -55,7 +56,7 @@ export function Home(){
     {
       id: 6,
       name: "Senhora",
-      bookCover: "https://ia800204.us.archive.org/32/items/LibrivoxCdCoverArt20/Senhora_1206.jpg",
+      audiobookCover: "https://ia800204.us.archive.org/32/items/LibrivoxCdCoverArt20/Senhora_1206.jpg",
       author: "José de Alencar",
       synopsis: "Senhora é um dos mais importantes clássicos da literatura brasileira, e o terceiro livro do mesmo autor que analisa a situação da mulher na sociedade brasileira do século XIX. Através da história de amor e separação entre Aurélia e Fernando, o autor critica a decadência da elite cortesã, a importância dada ao dinheiro e os casamentos por interesse. O romance, dividido em quatro partes, reflete este objetivo em sua própria estrutura, em que imita uma transação comercial: preço, quitação, posse, resgate.",
       parentalRating: 15
@@ -84,8 +85,8 @@ export function Home(){
 
         <div className={`${styles.home__container} container`}>
           <div className={styles.home__filter}>
-            <BookFilter name="Gênero" />
-            <BookFilter name="Autor" />
+            <AudiobookFilter name="Gênero" />
+            <AudiobookFilter name="Autor" />
           </div>
 
           <section className={styles.home__audiobooks}>
@@ -99,10 +100,10 @@ export function Home(){
                 {
                   audiobook.map((adbk) => {
                     return(
-                      <Book
+                      <Audiobook
                         key={adbk.id}
                         id={adbk.id}
-                        bookCover={adbk.bookCover}
+                        audiobookCover={adbk.audiobookCover}
                       />
                     )
                   })
@@ -119,6 +120,8 @@ export function Home(){
               </button>
             </div>
           </section>
+
+          <AudiobookCarousel />
         </div>
       </main>
 

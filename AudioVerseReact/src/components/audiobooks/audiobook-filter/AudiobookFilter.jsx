@@ -1,8 +1,8 @@
-import { ChevronDown } from "../../components/icons/ChevronDown.jsx";
+import { ChevronDown } from "../../icons/ChevronDown.jsx";
 
-import styles from "./BookFilter.module.css";
+import styles from "./AudiobookFilter.module.css";
 
-export function BookFilter({ name }){
+export function AudiobookFilter({ name }){
     return (
         <button className={styles.filter} aria-label={`Abrir filtro de ${name}`}>
             {name}
