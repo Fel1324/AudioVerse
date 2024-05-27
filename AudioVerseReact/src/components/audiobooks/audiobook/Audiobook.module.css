@@ -2,6 +2,24 @@
   & > img{
     width: 100%;
   }
+
+  & > div{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: .75rem;
+
+    & > .audiobook__parentalRating{
+      background-color: var(--parental-raiting-bg-light-color);
+      border-radius: .375rem;
+      color: var(--first-special-light-color);
+
+      font-size: 1.25rem;
+      font-weight: 700;
+
+      padding: .3125rem;
+    }
+  }
 }
 
 /* .book:first-child{

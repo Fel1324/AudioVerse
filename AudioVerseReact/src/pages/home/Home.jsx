@@ -91,10 +91,7 @@ export function Home(){
 
           <section className={styles.home__audiobooks}>
             <div className={styles.audiobooks__container}>
-              <h2>
-                ÁudioBooks
-                <Star />
-              </h2>
+              <h2>ÁudioBooks</h2>
 
               <ul className={styles.audiobooks__list}>
                 {
