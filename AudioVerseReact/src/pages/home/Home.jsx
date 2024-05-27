@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { Header } from "../../components/header/Header.jsx";
-import { Footer } from "../../components/footer/Footer.jsx";
+import { Header } from "../../components/layout/header/Header.jsx";
+import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { Audiobook } from "../../components/audiobooks/audiobook/Audiobook.jsx";
 import { AudiobookFilter } from "../../components/audiobooks/audiobook-filter/AudiobookFilter.jsx";
 import { AudiobookCarousel } from "../../components/audiobooks/audiobook-carousel/AudiobookCarousel.jsx";

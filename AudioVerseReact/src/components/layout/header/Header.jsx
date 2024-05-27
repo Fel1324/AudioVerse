@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { Search } from "../../components/icons/Search.jsx";
-import { OpenMenu } from "../../components/icons/OpenMenu.jsx";
+import { Search } from "../../icons/Search.jsx";
+import { OpenMenu } from "../../icons/OpenMenu.jsx";
 
-
-import logo from "../../assets/img/logo.svg";
+import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
 export function Header(){

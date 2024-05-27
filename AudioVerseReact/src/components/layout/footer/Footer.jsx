@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Copy } from "../../components/icons/Copy.jsx";
+import { Copy } from "../../icons/Copy.jsx";
 
 import styles from "./Footer.module.css";
 
