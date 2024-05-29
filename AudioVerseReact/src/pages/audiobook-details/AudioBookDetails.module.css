@@ -1,0 +1,66 @@
+.details {
+  & > .details__container {
+    text-align: center;
+
+    & > .details__name{
+      color: var(--first-special-light-color);
+
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    & > .details__author{
+      color: var(--second-special-light-color);
+
+      font-size: 1.25rem;
+      font-weight: 500;
+
+      margin: .25rem 0 1.5rem 0;
+    }
+
+    & > .details__synopsis{
+      color: var(--neutral-txt-light-color);
+
+      font-weight: 500;
+      font-size: 1.25rem;
+      line-height: 1.5;
+
+      margin-top: 2rem;
+    }
+
+    & > .details__listen{
+      display: block;
+
+      background-color: var(--btn-bg-light-color);
+      border-radius: .625rem;
+      color: var(--first-special-light-color);
+    
+      font-size: 2rem;
+      font-weight: 500;
+      text-transform: uppercase;
+
+      width: 11.875rem;
+      height: 3.75rem;
+
+      margin: 3rem auto 1rem auto;
+    }
+
+    & > .details__download{
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.details__chapters{
+  text-align: left;
+
+  & > .chapters__title{
+    color: var(--second-special-light-color);
+
+    font-size: 1.625rem;
+    font-weight: 500;
+
+    margin-top: 2.25rem;
+  }
+}
