@@ -13,10 +13,10 @@
 :root{
   /* GENERAL COLORS */
   --link-color: #4A91B9;
+  --neutral-bg-color: #FFF;
+  --neutral-txt-color: #000;
 
   /* LIGHT THEME */
-  --neutral-bg-light-color: #FFF;
-  --neutral-txt-light-color: #000;
   --body-bg-light-color: #F9F2E6;
   --chapters-bg-light-color: #EECBAC;
   --current-chapter-bg-light-color: #F5BA86;
@@ -96,4 +96,10 @@ img{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+.link{
+  color: var(--link-color);
+
+  text-decoration: none;
 }
