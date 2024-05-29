@@ -1,5 +1,6 @@
 ﻿using AudioVerseAPI.Data.Dtos;
 using AudioVerseAPI.Models;
+using AudioVerseAPI.Services;
 
 using AutoMapper;
 
@@ -12,28 +13,19 @@ namespace AudioVerseAPI.Controllers;
 [Route("[controller]")]
 public class UserController : ControllerBase 
 {
-    private IMapper _mapper;
-    private UserManager<User> _userManager;
+    private RegisterService _registerService;
 
-    public UserController(IMapper mapper, UserManager<User> userManager)
+    public UserController(RegisterService registerService)
     {
-        _mapper = mapper;
-        _userManager = userManager;
+        _registerService = registerService;
     }
 
     [HttpPost]
     public async Task<IActionResult> RegisterUser
         (CreateUserDto dto)
     {
-        User user = _mapper.Map<User>
-            (dto);
-
-        IdentityResult result = await _userManager.CreateAsync
-            (user, dto.Password);
-
-        if(result.Succeeded) return Ok("Usuário Cadastrado!");
-
-        throw new ApplicationException("Falha ao cadastrar: Sua senha deve conter letras, números e caracteres especiais");
+        await _registerService.Register(dto);
+        return Ok("Usúario Cadastrado!");
     }
 }
 
