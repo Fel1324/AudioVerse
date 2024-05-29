@@ -3,7 +3,7 @@ import { ChevronLeft } from "../../icons/ChevronLeft.jsx";
 import { ChevronRight } from "../../icons/ChevronRight.jsx";
 import { AudioBook } from "../audiobook/AudioBook.jsx";
 
-import { audioBooks } from "../../../data/audiobooks.js";
+import { audioBooks } from "../../../data/audioBooks.js";
 import styles from "./AudioBookCarousel.module.css";
 
 export function AudioBookCarousel() {

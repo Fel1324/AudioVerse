@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { AudioBook } from "../../components/audiobooks/audiobook/AudioBook.jsx";
@@ -8,11 +8,16 @@ import { AudioBookCarousel } from "../../components/audiobooks/audiobook-carouse
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { HeadPhones } from "../../components/icons/HeadPhones.jsx";
 
-import { audioBooks } from "../../data/audiobooks.js";
+import { audioBooks } from "../../data/audioBooks.js";
 import styles from "./Home.module.css";
 
 export function Home() {
+  const navigate = useNavigate();
   const [audioBook, setAudioBook] = useState([]);
+
+  function openAudioBook(id) {
+    navigate(`/audiobook/${id}`);
+  }
 
   useEffect(() => {
     setAudioBook(audioBooks);
@@ -49,6 +54,7 @@ export function Home() {
                       key={adbk.id}
                       id={adbk.id}
                       audiobookCover={adbk.audiobookCover}
+                      onOpenAudioBook={openAudioBook}
                     />
                   ))
                 }
