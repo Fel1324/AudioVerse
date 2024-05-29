@@ -1,16 +1,16 @@
+import { useEffect, useState } from "react";
 import { ChevronLeft } from "../../icons/ChevronLeft.jsx";
 import { ChevronRight } from "../../icons/ChevronRight.jsx";
-import { Audiobook } from "../audiobook/Audiobook.jsx";
+import { AudioBook } from "../audiobook/AudioBook.jsx";
 
-import { audiobooks } from "../../../data/audiobooks.js";
-import styles from "./AudiobookCarousel.module.css"
-import { useEffect, useState } from "react";
+import { audioBooks } from "../../../data/audiobooks.js";
+import styles from "./AudioBookCarousel.module.css";
 
-export function AudiobookCarousel() {
-  const [audiobook, setAudiobook] = useState([]);
+export function AudioBookCarousel() {
+  const [audioBook, setAudioBook] = useState([]);
 
   useEffect(() => {
-    setAudiobook(audiobooks);
+    setAudioBook(audioBooks);
   }, []);
 
   return (
@@ -31,15 +31,13 @@ export function AudiobookCarousel() {
 
         <ul className={`${styles.AudiobookCarousel__list} display-grid`}>
           {
-            audiobook.map((adbk) => {
-              return (
-                <Audiobook
-                  key={adbk.id}
-                  id={adbk.id}
-                  audiobookCover={adbk.audiobookCover}
-                />
-              )
-            })
+            audioBook.map((adbk) => (
+              <AudioBook
+                key={adbk.id}
+                id={adbk.id}
+                audiobookCover={adbk.audiobookCover}
+              />
+            ))
           }
         </ul>
       </div>

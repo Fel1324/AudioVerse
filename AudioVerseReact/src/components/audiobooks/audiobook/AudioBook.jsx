@@ -1,8 +1,8 @@
 import { BookMarkFill } from "../../icons/BookMarkFill.jsx";
 
-import styles from "./Audiobook.module.css";
+import styles from "./AudioBook.module.css";
 
-export function Audiobook({id, audiobookCover}){
+export function AudioBook({id, audiobookCover}){
   return (
     <li id={id} className={styles.audiobook}>
       <img src={audiobookCover} alt="" />

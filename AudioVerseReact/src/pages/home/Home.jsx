@@ -2,20 +2,20 @@ import { useEffect, useState } from "react";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
-import { Audiobook } from "../../components/audiobooks/audiobook/Audiobook.jsx";
-import { AudiobookFilter } from "../../components/audiobooks/audiobook-filter/AudiobookFilter.jsx";
-import { AudiobookCarousel } from "../../components/audiobooks/audiobook-carousel/AudiobookCarousel.jsx";
+import { AudioBook } from "../../components/audiobooks/audiobook/AudioBook.jsx";
+import { AudioBookFilter } from "../../components/audiobooks/audiobook-filter/AudioBookFilter.jsx";
+import { AudioBookCarousel } from "../../components/audiobooks/audiobook-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { HeadPhones } from "../../components/icons/HeadPhones.jsx";
 
-import { audiobooks } from "../../data/audiobooks.js";
+import { audioBooks } from "../../data/audiobooks.js";
 import styles from "./Home.module.css";
 
-export function Home(){
-  const [audiobook, setAudiobook] = useState([]);
+export function Home() {
+  const [audioBook, setAudioBook] = useState([]);
 
   useEffect(() => {
-    setAudiobook(audiobooks);
+    setAudioBook(audioBooks);
   }, [])
 
   return (
@@ -34,8 +34,8 @@ export function Home(){
 
         <div className={`${styles.home__container} container`}>
           <div className={styles.home__filter}>
-            <AudiobookFilter name="Gênero" />
-            <AudiobookFilter name="Autor" />
+            <AudioBookFilter name="Gênero" />
+            <AudioBookFilter name="Autor" />
           </div>
 
           <section className={styles.home__audiobooks}>
@@ -44,15 +44,13 @@ export function Home(){
 
               <ul className={`${styles.audiobooks__list} display-grid`}>
                 {
-                  audiobook.map((adbk) => {
-                    return(
-                      <Audiobook
-                        key={adbk.id}
-                        id={adbk.id}
-                        audiobookCover={adbk.audiobookCover}
-                      />
-                    )
-                  })
+                  audioBook.map((adbk) => (
+                    <AudioBook
+                      key={adbk.id}
+                      id={adbk.id}
+                      audiobookCover={adbk.audiobookCover}
+                    />
+                  ))
                 }
               </ul>
 
@@ -67,7 +65,7 @@ export function Home(){
             </div>
           </section>
 
-          <AudiobookCarousel />
+          <AudioBookCarousel />
         </div>
       </main>
 
