@@ -1,5 +1,5 @@
 .home__banner {
-  box-shadow: 0 .25rem .375rem 0 var(--first-box-shadow-light-color);
+  box-shadow: 0 .25rem .375rem 0 var(--first-box-shadow-color);
   border-radius: 0 2rem 0 2rem;
 
   text-align: center;
@@ -11,8 +11,8 @@
     align-items: center;
     justify-content: center;
 
-    background-color: var(--banner-light-color);
-    box-shadow: 0 -.25rem .375rem 0 var(--second-box-shadow-light-color);
+    background-color: var(--banner-color);
+    box-shadow: 0 -.25rem .375rem 0 var(--second-box-shadow-color);
     border-radius: 0 2rem 0 2rem;
 
     padding-block: 2rem;
@@ -27,7 +27,7 @@
     &>h1 {
       max-width: 26.75rem;
 
-      color: var(--first-special-light-color);
+      color: var(--first-special-color);
 
       font-size: 2rem;
       font-weight: 700;
@@ -57,7 +57,7 @@
 .home__audiobooks {
   &>.audiobooks__container {
     &>h2 {
-      color: var(--second-special-light-color);
+      color: var(--second-special-color);
 
       font-weight: 500;
       font-size: 2rem;
@@ -84,14 +84,14 @@
 
         flex-grow: 1;
 
-        background-color: var(--second-special-light-color);
+        background-color: var(--second-special-color);
       }
 
       &>span {
         width: 45%;
         max-width: 7.1875rem;
 
-        border: .125rem solid var(--second-special-light-color);
+        border: .125rem solid var(--second-special-color);
         border-radius: .5rem;
 
         padding-inline: .625rem;
@@ -104,7 +104,7 @@
         font-size: 1rem;
         font-weight: 500;
 
-        color: var(--second-special-light-color);
+        color: var(--second-special-color);
       }
     }
   }

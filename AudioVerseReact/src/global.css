@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   border: none;
@@ -10,57 +10,75 @@
   list-style: none;
 }
 
-:root{
-  /* GENERAL COLORS */
+:root {
+  /* COLORS */
   --link-color: #4A91B9;
   --neutral-bg-color: #FFF;
   --neutral-txt-color: #000;
-
-  /* LIGHT THEME */
-  --body-bg-light-color: #F9F2E6;
-  --chapters-bg-light-color: #EECBAC;
-  --current-chapter-bg-light-color: #F5BA86;
-  --search-bg-light-color: #EECBAC;
-  --btn-bg-light-color: #EECBAC;
-  --parental-raiting-bg-light-color: #EECBAC;
-  --btn-bg-light-color-focus: #BF844D;
-  --icon-light-color: #BF844D;
-  --copyright-light-color: #BF844D;
-  --audio-bg-light-color: #35210F;
-  --menu-txt-light-color: #35210F;
-  --menu-bg-light-color: #F4D6B9;
-  --menu-btn-bg-light-color: #E9B281;
-  --first-special-light-color: #5B3B1D;
-  --second-special-light-color: #69421D;
-  --third-special-light-color: #90643C;
-  --fourth-special-light-color: #BB6618;
-  --placeholder-light-color: #35210F;
-  --book-mark-light-color: #69421D;
-  --banner-light-color: #FCEBDC;
-  --first-box-shadow-light-color: #F1D0B3;
-  --second-box-shadow-light-color: #F1D0B3CC;
-  --body-gradient-light-color: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6  50%, #EDCDAF80 100%);
-
-  /* DARK THEME */
-
+  --body-gradient-color: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6 50%, #EDCDAF80 100%);
+  --chapters-bg-color: #EECBAC;
+  --current-chapter-bg-color: #F5BA86;
+  --search-bg-color: #EECBAC;
+  --btn-bg-color: #EECBAC;
+  --parental-raiting-bg-color: #EECBAC;
+  --btn-bg-color-focus: #BF844D;
+  --icon-color: #BF844D;
+  --copyright-color: #BF844D;
+  --audio-bg-color: #35210F;
+  --menu-txt-color: #35210F;
+  --menu-bg-color: linear-gradient(180deg, #F4D6B9 0%, #FFB26A 100%);
+  --menu-btn-bg-color: #E9B281;
+  --first-special-color: #5B3B1D;
+  --second-special-color: #69421D;
+  --third-special-color: #90643C;
+  --fourth-special-color: #BB6618;
+  --placeholder-color: #35210F;
+  --book-mark-color: #69421D;
+  --banner-color: #FCEBDC;
+  --first-box-shadow-color: #F1D0B3;
+  --second-box-shadow-color: #F1D0B3CC;
 
   /* TYPOGRAPHY */
   --logo-title-font: "Baskervville", serif;
   --default-font: "EB Garamond", serif;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root{
+    --neutral-bg-color: #000;
+    --neutral-txt-color: #FFF;
+    --body-gradient-color: linear-gradient(180deg, #5B3B1D 0%, #5C3B1D, #5B3B1D 100%);
+    --chapters-bg-color: #8A5F36;
+    --current-chapter-bg-color: #B5865A;
+    --search-bg-color: #4A2E14;
+    --btn-bg-color: #4A2E14;
+    --btn-bg-color-focus: red;
+    --audio-bg-color: #B27C4A;
+    --menu-bg-color: linear-gradient(180deg, #8A5F36 0%, #D48F50 100%);
+    --menu-btn-bg-color: #4A2E14;
+    --first-special-color: #F9F2E6;
+    --second-special-color: #E0B083;
+    --third-special-color: #F5BA86;
+    --placeholder-color: #F9F2E6;
+    --book-mark-color: #BF844D;
+    --banner-color: #80562E;
+    --first-box-shadow-color: #4A2E14;
+    --second-box-shadow-color: #4A2E14;
+  }
+}
 
-html, body{
+html,
+body {
   width: 100%;
   height: auto;
   min-height: 100vh;
 
   font-family: var(--default-font);
 
-  background: var(--body-gradient-light-color);
+  background: var(--body-gradient-color);
 }
 
-div#root{
+div#root {
   width: 100%;
   height: auto;
   min-height: 100vh;
@@ -70,35 +88,35 @@ div#root{
   justify-content: space-between;
 }
 
-.main{
+.main {
   width: 100%;
 
   flex-grow: 1;
 }
 
-.container{
+.container {
   width: 100%;
 
-  padding: 1rem;
+  padding: 16px;
 }
 
-button{
+button {
   font-family: var(--default-font);
 
   background: none;
 }
 
-img{
+img {
   vertical-align: top;
 }
 
-.display-grid{
+.display-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 16px;
 }
 
-.link{
+.link {
   color: var(--link-color);
 
   text-decoration: none;
