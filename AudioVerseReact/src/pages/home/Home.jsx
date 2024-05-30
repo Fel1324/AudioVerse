@@ -4,8 +4,9 @@ import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { AudioBook } from "../../components/audiobooks/audiobook/AudioBook.jsx";
 import { AudioBookFilter } from "../../components/audiobooks/audiobook-filter/AudioBookFilter.jsx";
-import { AudioBookCarousel } from "../../components/audiobooks/audiobook-carousel/AudioBookCarousel.jsx";
+// import { AudioBookCarousel } from "../../components/audiobooks/audiobook-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
+import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
 import { HeadPhones } from "../../components/icons/HeadPhones.jsx";
 
 import { audioBooks } from "../../data/audioBooks.js";
@@ -30,8 +31,17 @@ export function Home() {
       <main className={`${styles.home} main`}>
         <section className={styles.home__banner}>
           <div className={styles.banner__container}>
+            <div className={styles.openBookDesktop}>
+              <OpenBookDesktop />
+            </div>
+
             <h1>O melhor da literatura nacional em forma de áudio</h1>
-            <div>
+
+            <div className={styles.openBookDesktop}>
+              <OpenBookDesktop />
+            </div>
+
+            <div className={styles.openBookMobile}>
               <OpenBook />
             </div>
           </div>
@@ -71,7 +81,7 @@ export function Home() {
             </div>
           </section>
 
-          <AudioBookCarousel />
+          {/* <AudioBookCarousel /> */}
         </div>
       </main>
 
