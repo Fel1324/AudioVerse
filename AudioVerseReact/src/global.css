@@ -106,6 +106,8 @@ button {
   font-family: var(--default-font);
 
   background: none;
+
+  cursor: pointer;
 }
 
 img {
@@ -114,8 +116,8 @@ img {
 
 .display-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: 1rem;
 }
 
 .link {

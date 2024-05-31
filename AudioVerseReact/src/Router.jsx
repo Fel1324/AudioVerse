@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Home } from "./pages/home/Home.jsx";
-import { AudioBookDetails } from "./pages/audiobook-details/AudioBookDetails.jsx";
+import { AudioBookDetails } from "./pages/audio-book-details/AudioBookDetails.jsx";
 
 export function Router() {
   return (
