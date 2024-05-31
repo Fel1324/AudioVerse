@@ -20,7 +20,7 @@
     }
 
     & > .details__synopsis{
-      color: var(--neutral-txt-color);
+      color: var(--txt-color);
 
       font-weight: 500;
       font-size: 1.25rem;

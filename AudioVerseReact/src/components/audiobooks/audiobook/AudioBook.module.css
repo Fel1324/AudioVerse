@@ -10,14 +10,19 @@
     margin-top: .75rem;
 
     & > .audiobook__parentalRating{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       background-color: var(--parental-raiting-bg-color);
       border-radius: .375rem;
-      color: var(--first-special-color);
+      color: var(--parental-raiting-color);
 
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       font-weight: 700;
 
-      padding: .3125rem;
+      width: 1.75rem;
+      height: 1.75rem;
     }
   }
 }

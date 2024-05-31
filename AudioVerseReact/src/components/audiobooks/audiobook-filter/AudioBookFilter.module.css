@@ -5,4 +5,10 @@
     font-size: 1.5rem;
 
     display: flex;
+
+    &>span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

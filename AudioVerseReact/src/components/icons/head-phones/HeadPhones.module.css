@@ -1,0 +1,10 @@
+.colorIcon{
+  &>rect,
+  &>path{
+    stroke: var(--second-special-color);
+  }
+
+  &>rect{
+    fill: var(--second-special-color);
+  }
+}
