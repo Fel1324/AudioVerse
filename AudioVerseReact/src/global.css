@@ -90,18 +90,6 @@ div#root {
   justify-content: space-between;
 }
 
-.main {
-  width: 100%;
-
-  flex-grow: 1;
-}
-
-.container {
-  width: 100%;
-
-  padding: 16px;
-}
-
 button {
   font-family: var(--default-font);
 
@@ -114,14 +102,48 @@ img {
   vertical-align: top;
 }
 
+.main {
+  width: 100%;
+
+  flex-grow: 1;
+}
+
+.container {
+  width: 100%;
+
+  padding: 1rem;
+}
+
 .display-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
   gap: 1rem;
 }
 
+.paragraph {
+  color: var(--txt-color);
+
+  line-height: 1.5;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
 .link {
   color: var(--link-color);
 
   text-decoration: none;
+}
+
+.secondary-header{
+  padding: 1.75rem;
+}
+
+.secondary-logo {
+  width: 4.5rem;
+}
+
+.secondary-container{
+  width: 100%;
+  
+  padding: 1.25rem 1.75rem 1.75rem 1.75rem;
 }

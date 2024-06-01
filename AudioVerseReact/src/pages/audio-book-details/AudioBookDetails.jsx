@@ -45,7 +45,7 @@ export function AudioBookDetails() {
             audiobookCover={audioBookCover}
           />
 
-          <p className={styles.details__synopsis}>{synopsis}</p>
+          <p className={`${styles.details__synopsis} paragraph`}>{synopsis}</p>
 
           <button className={styles.details__listen}>Ouvir</button>
           <a className={`${styles.details__download} link`} href="#">Download.pdf</a>
