@@ -13,6 +13,22 @@ form{
   margin-bottom: 1.75rem;
 }
 
-p.login__paragraph{
-  color: var(--first-special-color);
+.login__footer{
+  text-align: right;
+
+  &>.login__paragraph{
+    color: var(--first-special-color);
+  }
+
+  &>.login__button{
+    background-color: var(--btn-bg-color);
+    border-radius: .625rem;
+    color: var(--first-special-color);
+
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    padding: .5rem 1.125rem;
+    margin-top: 1.125rem;
+  }
 }

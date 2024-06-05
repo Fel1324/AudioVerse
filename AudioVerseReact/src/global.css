@@ -48,7 +48,7 @@
   :root {
     --neutral-bg-color: #000;
     --neutral-txt-color: #FFF;
-    --body-gradient-color: linear-gradient(180deg, #5B3B1D 0%, #5C3B1D, #5B3B1D 100%);
+    --body-gradient-color: linear-gradient(180deg, #7E5226 0%, #5C3B1D, #7E5226 100%);
     --chapters-bg-color: #8A5F36;
     --current-chapter-bg-color: #B5865A;
     --search-bg-color: #4A2E14;
