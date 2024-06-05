@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AudioVerseAPI.Services;
 
-public class RegisterService
+public class UserService
 {
     private IMapper _mapper;
     private UserManager<User> _userManager;
+    private SignInManager<User> _signInManager;
 
-    public RegisterService(UserManager<User> userManager, IMapper mapper)
+    public UserService(UserManager<User> userManager, IMapper mapper)
     {
         _userManager = userManager;
         _mapper = mapper;
@@ -29,6 +30,17 @@ public class RegisterService
         {
           throw new ApplicationException("Falha ao cadastrar: Sua senha deve conter a primeira letra maíuscula," +
           "números e caracteres especiais");
+        }
+    }
+
+    public async Task Login(LoginUserDto dto)
+    {
+        var result = await _signInManager.PasswordSignInAsync
+            (dto.Username, dto.Password, false, false);
+
+        if (!result.Succeeded)
+        {
+            throw new ApplicationException("Usuário não autenticado!");
         }
     }
 }

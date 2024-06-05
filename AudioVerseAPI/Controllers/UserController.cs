@@ -13,19 +13,26 @@ namespace AudioVerseAPI.Controllers;
 [Route("[controller]")]
 public class UserController : ControllerBase 
 {
-    private RegisterService _registerService;
+    private UserService _userService;
 
-    public UserController(RegisterService registerService)
+    public UserController(UserService registerService)
     {
-        _registerService = registerService;
+        _userService = registerService;
     }
 
-    [HttpPost]
+    [HttpPost("cadastro")]
     public async Task<IActionResult> RegisterUser
         (CreateUserDto dto)
     {
-        await _registerService.Register(dto);
+        await _userService.Register(dto);
         return Ok("Usúario Cadastrado!");
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> LoginAsync(LoginUserDto dto)
+    {
+        await _userService.Login(dto);
+        return Ok("Usuário autenticado!");
     }
 }
 
