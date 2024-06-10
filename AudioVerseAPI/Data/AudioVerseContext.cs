@@ -2,11 +2,13 @@
 
 using AudioVerseAPI.Models;
 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AudioVerseAPI.Data;
 
-public class AudioVerseContext : DbContext
+public class AudioVerseContext :IdentityDbContext<User>
 {
     public AudioVerseContext(DbContextOptions<AudioVerseContext> opts)
         : base(opts)
@@ -22,6 +24,7 @@ public class AudioVerseContext : DbContext
     public DbSet<Genre> Genres { get; set; }
     public DbSet<GenreBook> GenreBooks { get; set; }
     public DbSet<User> Users { get; set; }
+    
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
