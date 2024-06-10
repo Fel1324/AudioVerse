@@ -13,10 +13,11 @@ public class UserService
     private UserManager<User> _userManager;
     private SignInManager<User> _signInManager;
 
-    public UserService(UserManager<User> userManager, IMapper mapper)
+    public UserService(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager)
     {
         _userManager = userManager;
         _mapper = mapper;
+        _signInManager = signInManager;
     }
 
     public async Task Register(CreateUserDto dto)
