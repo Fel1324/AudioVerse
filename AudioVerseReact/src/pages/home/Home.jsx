@@ -64,6 +64,7 @@ export function Home() {
                     <AudioBook
                       key={adbk.id}
                       id={adbk.id}
+                      name={adbk.name}
                       audiobookCover={adbk.audiobookCover}
                       onOpenAudioBook={openAudioBook}
                     />

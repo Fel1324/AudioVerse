@@ -1,4 +1,10 @@
 .audiobook{
+  & > .audiobook__title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   & > img{
     width: 100%;
 
