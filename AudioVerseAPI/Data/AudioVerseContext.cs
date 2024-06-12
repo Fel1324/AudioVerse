@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AudioVerseAPI.Data;
 
-public class AudioVerseContext :IdentityDbContext<User>
+public class AudioVerseContext :IdentityDbContext<UserApp>
 {
     public AudioVerseContext(DbContextOptions<AudioVerseContext> opts)
         : base(opts)
@@ -23,7 +23,7 @@ public class AudioVerseContext :IdentityDbContext<User>
     public DbSet<Favorite> Favorites { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<GenreBook> GenreBooks { get; set; }
-    public DbSet<User> Users { get; set; }
+    public DbSet<UserApp> UserApps { get; set; }
     
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -51,9 +51,9 @@ public class AudioVerseContext :IdentityDbContext<User>
             .HasForeignKey(b => b.BookId);
 
         builder.Entity<Favorite>()
-            .HasOne(b => b.User)
+            .HasOne(b => b.UserApp)
             .WithMany(a => a.Favorite)
-            .HasForeignKey(b => b.UserId);
+            .HasForeignKey(b => b.UserAppId);
 
         builder.Entity<Favorite>()
             .HasOne(b => b.Book)

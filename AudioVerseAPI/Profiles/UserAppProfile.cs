@@ -5,10 +5,10 @@ using AutoMapper;
 
 namespace AudioVerseAPI.Profiles;
 
-public class UserProfile : Profile
+public class UserAppProfile : Profile
 {
-    public UserProfile()
+    public UserAppProfile()
     {
-        CreateMap<CreateUserDto, User>();
+        CreateMap<CreateUserAppDto, UserApp>();
     }
 }

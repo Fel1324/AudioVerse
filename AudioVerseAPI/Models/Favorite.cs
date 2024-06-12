@@ -12,9 +12,9 @@ public class Favorite
 
     [Display(Name = "Usuario")]
     [Required(ErrorMessage = "Por favor, informe o nome de usuario")]
-    public string UserId { get; set; }
-    [ForeignKey("UserId")]
-    public User User { get; set; }
+    public string UserAppId { get; set; }
+    [ForeignKey("UserAppId")]
+    public UserApp UserApp { get; set; }
 
     [Display(Name = "Livro")]
     [Required(ErrorMessage = "Por favor, informe o nome do livro")]
