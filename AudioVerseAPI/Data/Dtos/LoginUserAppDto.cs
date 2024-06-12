@@ -2,7 +2,7 @@
 
 namespace AudioVerseAPI.Data.Dtos;
 
-public class LoginUserDto
+public class LoginUserAppDto
 {
     [Required]
     public string Username { get; set; }

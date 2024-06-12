@@ -13,14 +13,14 @@ builder.Services.AddDbContext<AudioVerseAPI.Data.AudioVerseContext>(opts =>
     opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services
-    .AddIdentity<User, IdentityRole>()
+    .AddIdentity<UserApp, IdentityRole>()
     .AddEntityFrameworkStores<AudioVerseContext>()
     .AddDefaultTokenProviders(); 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Add services to the container.
 
-builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<UserAppService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

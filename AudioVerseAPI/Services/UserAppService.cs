@@ -7,25 +7,25 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AudioVerseAPI.Services;
 
-public class UserService
+public class UserAppService
 {
     private IMapper _mapper;
-    private UserManager<User> _userManager;
-    private SignInManager<User> _signInManager;
+    private UserManager<UserApp> _userManager;
+    private SignInManager<UserApp> _signInManager;
 
-    public UserService(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager)
+    public UserAppService(IMapper mapper, UserManager<UserApp> userManager, SignInManager<UserApp> signInManager)
     {
         _userManager = userManager;
         _mapper = mapper;
         _signInManager = signInManager;
     }
 
-    public async Task Register(CreateUserDto dto)
+    public async Task Register(CreateUserAppDto dto)
     {
-        User user = _mapper.Map<User> (dto);
+        UserApp userApp = _mapper.Map<UserApp> (dto);
 
         IdentityResult result = await _userManager.CreateAsync
-            (user, dto.Password);
+            (userApp, dto.Password);
 
         if (!result.Succeeded)
         {
@@ -34,7 +34,7 @@ public class UserService
         }
     }
 
-    public async Task Login(LoginUserDto dto)
+    public async Task Login(LoginUserAppDto dto)
     {
         var result = await _signInManager.PasswordSignInAsync
             (dto.Username, dto.Password, false, false);

@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace AudioVerseAPI.Models;
 
-[Table("User")]
-public class User : IdentityUser
+[Table("UserApp")]
+public class UserApp : IdentityUser
 {
     [Key]
     public int Id { get; set; }
