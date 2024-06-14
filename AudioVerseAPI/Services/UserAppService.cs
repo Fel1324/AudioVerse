@@ -12,12 +12,17 @@ public class UserAppService
     private IMapper _mapper;
     private UserManager<UserApp> _userManager;
     private SignInManager<UserApp> _signInManager;
+    private TokenService _tokenService;
 
-    public UserAppService(IMapper mapper, UserManager<UserApp> userManager, SignInManager<UserApp> signInManager)
+    public UserAppService(IMapper mapper,
+        UserManager<UserApp> userManager,
+        SignInManager<UserApp> signInManager,
+        TokenService tokenService)
     {
         _userManager = userManager;
         _mapper = mapper;
         _signInManager = signInManager;
+        _tokenService = tokenService;
     }
 
     public async Task Register(CreateUserAppDto dto)
@@ -43,5 +48,7 @@ public class UserAppService
         {
             throw new ApplicationException("Usuário não autenticado!");
         }
+
+        _tokenService.GenerateToken(userApp);
     }
 }
