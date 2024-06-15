@@ -39,7 +39,7 @@ public class UserAppService
         }
     }
 
-    public async Task Login(LoginUserAppDto dto)
+    public async Task<string> Login(LoginUserAppDto dto)
     {
         var result = await _signInManager.PasswordSignInAsync
             (dto.Username, dto.Password, false, false);
@@ -49,6 +49,14 @@ public class UserAppService
             throw new ApplicationException("Usuário não autenticado!");
         }
 
-        _tokenService.GenerateToken(userApp);
+        var userApp = _signInManager
+            .UserManager
+            .Users
+            .FirstOrDefault(user => user.NormalizedUserName ==
+                dto.Username.ToUpper());
+
+        var token = _tokenService.GenerateToken(userApp);
+
+        return token;
     }
 }

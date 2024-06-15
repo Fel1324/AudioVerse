@@ -31,8 +31,8 @@ public class UserAppController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync(LoginUserAppDto dto)
     {
-        await _userAppService.Login(dto);
-        return Ok("Usuário autenticado!");
+        var token = await _userAppService.Login(dto);
+        return Ok(token);
     }
 }
 

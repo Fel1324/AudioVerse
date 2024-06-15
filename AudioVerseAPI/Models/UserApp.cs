@@ -9,7 +9,7 @@ namespace AudioVerseAPI.Models;
 public class UserApp : IdentityUser
 {
     [Key]
-    public int Id { get; set; }
+    //public int Id { get; set; }
 
 
     public ICollection<Favorite>? Favorite { get; set; }

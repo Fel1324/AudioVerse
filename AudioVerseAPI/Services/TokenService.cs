@@ -11,17 +11,17 @@ namespace AudioVerseAPI.Services;
 
 public class TokenService
 {
-    public void GenerateToken(UserApp userApp)
+    public string GenerateToken(UserApp userApp)
     {
         Claim[] claims = new Claim[]
         {
             new Claim("username", userApp.UserName),
-            //new Claim("id", userApp.Id)
+            new Claim("id", userApp.Id)
         };
 
         var key = new SymmetricSecurityKey
             (Encoding.UTF8.GetBytes
-            ("9080912UHEFION091IIND1"));
+            (_configuration["SymmetricSecurityKey"]));
 
         var signingCredentials =
             new SigningCredentials(key,
@@ -33,5 +33,8 @@ public class TokenService
             claims: claims,
             signingCredentials: signingCredentials
             );
+
+        return new JwtSecurityTokenHandler().WriteToken
+            (token);
     }
 }
