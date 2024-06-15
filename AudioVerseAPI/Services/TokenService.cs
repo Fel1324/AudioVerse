@@ -9,32 +9,38 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace AudioVerseAPI.Services;
 
-public class TokenService
-{
-    public string GenerateToken(UserApp userApp)
+    public class TokenService
     {
-        Claim[] claims = new Claim[]
+        private IConfiguration _configuration;
+
+        public TokenService(IConfiguration configuration)
         {
-            new Claim("username", userApp.UserName),
-            new Claim("id", userApp.Id)
-        };
+            _configuration = configuration;
+        }
 
-        var key = new SymmetricSecurityKey
-            (Encoding.UTF8.GetBytes
-            (_configuration["SymmetricSecurityKey"]));
+        public string GenerateToken(UserApp userApp)
+        {
+            Claim[] claims = new Claim[]
+            {
+                new Claim("username", userApp.UserName),
+                new Claim("id", userApp.Id)
+            };
 
-        var signingCredentials =
-            new SigningCredentials(key,
-            SecurityAlgorithms.HmacSha256);
+            var tokenKey = new SymmetricSecurityKey
+                (Encoding.UTF8.GetBytes
+                (_configuration["SymmetricSecurityKey"]));
 
-        var token = new JwtSecurityToken
-            (
-            expires: DateTime.Now.AddMinutes(10),
-            claims: claims,
-            signingCredentials: signingCredentials
-            );
+            var signingCredentials =
+                new SigningCredentials
+                (tokenKey, SecurityAlgorithms.HmacSha256);
 
-        return new JwtSecurityTokenHandler().WriteToken
-            (token);
+            var token = new JwtSecurityToken
+                (
+                expires: DateTime.Now.AddMinutes(10),
+                claims: claims,
+                signingCredentials: signingCredentials
+                );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
     }
-}
