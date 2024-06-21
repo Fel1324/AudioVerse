@@ -26,9 +26,9 @@ namespace AudioVerseAPI.Services;
                 new Claim("id", userApp.Id)
             };
 
-            var tokenKey = new SymmetricSecurityKey
-                (Encoding.UTF8.GetBytes
-                (_configuration["SymmetricSecurityKey"]));
+        var tokenKey = new SymmetricSecurityKey
+            (Encoding.UTF8.GetBytes
+            ("9ASHDA98H9ah9ha9H9A89n0fjhkjsjafkjhakhfhal8e789798qy23yhuiyhyhuya"));
 
             var signingCredentials =
                 new SigningCredentials
