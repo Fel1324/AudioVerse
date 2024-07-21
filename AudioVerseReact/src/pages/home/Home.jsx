@@ -59,17 +59,15 @@ export function Home() {
               <h2>ÁudioBooks</h2>
 
               <ul className={`${styles.audiobooks__list} display-grid`}>
-                {
-                  audioBook.map((adbk) => (
-                    <AudioBook
-                      key={adbk.id}
-                      id={adbk.id}
-                      name={adbk.name}
-                      audiobookCover={adbk.audiobookCover}
-                      onOpenAudioBook={openAudioBook}
-                    />
-                  ))
-                }
+                {audioBook.map((adbk) => (
+                  <AudioBook
+                    key={adbk.id}
+                    id={adbk.id}
+                    name={adbk.name}
+                    audiobookCover={adbk.audiobookCover}
+                    onOpenAudioBook={openAudioBook}
+                  />
+                ))}
               </ul>
 
               <button className={styles.audiobooks__listenMore}>
