@@ -1,4 +1,4 @@
-import { ChevronDown } from "../../icons/chevron-down/ChevronDown.jsx";
+import { ChevronDown } from "../../icons/ChevronDown.jsx";
 
 import styles from "./AudioBookFilter.module.css";
 

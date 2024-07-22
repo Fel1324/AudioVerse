@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap');
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 
 * {
@@ -8,6 +8,8 @@
   box-sizing: border-box;
 
   list-style: none;
+
+  font-family: var(--default-font);
 }
 
 :root {
@@ -41,7 +43,6 @@
   --input-menu-bg-color: #FFF;
 
   /* TYPOGRAPHY */
-  --logo-title-font: "Baskervville", serif;
   --default-font: "EB Garamond", serif;
 }
 
@@ -76,8 +77,6 @@ body {
   width: 100%;
   height: auto;
   min-height: 100vh;
-
-  font-family: var(--default-font);
 
   background: var(--body-gradient-color);
 }
@@ -151,4 +150,42 @@ a{
   width: 100%;
   
   padding: 1.25rem 1.75rem 1.75rem 1.75rem;
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.label{
+  color: var(--first-special-color);
+
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.input{
+  background-color: var(--input-menu-bg-color);
+  border-radius: .5rem;
+  border: .0938rem solid transparent;
+  outline: none;
+  color: var(--txt-color);
+
+  height: 2.75rem;
+  padding: .625rem;
+
+  font-size: 1.25rem;
+
+  &:focus-within{
+    border-color: var(--first-special-color);
+  }
+  &::placeholder{
+    color: var(--placeholder-color);
+    opacity: .6;
+
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+  }
 }

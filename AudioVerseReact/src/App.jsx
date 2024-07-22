@@ -25,9 +25,5 @@ export function App() {
     },
   ]);
 
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  )
+  return <RouterProvider router={router} />
 }

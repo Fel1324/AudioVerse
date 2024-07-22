@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
+import { PasswordInput } from "../../components/forms/password-input/PasswordInput";
+
 import logo from "../../assets/logo.svg";
 import styles from "./Login.module.css";
 
@@ -24,8 +27,20 @@ export function Login() {
           <h1 className={styles.login__title}>Login</h1>
           <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
 
-          <form>
-            <h2>Formulário de login...</h2>
+          <form autoComplete="on">
+            <DefaultInput
+              type="email"
+              name="email"
+              id="email"
+              content="Email"
+            />
+
+            <PasswordInput
+              type="password"
+              name="password"
+              id="password"
+              content="Senha"
+            />
           </form>
 
           <div className={styles.login__footer}>

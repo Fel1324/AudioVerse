@@ -8,7 +8,7 @@ import { AudioBookFilter } from "../../components/audio-books/audio-book-filter/
 // import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
-import { HeadPhones } from "../../components/icons/head-phones/HeadPhones.jsx";
+import { HeadPhones } from "../../components/icons/HeadPhones.jsx";
 
 import { audioBooks } from "../../data/audioBooks.js";
 import styles from "./Home.module.css";

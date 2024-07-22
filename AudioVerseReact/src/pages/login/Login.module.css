@@ -9,8 +9,13 @@
 }
 
 form{
-  margin-top: 3rem;
-  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  width: min(100%, 25rem);
+  
+  margin: 3rem auto 1.75rem auto;
 }
 
 .login__footer{
@@ -29,6 +34,6 @@ form{
     font-weight: 700;
 
     padding: .5rem 1.125rem;
-    margin-top: 1.125rem;
+    margin-top: 1rem;
   }
 }

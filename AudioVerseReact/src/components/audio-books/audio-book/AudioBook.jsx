@@ -1,4 +1,4 @@
-import { BookMark } from "../../icons/book-mark/BookMark.jsx";
+import { BookMark } from "../../icons/BookMark.jsx";
 
 import styles from "./AudioBook.module.css";
 
