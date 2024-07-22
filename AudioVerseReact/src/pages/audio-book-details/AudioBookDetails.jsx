@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
-import { AudioBook } from "../../components/audiobooks/audiobook/AudioBook.jsx";
+import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
 
 import { audioBooks } from "../../data/audioBooks.js";
 import styles from "./AudioBookDetails.module.css";
