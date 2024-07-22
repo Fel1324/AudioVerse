@@ -1,8 +1,10 @@
 import { PasswordEye } from "../../icons/PasswordEye.jsx";
 
+import styles from "./PasswordInput.module.css";
+
 export function PasswordInput({type, name, id, content}){
   return(
-    <div className="input-group">
+    <div className={`${styles.pwdInputGroup} input-group`}>
       <label className="label" htmlFor={id}>{content}</label>
       <input
         className="input"
@@ -13,7 +15,9 @@ export function PasswordInput({type, name, id, content}){
         autoComplete="current-password"
         required
       />
-      <PasswordEye />
+      <button className={styles.icon}>
+        <PasswordEye />
+      </button>
     </div>
   )
 }

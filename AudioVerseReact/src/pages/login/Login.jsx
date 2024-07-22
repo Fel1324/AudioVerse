@@ -28,25 +28,29 @@ export function Login() {
           <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
 
           <form autoComplete="on">
-            <DefaultInput
-              type="email"
-              name="email"
-              id="email"
-              content="Email"
-            />
+            <div>
+              <DefaultInput
+                type="email"
+                name="email"
+                id="email"
+                content="Email"
+              />
+              <PasswordInput
+                type="password"
+                name="password"
+                id="password"
+                content="Senha"
+              />
+            </div>
 
-            <PasswordInput
-              type="password"
-              name="password"
-              id="password"
-              content="Senha"
-            />
+            <Link className={styles.forgot} to="#">esqueceu sua senha?</Link>
+            <button type="submit">Entrar</button>
           </form>
 
-          <div className={styles.login__footer}>
+          <footer className={styles.login__footer}>
             <p className={`${styles.login__paragraph} paragraph`}>Não tem uma conta ainda?</p>
             <button className={styles.login__button} onClick={navigateFromRegister}>Criar conta</button>
-          </div>
+          </footer>
         </div>
       </main>
     </>

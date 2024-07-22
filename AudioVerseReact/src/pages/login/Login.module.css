@@ -9,13 +9,45 @@
 }
 
 form{
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-
   width: min(100%, 25rem);
   
-  margin: 3rem auto 1.75rem auto;
+  margin: 3rem auto;
+
+  & > div{
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+.forgot{
+  display: block;
+
+  color: var(--third-special-color);
+
+  margin-top: .625rem;
+  margin-bottom: 1.875rem;
+
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+button[type="submit"]{
+  display: block;
+
+  background-color: var(--btn-bg-color);
+  border-radius: .625rem;
+  color: var(--first-special-color);
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 500;
+
+  min-width: 14.125rem;
+
+  margin-inline: auto;
+  padding-block: .625rem;
 }
 
 .login__footer{
@@ -34,6 +66,6 @@ form{
     font-weight: 700;
 
     padding: .5rem 1.125rem;
-    margin-top: 1rem;
+    margin-top: .75rem;
   }
 }
