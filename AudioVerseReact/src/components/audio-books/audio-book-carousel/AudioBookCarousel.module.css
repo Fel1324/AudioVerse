@@ -10,7 +10,7 @@
       margin-bottom: 1.25rem;
 
       & > .audiobookCarousel__title{
-        color: var(--second-special-color);
+        color: var(--secondary-color);
 
         font-size: 2rem;
         font-weight: 500;
@@ -25,7 +25,7 @@
           align-items: center;
           justify-content: center;
 
-          background-color: var(--btn-bg-color);
+          background-color: var(--quaternary-color);
           border-radius: 1.25rem;
 
           width: 2.5rem;

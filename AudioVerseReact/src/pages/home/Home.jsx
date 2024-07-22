@@ -5,7 +5,7 @@ import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
 import { AudioBookFilter } from "../../components/audio-books/audio-book-filter/AudioBookFilter.jsx";
-// import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
+import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
 import { HeadPhones } from "../../components/icons/HeadPhones.jsx";
@@ -81,7 +81,7 @@ export function Home() {
             </div>
           </section>
 
-          {/* <AudioBookCarousel /> */}
+          <AudioBookCarousel />
         </div>
       </main>
 

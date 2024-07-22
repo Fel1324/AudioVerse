@@ -13,40 +13,30 @@
 }
 
 :root {
-  /* COLORS */
+  /* DEFAULT COLORS */
   --link-color: #4A91B9;
-  --neutral-bg-color: #FFF;
-  --neutral-txt-color: #000;
-  --body-gradient-color: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6 50%, #EDCDAF80 100%);
-  --chapters-bg-color: #EECBAC;
-  --current-chapter-bg-color: #F5BA86;
-  --search-bg-color: #EECBAC;
-  --btn-bg-color: #EECBAC;
-  --parental-raiting-bg-color: #EECBAC;
-  --parental-raiting-color: #5B3B1D;
-  --btn-bg-color-focus: #BF844D;
-  --icon-color: #BF844D;
-  --copyright-color: #BF844D;
-  --audio-bg-color: #35210F;
-  --txt-color: #35210F;
-  --menu-bg-color: linear-gradient(180deg, #F4D6B9 0%, #FFB26A 100%);
-  --menu-btn-bg-color: #E9B281;
-  --first-special-color: #5B3B1D;
-  --second-special-color: #69421D;
-  --third-special-color: #90643C;
-  --fourth-special-color: #BB6618;
-  --placeholder-color: #35210F;
-  --book-mark-color: #69421D;
-  --banner-color: #FCEBDC;
-  --first-box-shadow-color: #F1D0B3;
-  --second-box-shadow-color: #F1D0B3CC;
-  --input-menu-bg-color: #FFF;
+  --neutral-light-color: #FFF;
+  --neutral-dark-color: #000;
+
+  /* PALETTE COLORS */
+  --primary-gradient: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6 50%, #EDCDAF80 100%);
+  --secondary-gradient: linear-gradient(180deg, #F4D6B9 0%, #FFB26A 100%);
+  --primary-shadow: #F1D0B3;
+  --secondary-shadow: #F1D0B3CC;
+  --primary-color: #5B3B1D;
+  --secondary-color: #69421D;
+  --tertiary-color: #35210F;
+  --quaternary-color: #EECBAC;
+  --quinary-color: #BF844D;
+  --senary-color: #F5BA86;
+  --septenary-color: #FCEBDC;
+  --octonary-color: #90643C;
 
   /* TYPOGRAPHY */
   --default-font: "EB Garamond", serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --neutral-bg-color: #000;
     --neutral-txt-color: #FFF;
@@ -70,14 +60,14 @@
     --txt-color: #F9F2E6;
     --input-menu-bg-color: #4A2E14;
   }
-}
+} */
 
 html, body {
   width: 100%;
   height: auto;
   min-height: 100vh;
 
-  background: var(--body-gradient-color);
+  background: var(--primary-gradient);
 }
 
 div#root {
@@ -126,7 +116,7 @@ a{
 }
 
 .paragraph {
-  color: var(--txt-color);
+  color: var(--tertiary-color);
 
   line-height: 1.5;
   font-weight: 500;
@@ -158,29 +148,29 @@ a{
 }
 
 .label{
-  color: var(--first-special-color);
+  color: var(--primary-color);
 
   font-size: 1rem;
   font-weight: 500;
 }
 
 .input{
-  background-color: var(--input-menu-bg-color);
+  background-color: var(--secondary-shadow);
   border-radius: .5rem;
   border: .0938rem solid transparent;
   outline: none;
-  color: var(--txt-color);
+  color: var(--tertiary-color);
 
   height: 2.75rem;
   padding: .625rem;
 
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 
-  &:focus-within{
+  /* &:focus-within{
     border-color: var(--first-special-color);
-  }
+  } */
   &::placeholder{
-    color: var(--placeholder-color);
+    color: var(--tertiary-color);
     opacity: .6;
 
     font-size: 1.25rem;

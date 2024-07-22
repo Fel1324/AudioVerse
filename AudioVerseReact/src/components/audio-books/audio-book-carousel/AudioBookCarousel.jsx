@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft } from "../../icons/ChevronLeft.jsx";
 import { ChevronRight } from "../../icons/ChevronRight.jsx";
-import { AudioBook } from "../audiobook/AudioBook.jsx";
+import { AudioBook } from "../audio-book/AudioBook.jsx";
 
 import { audioBooks } from "../../../data/audioBooks.js";
 import styles from "./AudioBookCarousel.module.css";

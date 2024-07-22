@@ -1,18 +1,18 @@
 .home__banner {
-  box-shadow: 0 .25rem .375rem 0 var(--first-box-shadow-color);
+  box-shadow: 0 .25rem .375rem 0 var(--primary-shadow);
   border-radius: 0 2rem 0 2rem;
 
   text-align: center;
 
   position: relative;
 
-  &>.banner__container {
+  & > .banner__container {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: var(--banner-color);
-    box-shadow: 0 -.25rem .375rem 0 var(--second-box-shadow-color);
+    background-color: var(--septenary-color);
+    box-shadow: 0 -.25rem .375rem 0 var(--secondary-shadow);
     border-radius: 0 2rem 0 2rem;
 
     padding-block: 2rem;
@@ -20,14 +20,14 @@
 
     min-height: 12.875rem;
 
-    &>.openBookDesktop {
+    & > .openBookDesktop {
       display: none;
     }
 
-    &>h1 {
+    & > h1 {
       max-width: 26.75rem;
 
-      color: var(--first-special-color);
+      color: var(--primary-color);
 
       font-size: 2rem;
       font-weight: 700;
@@ -35,7 +35,7 @@
       margin-bottom: 1rem;
     }
 
-    &>.openBookMobile {
+    & > .openBookMobile {
       position: absolute;
       bottom: -2rem;
       right: 0;
@@ -55,9 +55,9 @@
 }
 
 .home__audiobooks {
-  &>.audiobooks__container {
-    &>h2 {
-      color: var(--second-special-color);
+  & > .audiobooks__container {
+    & > h2 {
+      color: var(--secondary-color);
 
       font-weight: 500;
       font-size: 2rem;
@@ -70,7 +70,7 @@
       margin-bottom: 1.125rem;
     }
 
-    &>.audiobooks__listenMore {
+    & > .audiobooks__listenMore {
       width: 100%;
 
       display: flex;
@@ -79,20 +79,20 @@
 
       margin-top: 1.75rem;
 
-      &>.listenMore__line {
+      & > .listenMore__line {
         width: 35%;
         height: .125rem;
 
         flex-grow: 1;
 
-        background-color: var(--second-special-color);
+        background-color: var(--secondary-color);
       }
 
-      &>span {
+      & > span {
         width: 45%;
         max-width: 7.1875rem;
 
-        border: .125rem solid var(--second-special-color);
+        border: .125rem solid var(--secondary-color);
         border-radius: .5rem;
 
         padding-inline: .625rem;
@@ -105,7 +105,7 @@
         font-size: 1rem;
         font-weight: 500;
 
-        color: var(--second-special-color);
+        color: var(--secondary-color);
       }
     }
   }
@@ -114,10 +114,10 @@
 /* RESPONSIVE */
 @media screen and (min-width: 768px) {
   .home__banner {
-    &>.banner__container {
+    & > .banner__container {
       min-height: 14.375rem;
 
-      &>h1 {
+      & > h1 {
         margin: 0;
       }
     }
@@ -126,20 +126,20 @@
 
 @media screen and (min-width: 1024px) {
   .home__banner {
-    &>.banner__container {
+    & > .banner__container {
       justify-content: space-between;
 
       padding: 1rem;
 
-      &>.openBookDesktop {
+      & > .openBookDesktop {
         display: block;
       }
 
-      &>.openBookMobile {
+      & > .openBookMobile {
         display: none;
       }
 
-      &>.openBookDesktop:nth-child(3) {
+      & > .openBookDesktop:nth-child(3) {
         transform: rotateY(180deg);
       }
     }

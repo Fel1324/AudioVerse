@@ -3,7 +3,7 @@
     text-align: center;
 
     & > .details__name{
-      color: var(--first-special-color);
+      color: var(--primary-color);
 
       font-size: 1.75rem;
       font-weight: 700;
@@ -11,7 +11,7 @@
     }
 
     & > .details__author{
-      color: var(--second-special-color);
+      color: var(--secondary-color);
 
       font-size: 1.25rem;
       font-weight: 500;
@@ -26,9 +26,9 @@
     & > .details__listen{
       display: block;
 
-      background-color: var(--btn-bg-color);
+      background-color: var(--quaternary-color);
       border-radius: .625rem;
-      color: var(--first-special-color);
+      color: var(--primary-color);
     
       font-size: 2rem;
       font-weight: 500;
@@ -50,7 +50,7 @@
   text-align: left;
 
   & > .chapters__title{
-    color: var(--second-special-color);
+    color: var(--secondary-color);
 
     font-size: 1.625rem;
     font-weight: 500;

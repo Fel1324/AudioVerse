@@ -15,7 +15,7 @@
         justify-content: center;
         align-items: center;
 
-        background-color: var(--btn-bg-color);
+        background-color: var(--quaternary-color);
 
         width: 2.25rem;
         height: 2.25rem;
@@ -46,7 +46,7 @@
 
   padding: 1.5625rem 1rem 1.5rem 1rem;
 
-  background: var(--menu-bg-color);
+  background: var(--secondary-gradient);
   border-radius: 0 0 0 1.25rem;
 }
 
@@ -58,7 +58,7 @@
   margin-bottom: 2rem;
 
   & > a{
-    color: var(--first-special-color);
+    color: var(--primary-color);
 
     font-size: 1.5rem;
     font-weight: 500;
@@ -68,7 +68,7 @@
   }
 
   & > button{
-    background-color: var(--menu-btn-bg-color);
+    background-color: var(--senary-color);
     border-radius: .375rem;
 
     width: 2.25rem;
@@ -91,7 +91,7 @@
   }
 
   & a, label{
-    color: var(--text-color);
+    color: var(--tertiary-color);
 
     font-size: 1.5rem;
     font-weight: 500;
@@ -99,15 +99,15 @@
 
   & input{
     border-radius: .625rem;
-    background-color: var(--input-menu-bg-color);
-    color: var(--first-special-color);
+    background-color: var(--neutral-light-color);
+    color: var(--primary-color);
 
     font-size: 1.25rem;
     font-weight: 500;
     text-align: center;
     vertical-align: middle;
 
-    min-width: fit-content;
+    width: 3rem;
     min-height: 2.25rem;
 
     margin-left: .625rem;
