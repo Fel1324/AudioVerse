@@ -1,7 +1,72 @@
+import { Link, useNavigate } from "react-router-dom";
+
+import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
+import { PasswordInput } from "../../components/forms/password-input/PasswordInput";
+
+import logo from "../../assets/logo.svg";
+import styles from "./Register.module.css";
+
 export function Register() {
+  const navigate = useNavigate();
+
+  function navigateToLogin(){
+    navigate("/login");
+  }
+
   return (
     <>
-      <h1>Criar Conta!</h1>
+      <header className="secondary-header">
+        <Link to="/">
+          <img className="secondary-logo" src={logo} alt="logo AudioVerse" />
+        </Link>
+      </header>
+
+      <main className="main">
+        <div className="secondary-container">
+          <p className="paragraph">Mergulhe em audiobooks de obras de domínio público, disponíveis para ouvir a qualquer momento, em qualquer lugar.</p>
+          <h1 className={styles.register__title}>Crie sua conta</h1>
+        
+          <form className={styles.register__form} autoComplete="on">
+            <div className="form-container">
+              <DefaultInput
+                type="email"
+                name="email"
+                id="email"
+                content="Email"
+              />
+
+              <DefaultInput
+                type="text"
+                name="name"
+                id="name"
+                content="Nome"
+              />
+
+              <PasswordInput
+                type="password"
+                name="password"
+                id="password"
+                content="Senha"
+              />
+
+              <PasswordInput
+                type="password"
+                name="password"
+                id="password"
+                content="Confirme a Senha"
+              />
+            </div>
+
+            <button
+              className={`submit ${styles.register__submit}`}
+              type="submit"
+              onClick={navigateToLogin}
+            >
+              Criar
+            </button>
+          </form>
+        </div>
+      </main>
     </>
   )
 }

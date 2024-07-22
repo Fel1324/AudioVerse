@@ -27,8 +27,8 @@ export function Login() {
           <h1 className={styles.login__title}>Login</h1>
           <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
 
-          <form autoComplete="on">
-            <div>
+          <form className={styles.login__form} autoComplete="on">
+            <div className="form-container">
               <DefaultInput
                 type="email"
                 name="email"
@@ -43,8 +43,8 @@ export function Login() {
               />
             </div>
 
-            <Link className={styles.forgot} to="#">esqueceu sua senha?</Link>
-            <button type="submit">Entrar</button>
+            <Link className={styles.login__forgot} to="#">esqueceu sua senha?</Link>
+            <button className="submit" type="submit">Entrar</button>
           </form>
 
           <footer className={styles.login__footer}>

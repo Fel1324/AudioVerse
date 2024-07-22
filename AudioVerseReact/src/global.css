@@ -12,13 +12,11 @@
   font-family: var(--default-font);
 }
 
-:root {
-  /* DEFAULT COLORS */
+:root {  
+  /* COLORS */
   --link-color: #4A91B9;
   --neutral-light-color: #FFF;
   --neutral-dark-color: #000;
-
-  /* PALETTE COLORS */
   --primary-gradient: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6 50%, #EDCDAF80 100%);
   --secondary-gradient: linear-gradient(180deg, #F4D6B9 0%, #FFB26A 100%);
   --primary-shadow: #F1D0B3;
@@ -38,6 +36,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --link-color: #87CCf5;
     --primary-gradient: linear-gradient(180deg, #7E5226 0%, #5C3B1D, #7E5226 100%);
     --secondary-gradient: linear-gradient(180deg, #8A5F36 0%, #D48F50 100%);
     --primary-shadow: #4A2E14;
@@ -97,6 +96,30 @@ a{
   width: 100%;
 
   padding: 1rem;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.submit{
+  display: block;
+
+  background-color: var(--quaternary-color);
+  border-radius: .625rem;
+  color: var(--primary-color);
+
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 500;
+
+  min-width: 14.125rem;
+
+  margin-inline: auto;
+  padding-block: .625rem;
 }
 
 .display-grid {

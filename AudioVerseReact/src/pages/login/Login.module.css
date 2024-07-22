@@ -8,19 +8,13 @@
   margin-bottom: 1rem;
 }
 
-form{
+.login__form{
   width: min(100%, 25rem);
   
   margin: 3rem auto;
-
-  & > div{
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
 }
 
-.forgot{
+.login__forgot{
   display: block;
 
   color: var(--octonary-color);
@@ -32,32 +26,14 @@ form{
   font-style: italic;
 }
 
-button[type="submit"]{
-  display: block;
-
-  background-color: var(--quaternary-color);
-  border-radius: .625rem;
-  color: var(--primary-color);
-
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 500;
-
-  min-width: 14.125rem;
-
-  margin-inline: auto;
-  padding-block: .625rem;
-}
-
 .login__footer{
   text-align: right;
 
-  &>.login__paragraph{
+  & > .login__paragraph{
     color: var(--primary-color);
   }
 
-  &>.login__button{
+  & > .login__button{
     background-color: var(--quaternary-color);
     border-radius: .625rem;
     color: var(--primary-color);

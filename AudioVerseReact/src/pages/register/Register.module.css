@@ -1,0 +1,18 @@
+.register__title{
+  color: var(--primary-color);
+
+  font-size: 2.75rem;
+  font-weight: 500;
+
+  margin-top: 1rem;
+}
+
+.register__form{
+  width: min(100%, 25rem);
+
+  margin: 2rem auto 1rem auto;
+}
+
+.register__submit{
+  margin-top: 3.25rem;
+}
