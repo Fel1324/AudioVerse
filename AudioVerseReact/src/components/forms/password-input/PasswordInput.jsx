@@ -13,8 +13,8 @@ export function PasswordInput({type, name, id, content}){
         id={id}
         placeholder={content}
         autoComplete="current-password"
-        minlength="7"
-        maxlength="32"
+        minLength="7"
+        maxLength="32"
         required
       />
       <button className={styles.icon}>

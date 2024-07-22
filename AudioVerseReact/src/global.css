@@ -36,31 +36,22 @@
   --default-font: "EB Garamond", serif;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --neutral-bg-color: #000;
-    --neutral-txt-color: #FFF;
-    --body-gradient-color: linear-gradient(180deg, #7E5226 0%, #5C3B1D, #7E5226 100%);
-    --chapters-bg-color: #8A5F36;
-    --current-chapter-bg-color: #B5865A;
-    --search-bg-color: #4A2E14;
-    --btn-bg-color: #4A2E14;
-    --btn-bg-color-focus: red;
-    --audio-bg-color: #B27C4A;
-    --menu-bg-color: linear-gradient(180deg, #8A5F36 0%, #D48F50 100%);
-    --menu-btn-bg-color: #4A2E14;
-    --first-special-color: #EECBAC;
-    --second-special-color: #E0B083;
-    --third-special-color: #F5BA86;
-    --placeholder-color: #F9F2E6;
-    --book-mark-color: #BF844D;
-    --banner-color: #80562E;
-    --first-box-shadow-color: #4A2E14;
-    --second-box-shadow-color: #4A2E14;
-    --txt-color: #F9F2E6;
-    --input-menu-bg-color: #4A2E14;
+    --primary-gradient: linear-gradient(180deg, #7E5226 0%, #5C3B1D, #7E5226 100%);
+    --secondary-gradient: linear-gradient(180deg, #8A5F36 0%, #D48F50 100%);
+    --primary-shadow: #4A2E14;
+    --secondary-shadow: #4A2E14;
+    --primary-color: #EECBAC;
+    --secondary-color: #E0B083;
+    --tertiary-color: #F5E5D7;
+    --quaternary-color: #4A2E14;
+    --quinary-color: #2E1600;
+    --senary-color: #4A2E14;
+    --septenary-color: #80562E;
+    --octonary-color: #F5E5D7;
   }
-} */
+}
 
 html, body {
   width: 100%;

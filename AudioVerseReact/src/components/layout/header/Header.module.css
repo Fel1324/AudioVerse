@@ -99,7 +99,7 @@
 
   & input{
     border-radius: .625rem;
-    background-color: var(--neutral-light-color);
+    background-color: var(--septenary-color);
     color: var(--primary-color);
 
     font-size: 1.25rem;

@@ -9,8 +9,8 @@ export function DefaultInput({type, name, id, content}){
         id={id}
         placeholder={content}
         autoComplete="email"
-        minlength="14"
-        maxlength="60"
+        minLength="14"
+        maxLength="60"
         required />
     </div>
   )
