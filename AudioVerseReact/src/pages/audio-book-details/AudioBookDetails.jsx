@@ -5,27 +5,20 @@ import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
 
-import { audioBooks } from "../../data/audioBooks.js";
+import { api } from "../../lib/axios.js";
 import styles from "./AudioBookDetails.module.css";
 
 export function AudioBookDetails() {
   const { audioBookId } = useParams();
-  const [name, setName] = useState("");
-  const [author, setAuthor] = useState("");
-  const [audioBookCover, setAudioBookCover] = useState("");
-  const [synopsis, setSynopsis] = useState("");
+  const [audioBooks, setAudioBooks] = useState([]);
 
   function getAudioBookData(id) {
-    // Faz Get na API
-
-    const audioBook = audioBooks.find((ab) => ab.id === parseInt(id));
-
-    if(audioBook){
-      setName(audioBook.name);
-      setAuthor(audioBook.author);
-      setAudioBookCover(audioBook.audiobookCover);
-      setSynopsis(audioBook.synopsis);
-    }
+    api.get(`/audiobooks/${id}`)
+      .then(response => {
+        const audioBook = response.data;
+        audioBook && setAudioBooks(audioBook);
+      })
+      .catch(err => console.log(err))
   }
 
   useEffect(() => {
@@ -38,14 +31,14 @@ export function AudioBookDetails() {
 
       <main className={`${styles.details} main`}>
         <div className={`${styles.details__container} container`}>
-          <h1 className={styles.details__name}>{name}</h1>
-          <h4 className={styles.details__author}>{author}</h4>
+          <h1 className={styles.details__name}>{audioBooks.name}</h1>
+          <h4 className={styles.details__author}>{audioBooks.author}</h4>
           
           <AudioBook
-            audiobookCover={audioBookCover}
+            audiobookCover={audioBooks.audioBookCover}
           />
 
-          <p className={`${styles.details__synopsis} paragraph`}>{synopsis}</p>
+          <p className={`${styles.details__synopsis} paragraph`}>{audioBooks.synopsis}</p>
 
           <button className={styles.details__listen}>Ouvir</button>
           <a className={`${styles.details__download} link`} href="#">Download.pdf</a>

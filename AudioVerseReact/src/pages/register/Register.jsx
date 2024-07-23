@@ -26,42 +26,39 @@ export function Register() {
           <p className="paragraph">Mergulhe em audiobooks de obras de domínio público, disponíveis para ouvir a qualquer momento, em qualquer lugar.</p>
           <h1 className={styles.register__title}>Crie sua conta</h1>
         
-          <form className={styles.register__form} autoComplete="on">
+          <form onSubmit={navigateToLogin} className={styles.register__form} autoComplete="on">
             <div className="form-container">
               <DefaultInput
                 type="email"
                 name="email"
                 id="email"
                 content="Email"
+                autoComplete="email"
               />
-
               <DefaultInput
                 type="text"
                 name="name"
                 id="name"
                 content="Nome"
+                autoComplete="name"
               />
-
               <PasswordInput
                 type="password"
                 name="password"
                 id="password"
                 content="Senha"
+                autoComplete="new-password"
               />
-
               <PasswordInput
                 type="password"
                 name="password"
                 id="password"
                 content="Confirme a Senha"
+                autoComplete="new-password"
               />
             </div>
 
-            <button
-              className={`submit ${styles.register__submit}`}
-              type="submit"
-              onClick={navigateToLogin}
-            >
+            <button className={`submit ${styles.register__submit}`} type="submit">
               Criar
             </button>
           </form>

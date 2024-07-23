@@ -1,4 +1,4 @@
-export function DefaultInput({type, name, id, content}){
+export function DefaultInput({type, name, id, content, autoComplete}){
   return(
     <div className="input-group">
       <label className="label" htmlFor={id}>{content}</label>
@@ -8,7 +8,7 @@ export function DefaultInput({type, name, id, content}){
         name={name}
         id={id}
         placeholder={content}
-        autoComplete="email"
+        autoComplete={autoComplete}
         minLength="14"
         maxLength="60"
         required />

@@ -10,8 +10,12 @@ import styles from "./Login.module.css";
 export function Login() {
   const navigate = useNavigate();
   
-  function navigateFromRegister(){
+  function navigateToRegister(){
     navigate("/register");
+  }
+
+  function navigateToHome(){
+    navigate("/");
   }
 
   return (
@@ -27,19 +31,21 @@ export function Login() {
           <h1 className={styles.login__title}>Login</h1>
           <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
 
-          <form className={styles.login__form} autoComplete="on">
+          <form onSubmit={navigateToHome} className={styles.login__form} autoComplete="on">
             <div className="form-container">
               <DefaultInput
                 type="email"
                 name="email"
                 id="email"
                 content="Email"
+                autoComplete="email"
               />
               <PasswordInput
                 type="password"
                 name="password"
                 id="password"
                 content="Senha"
+                autoComplete="current-password"
               />
             </div>
 
@@ -49,7 +55,7 @@ export function Login() {
 
           <footer className={styles.login__footer}>
             <p className={`${styles.login__paragraph} paragraph`}>Não tem uma conta ainda?</p>
-            <button className={styles.login__button} onClick={navigateFromRegister}>Criar conta</button>
+            <button className={styles.login__button} onClick={navigateToRegister}>Criar conta</button>
           </footer>
         </div>
       </main>

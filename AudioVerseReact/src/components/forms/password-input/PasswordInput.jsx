@@ -2,7 +2,7 @@ import { PasswordEye } from "../../icons/PasswordEye.jsx";
 
 import styles from "./PasswordInput.module.css";
 
-export function PasswordInput({type, name, id, content}){
+export function PasswordInput({type, name, id, content, autoComplete}){
   return(
     <div className={`${styles.pwdInputGroup} input-group`}>
       <label className="label" htmlFor={id}>{content}</label>
@@ -12,7 +12,7 @@ export function PasswordInput({type, name, id, content}){
         name={name}
         id={id}
         placeholder={content}
-        autoComplete="current-password"
+        autoComplete={autoComplete}
         minLength="7"
         maxLength="32"
         required
