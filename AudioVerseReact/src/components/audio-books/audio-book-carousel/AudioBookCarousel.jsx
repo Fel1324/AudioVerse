@@ -3,14 +3,16 @@ import { ChevronLeft } from "../../icons/ChevronLeft.jsx";
 import { ChevronRight } from "../../icons/ChevronRight.jsx";
 import { AudioBook } from "../audio-book/AudioBook.jsx";
 
-import { audioBooks } from "../../../data/audioBooks.js";
+import { api } from "../../../lib/axios.js";
 import styles from "./AudioBookCarousel.module.css";
 
 export function AudioBookCarousel() {
   const [audioBook, setAudioBook] = useState([]);
 
   useEffect(() => {
-    setAudioBook(audioBooks);
+    api.get("/audiobooks")
+      .then(response => setAudioBook(response.data))
+      .catch(err => console.log(err))
   }, []);
 
   return (
@@ -35,7 +37,9 @@ export function AudioBookCarousel() {
               <AudioBook
                 key={adbk.id}
                 id={adbk.id}
-                audiobookCover={adbk.audiobookCover}
+                name={adbk.name}
+                audioBookCover={adbk.audioBookCover}
+                parentalRating={adbk.parentalRating}                
               />
             ))
           }

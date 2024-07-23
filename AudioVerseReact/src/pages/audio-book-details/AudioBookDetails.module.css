@@ -11,10 +11,13 @@
     }
 
     & > .details__author{
+      display: inline-block;
+
       color: var(--secondary-color);
 
       font-size: 1.25rem;
       font-weight: 500;
+      font-style: normal;
 
       margin: .25rem 0 1.5rem 0;
     }

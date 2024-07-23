@@ -5,7 +5,7 @@ import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
 import { AudioBookFilter } from "../../components/audio-books/audio-book-filter/AudioBookFilter.jsx";
-// import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
+import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
 import { HeadPhones } from "../../components/icons/HeadPhones.jsx";
@@ -25,7 +25,7 @@ export function Home() {
     api.get("/audiobooks")
       .then(response => setAudioBook(response.data))
       .catch(err => console.log(err))
-  }, [])
+  }, []);
 
   return (
     <>
@@ -66,7 +66,8 @@ export function Home() {
                     key={adbk.id}
                     id={adbk.id}
                     name={adbk.name}
-                    audiobookCover={adbk.audioBookCover}
+                    audioBookCover={adbk.audioBookCover}
+                    parentalRating={adbk.parentalRating}
                     onOpenAudioBook={openAudioBook}
                   />
                 ))}
@@ -83,7 +84,7 @@ export function Home() {
             </div>
           </section>
 
-          {/* <AudioBookCarousel /> */}
+          <AudioBookCarousel />
         </div>
       </main>
 

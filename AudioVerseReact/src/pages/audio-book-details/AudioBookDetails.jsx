@@ -32,14 +32,14 @@ export function AudioBookDetails() {
       <main className={`${styles.details} main`}>
         <div className={`${styles.details__container} container`}>
           <h1 className={styles.details__name}>{audioBooks.name}</h1>
-          <h4 className={styles.details__author}>{audioBooks.author}</h4>
+          <cite className={styles.details__author}>{audioBooks.author}</cite>
           
           <AudioBook
-            audiobookCover={audioBooks.audioBookCover}
+            audioBookCover={audioBooks.audioBookCover}
+            parentalRating={audioBooks.parentalRating}
           />
 
           <p className={`${styles.details__synopsis} paragraph`}>{audioBooks.synopsis}</p>
-
           <button className={styles.details__listen}>Ouvir</button>
           <a className={`${styles.details__download} link`} href="#">Download.pdf</a>
 

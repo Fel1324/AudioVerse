@@ -53,10 +53,10 @@ export function Login() {
             <button className="submit" type="submit">Entrar</button>
           </form>
 
-          <footer className={styles.login__footer}>
+          <div className={styles.login__footer}>
             <p className={`${styles.login__paragraph} paragraph`}>Não tem uma conta ainda?</p>
             <button className={styles.login__button} onClick={navigateToRegister}>Criar conta</button>
-          </footer>
+          </div>
         </div>
       </main>
     </>
