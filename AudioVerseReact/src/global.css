@@ -121,7 +121,7 @@ a{
   row-gap: 1.5rem;
 }
 
-.buttonClose{
+.button-close{
   background-color: var(--senary-color);
   border-radius: .375rem;
 
@@ -161,6 +161,10 @@ a{
 
 .link {
   color: var(--link-color);
+}
+
+.input-search--fgrow{
+  flex-grow: 1;
 }
 
 .input-group{

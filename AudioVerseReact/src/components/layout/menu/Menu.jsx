@@ -8,7 +8,7 @@ export function Menu({closeMenu}) {
     <nav className={styles.menu}>
       <div className={styles.menu__header}>
         <Link to="/login">Entrar</Link>
-        <button onClick={closeMenu} className="buttonClose">
+        <button onClick={closeMenu} className="button-close">
           <CloseMenu />
         </button>
       </div>
