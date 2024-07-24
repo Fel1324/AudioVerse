@@ -10,6 +10,7 @@ import styles from "./Header.module.css";
 
 export function Header(){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, seSearchtIsOpen] = useState(false);
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -17,6 +18,14 @@ export function Header(){
 
   function closeMenu(){
     setIsMenuOpen(false);
+  }
+
+  function openSearch(){
+    seSearchtIsOpen(true);
+  }
+
+  function closeSearch(){
+    seSearchtIsOpen(false);
   }
 
   return (
@@ -27,7 +36,7 @@ export function Header(){
         </Link>
 
         <div>
-          <button className={`${styles.header__button} ${styles.openSearch}`} aria-label="Abrir barra de pesquisa">
+          <button onClick={openSearch} className={`${styles.header__button} ${styles.openSearch}`} aria-label="Abrir barra de pesquisa">
             <Search />
           </button>
 
@@ -37,11 +46,20 @@ export function Header(){
         </div>
       </div>
 
+      {isSearchOpen && (
+        <div className={styles.search}>
+          <input type="search" name="search" id="search" placeholder="Pesquisar AudioBook" />
+          <button onClick={closeSearch} className={styles.buttonClose}>
+              <CloseMenu />
+          </button>
+        </div>
+      )}
+      
       {isMenuOpen && (
         <nav className={styles.menu}>
           <div className={styles.menu__header}>
             <Link to="/login">Entrar</Link>
-            <button onClick={closeMenu}>
+            <button onClick={closeMenu} className={styles.buttonClose}>
               <CloseMenu />
             </button>
           </div>
