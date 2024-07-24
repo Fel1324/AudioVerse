@@ -9,6 +9,7 @@
     & > div{
       display: flex;
       gap: 1.25rem;
+      align-items: center;
 
       & > .header__button{
         display: flex;
@@ -30,7 +31,7 @@
       }
     }
 
-    input[type='search'], nav{
+    & input[type='search'], .navbar{
       display: none;
     }
   }
@@ -47,8 +48,28 @@
         }
       }
 
-      input[type='search']{
+      & input[type='search']{
         display: block;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header{
+    .header__container{
+      & .navbar{
+        display: block;
+
+        & > ul{
+          display: flex;
+          gap: 1.25rem;
+
+          & a.navbar__link{
+            text-transform: capitalize;
+            margin: 0;
+          }
+        }
       }
     }
   }

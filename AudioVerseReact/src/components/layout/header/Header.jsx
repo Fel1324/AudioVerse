@@ -39,9 +39,22 @@ export function Header(){
 
         <InputSearch />
 
-        <nav></nav>
-
         <div>
+          <nav className={styles.navbar}>
+            <ul>
+              <li>
+                <Link className={`${styles.navbar__link} primary-navbar-link`} to="/">
+                  Início
+                </Link>
+              </li>
+              <li>
+                <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
+                  Entrar
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
           <button onClick={openSearch} className={`${styles.header__button} ${styles.openSearch}`} aria-label="Abrir barra de pesquisa">
             <SearchIcon />
           </button>

@@ -95,7 +95,7 @@
         border: .125rem solid var(--secondary-color);
         border-radius: .5rem;
 
-        padding-inline: .625rem;
+        padding-inline: .5rem;
 
         display: flex;
         justify-content: center;

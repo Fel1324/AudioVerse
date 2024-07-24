@@ -84,6 +84,16 @@ a{
   text-decoration: none;
 }
 
+.primary-navbar-link{
+  color: var(--primary-color);
+
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  margin-right: 1.25rem;
+}
+
 .main {
   width: 100%;
   flex-grow: 1;

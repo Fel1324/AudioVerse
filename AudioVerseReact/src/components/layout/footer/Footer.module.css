@@ -1,5 +1,6 @@
 .footer{
-  color: var(--quinary-color);
+  background-color: var(--septenary-color);
+  color: var(--primary-color);
 
   width: 100%;
 

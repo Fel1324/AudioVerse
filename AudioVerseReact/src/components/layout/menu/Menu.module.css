@@ -4,7 +4,7 @@
   right: 0;
   z-index: 100;
 
-  width: 100%;
+  width: 20rem;
   height: auto;
   min-height: 14.25rem;
 
@@ -20,16 +20,6 @@
   align-items: center;
 
   margin-bottom: 2rem;
-
-  &>a {
-    color: var(--primary-color);
-
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-transform: uppercase;
-
-    margin-right: 1.25rem;
-  }
 }
 
 .menu__body {
@@ -37,13 +27,12 @@
   flex-direction: column;
   gap: 1.25rem;
 
-  &>.fontInput {
+  & > .fontInput {
     display: flex;
     align-items: center;
   }
 
-  & a,
-  label {
+  & a, label {
     color: var(--tertiary-color);
 
     font-size: 1.5rem;
@@ -64,5 +53,18 @@
     min-height: 2.25rem;
 
     margin-left: .625rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .menu{
+    min-height: fit-content;
+    padding-bottom: 2rem;
+  }
+
+  .menu__header, .menu__body {  
+    & a{
+      display: none;
+    }
   }
 }
