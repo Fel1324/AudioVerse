@@ -72,9 +72,7 @@ div#root {
 
 button {
   font-family: var(--default-font);
-
   background: none;
-
   cursor: pointer;
 }
 
@@ -88,20 +86,51 @@ a{
 
 .main {
   width: 100%;
-
   flex-grow: 1;
 }
 
 .container {
-  width: 100%;
-
+  width: min(100%, 75rem);
   padding: 1rem;
+  margin-inline: auto;
+}
+
+.secondary-header{
+  padding: 1.75rem;
+}
+
+.secondary-logo {
+  width: 4.5rem;
+}
+
+.secondary-container{
+  width: 100%;
+  padding: 1.25rem 1.75rem 1.75rem 1.75rem;
 }
 
 .form-container{
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+.display-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  column-gap: 1rem;
+  row-gap: 1.5rem;
+}
+
+.buttonClose{
+  background-color: var(--senary-color);
+  border-radius: .375rem;
+
+  width: 2.25rem;
+  height: 2.25rem;
+
+  & > svg{
+    vertical-align: middle;
+  }
 }
 
 .submit{
@@ -122,13 +151,6 @@ a{
   padding-block: .625rem;
 }
 
-.display-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
-  column-gap: 1rem;
-  row-gap: 1.5rem;
-}
-
 .paragraph {
   color: var(--tertiary-color);
 
@@ -141,20 +163,6 @@ a{
   color: var(--link-color);
 }
 
-.secondary-header{
-  padding: 1.75rem;
-}
-
-.secondary-logo {
-  width: 4.5rem;
-}
-
-.secondary-container{
-  width: 100%;
-  
-  padding: 1.25rem 1.75rem 1.75rem 1.75rem;
-}
-
 .input-group{
   display: flex;
   flex-direction: column;
@@ -163,7 +171,6 @@ a{
 
 .label{
   color: var(--primary-color);
-
   font-size: 1rem;
   font-weight: 500;
 }
@@ -193,14 +200,18 @@ a{
   }
 }
 
-.buttonClose{
-  background-color: var(--senary-color);
-  border-radius: .375rem;
+@media screen and (min-width: 768px) {
+  .container{
+    padding-inline: 2rem;
+  }
 
-  width: 2.25rem;
-  height: 2.25rem;
+  .display-grid {
+    gap: 1.5rem;
+  }
+}
 
-  & > svg{
-    vertical-align: middle;
+@media screen and (min-width: 1440px) {
+  .container{
+    padding-inline: 0;
   }
 }

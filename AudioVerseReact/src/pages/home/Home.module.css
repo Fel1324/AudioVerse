@@ -145,3 +145,11 @@
     }
   }
 }
+
+@media screen and (min-width: 1440px) {
+  .home__banner{
+    & > .banner__container{
+      padding-inline: 5rem;
+    }
+  }
+}
