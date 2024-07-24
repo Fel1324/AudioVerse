@@ -1,14 +1,24 @@
-.filter{
-    color: var(--secondary-color);
+.filter {
+  color: var(--secondary-color);
 
-    font-weight: 500;
-    font-size: 1.5rem;
+  font-weight: 500;
+  font-size: 1.5rem;
 
+  display: flex;
+  align-items: stretch;
+  gap: .125rem;
+
+  &>span {
     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
-    &>span{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+@media screen and (min-width: 768px) {
+  .filter{
+    align-items: center;
+    gap: .375rem;
+    font-size: 2rem;
+  }
 }

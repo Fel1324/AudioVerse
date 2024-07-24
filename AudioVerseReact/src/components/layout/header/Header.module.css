@@ -50,6 +50,8 @@
 
       & input[type='search']{
         display: block;
+        width: min(40%, 34rem);
+        height: 100%;
       }
     }
   }
@@ -67,7 +69,7 @@
 
           & a.navbar__link{
             text-transform: capitalize;
-            margin: 0;
+            margin-right: .75rem;
           }
         }
       }
