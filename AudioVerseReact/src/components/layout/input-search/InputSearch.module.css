@@ -6,12 +6,13 @@
 
   padding: .5rem .75rem;
 
+  width: 78%;
   height: 2.25rem;
 
   font-size: 1.125rem;
 
   &::placeholder {
-    background: url("./assets/search.svg") no-repeat right / contain;
+    background: url("../../../assets/search.svg") no-repeat right / contain;
     color: var(--tertiary-color);
     opacity: .6;
   }
