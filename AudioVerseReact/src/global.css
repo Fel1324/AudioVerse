@@ -192,3 +192,15 @@ a{
     font-weight: 400;
   }
 }
+
+.buttonClose{
+  background-color: var(--senary-color);
+  border-radius: .375rem;
+
+  width: 2.25rem;
+  height: 2.25rem;
+
+  & > svg{
+    vertical-align: middle;
+  }
+}

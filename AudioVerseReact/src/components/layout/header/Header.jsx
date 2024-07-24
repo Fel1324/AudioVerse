@@ -1,9 +1,10 @@
 import { useState } from "react";
-
 import { Link } from "react-router-dom";
-import { Search } from "../../icons/Search.jsx";
+
+import { Menu } from "../menu/Menu.jsx";
 import { OpenMenu } from "../../icons/OpenMenu.jsx";
-import { CloseMenu } from "../../icons/CloseMenu.jsx";
+import { Search } from "../search/Search.jsx";
+import { SearchIcon } from "../../icons/SearchIcon.jsx";
 
 import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
@@ -37,7 +38,7 @@ export function Header(){
 
         <div>
           <button onClick={openSearch} className={`${styles.header__button} ${styles.openSearch}`} aria-label="Abrir barra de pesquisa">
-            <Search />
+            <SearchIcon />
           </button>
 
           <button onClick={openMenu} className={`${styles.header__button} ${styles.openMenu}`} aria-label="Abrir menu lateral">
@@ -46,36 +47,8 @@ export function Header(){
         </div>
       </div>
 
-      {isSearchOpen && (
-        <div className={styles.search}>
-          <input type="search" name="search" id="search" placeholder="Pesquisar AudioBook" />
-          <button onClick={closeSearch} className={styles.buttonClose}>
-              <CloseMenu />
-          </button>
-        </div>
-      )}
-      
-      {isMenuOpen && (
-        <nav className={styles.menu}>
-          <div className={styles.menu__header}>
-            <Link to="/login">Entrar</Link>
-            <button onClick={closeMenu} className={styles.buttonClose}>
-              <CloseMenu />
-            </button>
-          </div>
-
-          <ul className={styles.menu__body}>
-            <li>
-              <Link to="/">Início</Link>
-            </li>
-
-            <li className={styles.fontInput}>
-              <label htmlFor="font">Fonte: </label>
-              <input type="number" defaultValue={12} min={12} max={24}/>
-            </li>
-          </ul>
-        </nav>
-      )}
+      {isSearchOpen && <Search closeSearch={closeSearch} />}
+      {isMenuOpen && <Menu closeMenu={closeMenu} />}
     </header>
   )
 }
