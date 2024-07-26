@@ -19,14 +19,12 @@ public class Chapter
     [Required(ErrorMessage = "A url do capítulo deve ser preenchida")]
     public string ChapterUrl { get; set; }
 
-    public int? BookId { get; set; }
     public virtual Book Book { get; set; }
 
-    /*[Display(Name = "Livro")]
+    [Display(Name = "Livro")]
     [Required(ErrorMessage = "Por favor, informe o nome do livro")]
     public int BookId { get; set; }
     [ForeignKey("BookId")]
     public virtual Book Books { get; set; }
     
-     Colocar este código de volta*/
 }

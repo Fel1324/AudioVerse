@@ -12,5 +12,5 @@ public class UserApp : IdentityUser
     //public int Id { get; set; }
 
 
-    public ICollection<Favorite>? Favorite { get; set; }
+    public ICollection<Favorite> Favorite { get; set; }
 }

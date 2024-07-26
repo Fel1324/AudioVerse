@@ -15,5 +15,5 @@ public class Genre
     [StringLength(20, ErrorMessage = "O gênero deve possuir no máximo 20 caracteres")]
     public  string GenreName { get; set; }
 
-    public ICollection<GenreBook>? GenreBook { get; set; }
+    public ICollection<GenreBook> GenreBook { get; set; }
 }
