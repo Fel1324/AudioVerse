@@ -31,17 +31,26 @@ export function AudioBookDetails() {
 
       <main className={`${styles.details} main`}>
         <div className={`${styles.details__container} container`}>
-          <h1 className={styles.details__name}>{audioBooks.name}</h1>
-          <cite className={styles.details__author}>{audioBooks.author}</cite>
-          
-          <AudioBook
-            audioBookCover={audioBooks.audioBookCover}
-            parentalRating={audioBooks.parentalRating}
-          />
+          <div>
+            <div className={styles.col_b__row_a}>
+              <h1 className={styles.details__name}>{audioBooks.name}</h1>
+              <cite className={styles.details__author}>{audioBooks.author}</cite>
+            </div>
+            
+            <div className={styles.col_a}>
+              <AudioBook
+                audioBookCover={audioBooks.audioBookCover}
+                parentalRating={audioBooks.parentalRating}
+                alternativeStyle
+              />
+            </div>
 
-          <p className={`${styles.details__synopsis} paragraph`}>{audioBooks.synopsis}</p>
-          <button className={styles.details__listen}>Ouvir</button>
-          <a className={`${styles.details__download} link`} href="#">Download.pdf</a>
+            <div className={styles.col_b__row_b}>
+              <p className={`${styles.details__synopsis} paragraph`}>{audioBooks.synopsis}</p>
+              <button className={styles.details__listen}>Ouvir</button>
+              <a className={`${styles.details__download} link`} href="#">Download.pdf</a>
+            </div>
+          </div>
 
           <section className={styles.details__chapters}>
             <h2 className={styles.chapters__title}>Capítulos</h2>

@@ -100,7 +100,7 @@ a{
 }
 
 .container {
-  width: min(100%, 75rem);
+  width: min(100%, 81.25rem);
   padding: 1rem;
   margin-inline: auto;
 }

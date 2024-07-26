@@ -38,3 +38,23 @@
     }
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .audiobook{
+    & > div{
+      margin-top: .75rem;
+  
+      & > .bookMark{
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      & > .parentalRatingDesktop{
+        font-size: 1.5rem;
+  
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+}
