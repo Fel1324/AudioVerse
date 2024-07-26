@@ -22,8 +22,14 @@
     margin: .25rem 0 1.5rem 0;
   }
 
+  & .col_a{
+    max-width: 23.75rem;
+    margin-inline: auto;
+  }
+
   & .details__synopsis{
-    margin-top: 2rem;
+    max-width: 37.5rem;
+    margin: 2rem auto;
   }
 
   & .details__listen{
@@ -77,7 +83,10 @@
     justify-content: center;
 
     & > .col_a{
+      margin-inline: 0;
+      
       width: 80%;
+      max-width: none;
       grid-area: col-a;
     }
 
@@ -95,8 +104,14 @@
       align-self: start;
 
       & > .details__synopsis{
-        margin-top: 1.25rem;
+        max-width: none;
+        margin: 1.25rem 0;
       }
+    }
+
+    & .bookMark{
+      width: 2.5rem;
+      height: 2.5rem;
     }
   }
 
