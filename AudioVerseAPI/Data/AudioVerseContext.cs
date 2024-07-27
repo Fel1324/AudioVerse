@@ -1,4 +1,5 @@
-﻿using System.Runtime.ConstrainedExecution;
+﻿using System.Reflection.Emit;
+using System.Runtime.ConstrainedExecution;
 
 using AudioVerseAPI.Models;
 
@@ -39,6 +40,11 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
             .HasOne(b => b.Book)
             .WithMany(a => a.AuthorBook)
             .HasForeignKey(b => b.BookId);*/
+
+        builder.Entity<Book>()
+            .HasOne(b => b.Author)
+            .WithMany(a => a.Books)
+            .HasForeignKey(b => b.AuthorId);
 
         builder.Entity<GenreBook>()
             .HasOne(b => b.Genre)
