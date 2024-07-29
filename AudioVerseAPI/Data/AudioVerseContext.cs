@@ -18,7 +18,7 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
     }
 
     public DbSet<Author> Authors { get; set; }
-    //public DbSet<AuthorBook> AuthorBooks { get; set; }
+    public DbSet<AuthorBook> AuthorBooks { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<Chapter> Chapters { get; set; }
     public DbSet<Favorite> Favorites { get; set; }
@@ -31,20 +31,23 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
     {
         base.OnModelCreating(builder);
 
-        /*builder.Entity<AuthorBook>()
-            .HasOne(b => b.Author)
-            .WithMany(a => a.AuthorBook)
-            .HasForeignKey(b => b.AuthorId);*/
+        builder.Entity<AuthorBook>()
+            .HasKey(authorBook => new { authorBook.BookId, authorBook.AuthorId });
 
-        /*builder.Entity<AuthorBook>()
-            .HasOne(b => b.Book)
-            .WithMany(a => a.AuthorBook)
-            .HasForeignKey(b => b.BookId);*/
+        builder.Entity<AuthorBook>()
+            .HasOne(authorBook => authorBook.Author)
+            .WithMany(author => author.AuthorBooks)
+            .HasForeignKey(authorBook => authorBook.AuthorId);
 
-        builder.Entity<Book>()
-            .HasOne(b => b.Author)
-            .WithMany(a => a.Books)
-            .HasForeignKey(b => b.AuthorId);
+        builder.Entity<AuthorBook>()
+            .HasOne(authorBook => authorBook.Book)
+            .WithMany(book => book.AuthorBooks)
+            .HasForeignKey(authorBook => authorBook.BookId);
+
+        //builder.Entity<Book>()
+        //.HasOne(b => b.Author)
+        //.WithMany(a => a.Books)
+        //.HasForeignKey(b => b.AuthorId);
 
         builder.Entity<GenreBook>()
             .HasOne(b => b.Genre)

@@ -16,4 +16,5 @@ public class ReadBookDto
     public string? BookImage { get; set; }
 
     public bool Active { get; set; }
+    public ICollection<ReadAuthorBookDto> AuthorBooks { get; set; }
 }

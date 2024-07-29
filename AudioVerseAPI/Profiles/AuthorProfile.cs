@@ -10,7 +10,9 @@ public class AuthorProfile : Profile
     public AuthorProfile()
     {
         CreateMap<CreateAuthorDto, Author>();
+        CreateMap<Author, ReadAuthorDto>()
+            .ForMember(authorDto => authorDto.AuthorBooks,
+                opt => opt.MapFrom(author => author.AuthorBooks));
         CreateMap<UpdateAuthorDto, Author>();
-        CreateMap<Author, ReadAuthorDto>();
     }
 }

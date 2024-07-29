@@ -31,14 +31,14 @@ public class AuthorController : ControllerBase
         _context.SaveChanges();
         return CreatedAtAction(nameof(RecoverAuthorById),
             new { id = author.Id },
-            author);
+            authorDto);
     }
 
     [HttpGet]
     public IEnumerable<ReadAuthorDto> RecoverAuthor([FromQuery] int skip = 0,
         [FromQuery] int take = 50)
     {
-        return _mapper.Map<List<ReadAuthorDto>>(_context.Authors.Skip(skip).Take(take));
+        return _mapper.Map<List<ReadAuthorDto>>(_context.Authors.ToList());
     }
 
     [HttpGet("{id}")]

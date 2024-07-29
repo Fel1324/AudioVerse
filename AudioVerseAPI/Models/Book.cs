@@ -40,6 +40,6 @@ public class Book
     public ICollection<Chapter> Chapters { get; set; } 
     public ICollection<Favorite> Favorite { get; set; }
     public ICollection<GenreBook> GenreBook { get; set; }
-    //public ICollection<AuthorBook> AuthorBook { get; set; }
-    public ICollection<Author> Authors { get;}
+    public virtual ICollection<AuthorBook> AuthorBooks { get; set; }
+    //public ICollection<Author> Authors { get;}
 }

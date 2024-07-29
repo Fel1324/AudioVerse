@@ -5,6 +5,7 @@ namespace AudioVerseAPI.Data.Dtos;
 
 public class ReadAuthorDto
 {
+    public int Id { get; set; }
     public string? AuthorName { get; set; }
 
     public int YearBirth { get; set; }
@@ -14,4 +15,5 @@ public class ReadAuthorDto
     public string? Biography { get; set; }
 
     public bool Active { get; set; }
+    public ICollection<ReadAuthorBookDto> AuthorBooks { get; set; }
 }
