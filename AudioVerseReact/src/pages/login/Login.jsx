@@ -19,14 +19,14 @@ export function Login() {
   }
 
   return (
-    <>
+    <div className="page-account">
       <header className="secondary-header">
         <Link to="/">
           <img className="secondary-logo" src={logo} alt="logo AudioVerse" />
         </Link>
       </header>
 
-      <main className="main">
+      <main className={`main`}>
         <div className="secondary-container">
           <h1 className={styles.login__title}>Login</h1>
           <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
@@ -59,6 +59,6 @@ export function Login() {
           </div>
         </div>
       </main>
-    </>
+    </div>
   )
 }

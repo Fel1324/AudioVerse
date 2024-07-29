@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { ChevronLeft } from "../../icons/ChevronLeft.jsx";
 import { ChevronRight } from "../../icons/ChevronRight.jsx";
 import { AudioBook } from "../audio-book/AudioBook.jsx";
@@ -8,6 +10,11 @@ import styles from "./AudioBookCarousel.module.css";
 
 export function AudioBookCarousel() {
   const [audioBook, setAudioBook] = useState([]);
+  const navigate = useNavigate();
+
+  function openAudioBook(id) {
+    navigate(`/audiobook/${id}`);
+  }
 
   useEffect(() => {
     api.get("/audiobooks")
@@ -39,7 +46,8 @@ export function AudioBookCarousel() {
                 id={adbk.id}
                 name={adbk.name}
                 audioBookCover={adbk.audioBookCover}
-                parentalRating={adbk.parentalRating}                
+                parentalRating={adbk.parentalRating}             
+                onOpenAudioBook={openAudioBook}   
               />
             ))
           }

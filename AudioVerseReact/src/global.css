@@ -19,8 +19,11 @@
   --neutral-dark-color: #000;
   --primary-gradient: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6 50%, #EDCDAF80 100%);
   --secondary-gradient: linear-gradient(180deg, #F4D6B9 0%, #FFB26A 100%);
+  --tertiary-gradient: linear-gradient(180deg, #F1D0B3 0%, #F9AB75 100%);
   --primary-shadow: #F1D0B3;
   --secondary-shadow: #F1D0B3CC;
+  --tertiary-shadow: #BB6618;
+  --quaternary-shadow: #A36B3B;
   --primary-color: #5B3B1D;
   --secondary-color: #69421D;
   --tertiary-color: #35210F;
@@ -32,6 +35,9 @@
 
   /* TYPOGRAPHY */
   --default-font: "EB Garamond", serif;
+
+  /* BACKGROUND */
+  --bg-login: url('./assets/light-bg-login.png') no-repeat center / cover fixed;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,8 +45,11 @@
     --link-color: #87CCf5;
     --primary-gradient: linear-gradient(180deg, #7E5226 0%, #5C3B1D, #7E5226 100%);
     --secondary-gradient: linear-gradient(180deg, #8A5F36 0%, #D48F50 100%);
+    --tertiary-gradient: linear-gradient(180deg, #7A4B20 0%, #5B3B1D 56.5%);
     --primary-shadow: #4A2E14;
     --secondary-shadow: #4A2E14;
+    --tertiary-shadow: #503217;
+    --quaternary-shadow: #503217;
     --primary-color: #EECBAC;
     --secondary-color: #E0B083;
     --tertiary-color: #F5E5D7;
@@ -49,6 +58,9 @@
     --senary-color: #4A2E14;
     --septenary-color: #80562E;
     --octonary-color: #F5E5D7;
+
+    /* BACKGROUND */
+    --bg-login: url('./assets/dark-bg-login.png') no-repeat center / cover fixed;
   }
 }
 
@@ -96,6 +108,7 @@ a{
 
 .main {
   width: 100%;
+
   flex-grow: 1;
 }
 
@@ -110,11 +123,13 @@ a{
 }
 
 .secondary-logo {
+  border-radius: 50%;
   width: 4.5rem;
 }
 
 .secondary-container{
-  width: 100%;
+  width: min(100%, 25rem);
+  margin-inline: auto;
   padding: 1.25rem 1.75rem 1.75rem 1.75rem;
 }
 
@@ -221,6 +236,46 @@ a{
 
   .display-grid {
     gap: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .page-account{
+    display: flex;
+    align-items: center;
+
+    background: var(--bg-login);
+
+    padding-inline: 2.75rem;
+    padding-block: 2rem;
+
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .secondary-header{
+    padding: 0;
+  }
+
+  .secondary-logo {
+    box-shadow: 0 .25rem .25rem 0rem var(--tertiary-shadow);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    margin: 1.5rem 1.75rem 0 0;
+  }  
+
+  .secondary-container{
+    background: var(--tertiary-gradient);
+    box-shadow: 0 .25rem .625rem 0 var(--quaternary-shadow);
+    border-radius: .625rem;
+
+    width: min(100%, 30rem);
+
+    margin-inline: initial;
+    padding: 1.25rem 1.75rem 1.75rem 1.75rem;
   }
 }
 

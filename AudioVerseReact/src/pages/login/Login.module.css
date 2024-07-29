@@ -1,4 +1,4 @@
-.login__title {
+.login__title{
   text-transform: uppercase;
   font-size: 3rem;
   font-weight: 500;
@@ -8,10 +8,8 @@
   margin-bottom: 1rem;
 }
 
-.login__form{
-  width: min(100%, 25rem);
-  
-  margin: 3rem auto;
+.login__form{  
+  margin-block: 3rem;
 }
 
 .login__forgot{
@@ -43,5 +41,11 @@
 
     padding: .5rem 1.125rem;
     margin-top: .75rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .login{
+    background: url('../../assets/light-bg-login.jpg') no-repeat center / cover;
   }
 }
