@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AudioVerseAPI.Migrations
 {
     [DbContext(typeof(AudioVerseContext))]
-    [Migration("20240729105550_atualizando relacoes entre tabelas de livro e autor")]
-    partial class atualizandorelacoesentretabelasdelivroeautor
+    [Migration("20240730214724_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,7 +68,7 @@ namespace AudioVerseAPI.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("AuthorBooks");
+                    b.ToTable("AuthorBook");
                 });
 
             modelBuilder.Entity("AudioVerseAPI.Models.Book", b =>
@@ -81,9 +81,6 @@ namespace AudioVerseAPI.Migrations
 
                     b.Property<bool>("Active")
                         .HasColumnType("tinyint(1)");
-
-                    b.Property<int>("AuthorId")
-                        .HasColumnType("int");
 
                     b.Property<string>("BookImage")
                         .IsRequired()
@@ -106,8 +103,6 @@ namespace AudioVerseAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
 
                     b.ToTable("Book");
                 });
@@ -417,17 +412,6 @@ namespace AudioVerseAPI.Migrations
                     b.Navigation("Author");
 
                     b.Navigation("Book");
-                });
-
-            modelBuilder.Entity("AudioVerseAPI.Models.Book", b =>
-                {
-                    b.HasOne("AudioVerseAPI.Models.Author", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("AudioVerseAPI.Models.Chapter", b =>

@@ -65,7 +65,7 @@ namespace AudioVerseAPI.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("AuthorBooks");
+                    b.ToTable("AuthorBook");
                 });
 
             modelBuilder.Entity("AudioVerseAPI.Models.Book", b =>

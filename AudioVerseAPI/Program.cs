@@ -67,4 +67,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    //var readDbContext = scope.ServiceProvider.GetRequiredService<ReadDbContext>();
+    var writeDbContext = scope.ServiceProvider.GetRequiredService<AudioVerseContext>();
+
+    //readDbContext.Database.Migrate();
+    writeDbContext.Database.Migrate();
+}
+
 app.Run();
