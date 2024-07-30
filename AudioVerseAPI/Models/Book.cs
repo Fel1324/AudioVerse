@@ -10,8 +10,6 @@ public class Book
     [Key]
     [Required]
     public int Id { get; set; }
-    public int AuthorId { get; set; }
-    public Author Author { get; set; }
 
     [Display(Name = "Título do livro")]
     [Required(ErrorMessage = "Por favor, digite o Título do livro.")]
