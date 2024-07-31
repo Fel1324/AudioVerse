@@ -45,7 +45,7 @@
     --link-color: #87CCf5;
     --primary-gradient: linear-gradient(180deg, #7E5226 0%, #5C3B1D, #7E5226 100%);
     --secondary-gradient: linear-gradient(180deg, #8A5F36 0%, #D48F50 100%);
-    --tertiary-gradient: linear-gradient(180deg, #7A4B20 0%, #5B3B1D 56.5%);
+    --tertiary-gradient: linear-gradient(180deg, #5B3B1D 0%, #7A4B20 56.5%, #5B3B1D 100%);
     --primary-shadow: #4A2E14;
     --secondary-shadow: #4A2E14;
     --tertiary-shadow: #503217;

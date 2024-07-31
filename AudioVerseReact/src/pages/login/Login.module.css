@@ -43,9 +43,3 @@
     margin-top: .75rem;
   }
 }
-
-@media screen and (min-width: 1024px) {
-  .login{
-    background: url('../../assets/light-bg-login.jpg') no-repeat center / cover;
-  }
-}

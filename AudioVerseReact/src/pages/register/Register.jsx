@@ -14,7 +14,7 @@ export function Register() {
   }
 
   return (
-    <>
+    <div className="page-account">
       <header className="secondary-header">
         <Link to="/">
           <img className="secondary-logo" src={logo} alt="logo AudioVerse" />
@@ -64,6 +64,6 @@ export function Register() {
           </form>
         </div>
       </main>
-    </>
+    </div>
   )
 }
