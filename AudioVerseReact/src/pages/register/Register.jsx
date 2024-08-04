@@ -31,28 +31,22 @@ export function Register() {
               <DefaultInput
                 type="email"
                 name="email"
-                id="email"
                 content="Email"
                 autoComplete="email"
               />
               <DefaultInput
                 type="text"
                 name="name"
-                id="name"
                 content="Nome"
                 autoComplete="name"
               />
               <PasswordInput
-                type="password"
                 name="password"
-                id="password"
                 content="Senha"
                 autoComplete="new-password"
               />
               <PasswordInput
-                type="password"
-                name="password"
-                id="password"
+                name="confirm-password"
                 content="Confirme a Senha"
                 autoComplete="new-password"
               />

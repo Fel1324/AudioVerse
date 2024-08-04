@@ -36,12 +36,10 @@ export function Login() {
               <DefaultInput
                 type="email"
                 name="email"
-                id="email"
                 content="Email"
                 autoComplete="email"
               />
               <PasswordInput
-                type="password"
                 name="password"
                 id="password"
                 content="Senha"
