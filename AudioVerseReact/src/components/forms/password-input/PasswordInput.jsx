@@ -1,5 +1,7 @@
 import { useId, useState } from "react";
+
 import { PasswordEye } from "../../icons/PasswordEye.jsx";
+import { PasswordEyeOff } from "../../icons/PasswordEyeOff.jsx";
 
 import styles from "./PasswordInput.module.css";
 
@@ -26,7 +28,11 @@ export function PasswordInput({name, content, autoComplete}){
         required
       />
       <button onClick={onChangeInputType} type="button" className={styles.icon}>
-        <PasswordEye />
+        {showPassword ? (
+          <PasswordEyeOff />
+        ) : (
+          <PasswordEye />
+        )}
       </button>
     </div>
   )

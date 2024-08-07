@@ -88,6 +88,10 @@ button {
   cursor: pointer;
 }
 
+cite{
+  font-style: normal;
+}
+
 img {
   vertical-align: top;
 }

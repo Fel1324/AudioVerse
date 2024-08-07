@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
 import { Header } from "../../components/layout/header/Header.jsx";
-import { Footer } from "../../components/layout/footer/Footer.jsx";
+import { AudioBookListening } from "../../components/audio-books/audio-book-listening/AudioBookListening.jsx";
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
 
 import { api } from "../../lib/axios.js";
@@ -11,6 +11,7 @@ import styles from "./AudioBookDetails.module.css";
 export function AudioBookDetails() {
   const { audioBookId } = useParams();
   const [audioBooks, setAudioBooks] = useState([]);
+  const [isListening, setIsListening] = useState(false);
 
   function getAudioBookData(id) {
     api.get(`/audiobooks/${id}`)
@@ -24,6 +25,10 @@ export function AudioBookDetails() {
   useEffect(() => {
     getAudioBookData(audioBookId);
   }, [audioBookId]);
+
+  function listenAudioBook(){
+    isListening ? setIsListening(false) : setIsListening(true);
+  }
 
   return (
     <>
@@ -47,7 +52,9 @@ export function AudioBookDetails() {
 
             <div className={styles.col_b__row_b}>
               <p className={`${styles.details__synopsis} paragraph`}>{audioBooks.synopsis}</p>
-              <button className={styles.details__listen}>Ouvir</button>
+              <button onClick={listenAudioBook} className={styles.details__listen}>
+                {isListening ? "Cancelar" : "Ouvir"}
+              </button>
               <a className={`${styles.details__download} link`} href="#">Download.pdf</a>
             </div>
           </div>
@@ -58,7 +65,7 @@ export function AudioBookDetails() {
         </div>
       </main>
 
-      <Footer />
+      {isListening && <AudioBookListening name={audioBooks.name} author={audioBooks.author} />}
     </>
   )
 }
