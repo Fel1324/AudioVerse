@@ -44,21 +44,22 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
             .WithMany(book => book.AuthorBooks)
             .HasForeignKey(authorBook => authorBook.BookId);
 
-        //builder.Entity<Book>()
-        //.HasOne(b => b.Author)
-        //.WithMany(a => a.Books)
-        //.HasForeignKey(b => b.AuthorId);
+        /*-------------------------------------------------*/
 
         builder.Entity<GenreBook>()
-            .HasOne(b => b.Genre)
-            .WithMany(a => a.GenreBook)
-            .HasForeignKey(b => b.GenreId);
+            .HasKey(genreBook => new { genreBook.BookId, genreBook.GenreId });
 
         builder.Entity<GenreBook>()
-            .HasOne(b => b.Book)
-            .WithMany(a => a.GenreBook)
-            .HasForeignKey(b => b.BookId);
+            .HasOne(genreBook => genreBook.Genre)
+            .WithMany(genre => genre.GenreBooks)
+            .HasForeignKey(genreBook => genreBook.GenreId);
 
+        builder.Entity<GenreBook>()
+            .HasOne(genreBook => genreBook.Book)
+            .WithMany(book => book.GenreBooks)
+            .HasForeignKey(genreBook => genreBook.BookId);
+
+        /*-----------------------------------------------*/
         builder.Entity<Favorite>()
             .HasOne(b => b.UserApp)
             .WithMany(a => a.Favorite)
