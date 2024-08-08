@@ -36,7 +36,6 @@ public class Book
     public bool Active { get; set; }
 
     public ICollection<Chapter> Chapters { get; set; } 
-    public ICollection<Favorite> Favorite { get; set; }
     public ICollection<GenreBook> GenreBooks { get; set; }
     public virtual ICollection<AuthorBook> AuthorBooks { get; set; }
 }

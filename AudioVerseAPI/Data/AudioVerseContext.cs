@@ -21,7 +21,6 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
     public DbSet<AuthorBook> AuthorBooks { get; set; }
     public DbSet<Book> Books { get; set; }
     public DbSet<Chapter> Chapters { get; set; }
-    public DbSet<Favorite> Favorites { get; set; }
     public DbSet<Genre> Genres { get; set; }
     public DbSet<GenreBook> GenreBooks { get; set; }
     public DbSet<UserApp> UserApps { get; set; }
@@ -60,14 +59,5 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
             .HasForeignKey(genreBook => genreBook.BookId);
 
         /*-----------------------------------------------*/
-        builder.Entity<Favorite>()
-            .HasOne(b => b.UserApp)
-            .WithMany(a => a.Favorite)
-            .HasForeignKey(b => b.UserAppId);
-
-        builder.Entity<Favorite>()
-            .HasOne(b => b.Book)
-            .WithMany(a => a.Favorite)
-            .HasForeignKey(b => b.BookId);
     }
 }

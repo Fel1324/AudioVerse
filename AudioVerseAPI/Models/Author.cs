@@ -31,6 +31,5 @@ public class Author
     [Required(ErrorMessage = "Por favor, informe se o autor está ativo ou não.")]
     public bool Active { get; set; }
 
-    //public ICollection<Book> Books { get; set; }
     public virtual ICollection<AuthorBook> AuthorBooks { get; set; }
 }
