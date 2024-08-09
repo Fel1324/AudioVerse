@@ -2,7 +2,7 @@
 
 namespace AudioVerseAPI.Data.Dtos;
 
-public class CreateChapterDto
+public class UpdateChapterDto
 {
     [Display(Name = "Nome do capítulo")]
     [Required(ErrorMessage = "O Nome do capítulo deve ser preenchido.")]
@@ -12,4 +12,5 @@ public class CreateChapterDto
     [Display(Name = "Url do capítulo")]
     [Required(ErrorMessage = "A url do capítulo deve ser preenchida")]
     public string ChapterUrl { get; set; }
+
 }

@@ -2,5 +2,6 @@
 
 public class ReadChapterDto
 {
-    public int BookId { get; set; }
+    public string ChapterName { get; set; }
+    public string ChapterUrl { get; set; }
 }
