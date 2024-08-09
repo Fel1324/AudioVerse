@@ -5,6 +5,7 @@ using AudioVerseAPI.Models;
 using AutoMapper;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AudioVerseAPI.Controllers;
 
@@ -66,5 +67,32 @@ public class BookController : ControllerBase
         _context.Remove(book);
         _context.SaveChanges();
         return NoContent();
+    }
+
+    [HttpGet("detailed/{id}")]
+    public IActionResult RecoverDetailedBook(int id)
+    {
+        var book = _context.Books
+                .Where(b => b.Id == id)
+                .Include(b => b.Chapters)
+                .Include(b => b.GenreBooks)
+                .ThenInclude(gb => gb.Genre)
+                .Include(b => b.AuthorBooks)
+                .ThenInclude(ab => ab.Author)
+                .FirstOrDefault();
+        return Ok(book);
+    }
+
+    [HttpGet("detailed")]
+    public IActionResult RecoverAllDetailedBook()
+    {
+        var book = _context.Books
+                .Include(b => b.Chapters)
+                .Include(b => b.GenreBooks)
+                .ThenInclude(gb => gb.Genre)
+                .Include(b => b.AuthorBooks)
+                .ThenInclude(ab => ab.Author)
+                .ToList();
+        return Ok(book);
     }
 }
