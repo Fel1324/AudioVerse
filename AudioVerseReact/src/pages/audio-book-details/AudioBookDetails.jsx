@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { AudioBookListening } from "../../components/audio-books/audio-book-listening/AudioBookListening.jsx";
+import { Footer } from "../../components/layout/footer/Footer.jsx"
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
 
 import { api } from "../../lib/axios.js";
@@ -66,6 +67,8 @@ export function AudioBookDetails() {
       </main>
 
       {isListening && <AudioBookListening name={audioBooks.name} author={audioBooks.author} />}
+      
+      <Footer />
     </>
   )
 }

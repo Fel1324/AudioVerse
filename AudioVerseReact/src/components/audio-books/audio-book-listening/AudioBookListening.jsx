@@ -13,7 +13,13 @@ import styles from "./AudioBookListening.module.css";
 
 export function AudioBookListening({name, author}){
   const [volume, setVolume] = useState(25);
+  const [progress, setProgress] = useState(0);
 
+  function changeProgress(e){
+    const progressValue = Number(e.target.value);
+    setProgress(progressValue);
+  }
+  
   function changeVolume(e){
     const volumeValue = Number(e.target.value);
     setVolume(volumeValue);
@@ -27,18 +33,25 @@ export function AudioBookListening({name, author}){
   }
 
   function removeSound(){
-    setVolume(0);
+    volume != 0 ? setVolume(0) : setVolume(50);
   }
 
   return (
     <aside className={styles.listening}>
       <div className={styles.infos}>
-        <span className="">{name}</span>
-        <cite className="{styles.details__author}">{author}</cite>
+        <span title={name}>{name}</span>
+        <cite>{author}</cite>
       </div>
 
       <div className={styles.controls}>
-        <input className={styles.progressBar} type="range" name="" id="" />
+        <input
+          onChange={changeProgress}
+          className={styles.progressBar}
+          type="range"
+          name="progress"
+          id="progress"
+          value={progress}
+        />
 
         <div>
           <button>

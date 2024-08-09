@@ -1,7 +1,6 @@
 .details__container {
   max-width: 68.75rem;
   text-align: center;
-  margin-bottom: 7rem;
 
   & .details__name{
     color: var(--primary-color);
