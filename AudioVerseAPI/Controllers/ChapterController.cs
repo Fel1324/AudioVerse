@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AudioVerseAPI.Models;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AudioVerseAPI.Data;
 using AutoMapper;
