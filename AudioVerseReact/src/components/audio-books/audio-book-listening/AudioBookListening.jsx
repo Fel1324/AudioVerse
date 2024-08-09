@@ -38,7 +38,7 @@ export function AudioBookListening({name, author}){
       </div>
 
       <div className={styles.controls}>
-        <input type="range" name="" id="" />
+        <input className={styles.progressBar} type="range" name="" id="" />
 
         <div>
           <button>
@@ -57,7 +57,14 @@ export function AudioBookListening({name, author}){
         <button onClick={removeSound} type="button">
           {renderVolumeIcon()}
         </button>
-        <input onChange={changeVolume} type="range" name="volume" id="volume" value={volume} />
+        <input 
+          onChange={changeVolume}
+          className={styles.volumeBar}
+          type="range"
+          name="volume"
+          id="volume"
+          value={volume}
+        />
       </div>
     </aside>
   )

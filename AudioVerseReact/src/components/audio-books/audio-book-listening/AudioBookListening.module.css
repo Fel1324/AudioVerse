@@ -50,9 +50,10 @@
   }
 }
 
-input[type="range"]{
+.progressBar,
+.volumeBar{
   appearance: none;
-  background: var(--primary-color);
+  background: var(--septenary-color);
   border-radius: 1.25rem;
   outline: none;
   opacity: .5;
@@ -94,4 +95,21 @@ input[type="range"]{
     width: 1.25rem;
     height: 1.25rem;
   }
+  &::-webkit-slider-runnable-track{
+    background: linear-gradient(to right, #4CAF50 0%, #4CAF50 var(--value), #ddd var(--value), #ddd 100%);
+  }
+  &::-moz-range-progress{
+    background: var(--secondary-color);
+    border-radius: 1.25rem;
+    height: .5rem;
+  }
+  &::-ms-fill-lower{
+    background: var(--secondary-color);
+    border-radius: 1.25rem;
+    height: .5rem;
+  }
+}
+
+.progressBar{
+  --value: 50%
 }
