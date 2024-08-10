@@ -11,12 +11,13 @@
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15rem;
+  justify-content: center;
 }
 
 .infos{
-  display: flex;
+  width: 10.0625rem;
+
+  display: none;
   flex-direction: column;
   gap: .125rem;
 
@@ -28,14 +29,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    max-width: 7.25rem;
+    max-width: 10.0625rem;
   }
 }
 
 .controls{
+  width: min(100%, 30rem);
+
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   gap: .75rem;
   
   & > div{
@@ -47,7 +49,7 @@
 }
 
 .volume{
-  display: flex;
+  display: none;
   align-items: center;
   gap: .5rem;
 
@@ -114,5 +116,16 @@
     background: var(--secondary-color);
     border-radius: 1.25rem;
     height: .5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .listening{
+    justify-content: space-between;
+  }
+
+  .infos,
+  .volume{
+    display: flex;
   }
 }
