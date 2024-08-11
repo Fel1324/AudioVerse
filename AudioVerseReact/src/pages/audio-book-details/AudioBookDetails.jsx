@@ -11,14 +11,13 @@ import styles from "./AudioBookDetails.module.css";
 
 export function AudioBookDetails() {
   const { audioBookId } = useParams();
-  const [audioBooks, setAudioBooks] = useState([]);
+  const [audioBook, setAudioBook] = useState({});
   const [isListening, setIsListening] = useState(false);
 
   function getAudioBookData(id) {
     api.get(`/audiobooks/${id}`)
       .then(response => {
-        const audioBook = response.data;
-        audioBook && setAudioBooks(audioBook);
+        response.data && setAudioBook(response.data);
       })
       .catch(err => console.log(err))
   }
@@ -39,20 +38,20 @@ export function AudioBookDetails() {
         <div className={`${styles.details__container} container`}>
           <div>
             <div className={styles.col_b__row_a}>
-              <h1 className={styles.details__name}>{audioBooks.name}</h1>
-              <cite className={styles.details__author}>{audioBooks.author}</cite>
+              <h1 className={styles.details__name}>{audioBook.name}</h1>
+              <cite className={styles.details__author}>{audioBook.author}</cite>
             </div>
             
             <div className={styles.col_a}>
               <AudioBook
-                audioBookCover={audioBooks.audioBookCover}
-                parentalRating={audioBooks.parentalRating}
+                audioBookCover={audioBook.audioBookCover}
+                parentalRating={audioBook.parentalRating}
                 alternativeStyle
               />
             </div>
 
             <div className={styles.col_b__row_b}>
-              <p className={`${styles.details__synopsis} paragraph`}>{audioBooks.synopsis}</p>
+              <p className={`${styles.details__synopsis} paragraph`}>{audioBook.synopsis}</p>
               <button onClick={listenAudioBook} className={styles.details__listen}>
                 {isListening ? "Cancelar" : "Ouvir"}
               </button>
@@ -65,8 +64,14 @@ export function AudioBookDetails() {
           </section>
         </div>
       </main>
-
-      {isListening && <AudioBookListening name={audioBooks.name} author={audioBooks.author} />}
+      
+      {isListening &&
+        <AudioBookListening
+          name={audioBook.name}
+          author={audioBook.author}
+          chapters={audioBook.chapters}
+        />
+      }
       
       <Footer />
     </>
