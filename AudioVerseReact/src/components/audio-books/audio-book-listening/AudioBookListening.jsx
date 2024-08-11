@@ -11,7 +11,7 @@ import { Volume2 } from "../../icons/Volume2";
 
 import styles from "./AudioBookListening.module.css";
 
-export function AudioBookListening({name, author, chapters = []}){
+export function AudioBookListening({chapters = []}){
   const audioRef = useRef(null);
   const [volume, setVolume] = useState(25);
   const [progress, setProgress] = useState(0);
@@ -82,13 +82,11 @@ export function AudioBookListening({name, author, chapters = []}){
       <audio className={styles.audioRef} src={chapters[currentChapter].source} controls ref={audioRef}></audio>
 
       <div className={styles.infos}>
-        <span title={name}>{name}</span>
-        <cite>{author}</cite>
+        <span title={chapters[currentChapter].name}>{chapters[currentChapter].name}</span>
+        <cite>lido por: <strong>{chapters[currentChapter].reader}</strong></cite>
       </div>
 
       <div className={styles.controls}>
-        <span className={styles.nameChapter}>{chapters[currentChapter].name}</span>
-
         <div className={styles.progress}>
           <span>0:00</span>
 

@@ -67,8 +67,6 @@ export function AudioBookDetails() {
       
       {isListening &&
         <AudioBookListening
-          name={audioBook.name}
-          author={audioBook.author}
           chapters={audioBook.chapters}
         />
       }
