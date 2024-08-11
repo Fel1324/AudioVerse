@@ -19,11 +19,13 @@ export function AudioBookListening({ chapters = [] }) {
     formattedCurrentTime,
     play,
     isPlaying,
-    togglePlay 
+    togglePlay,
+    duration,
+    currentTime,
+    jumpToTime,
   } = useAudioPlayer()
 
   const [volume, setVolume] = useState(25);
-  const [progress, setProgress] = useState(0);
   const [currentChapter, setCurrentChapter] = useState(0);
 
   useEffect(() => {
@@ -46,11 +48,6 @@ export function AudioBookListening({ chapters = [] }) {
       return;
     }
     setCurrentChapter(currentChapter - 1);
-  }
-
-  function changeProgress(e) {
-    const progressValue = Number(e.target.value);
-    setProgress(progressValue);
   }
 
   function changeVolume(e) {
@@ -88,12 +85,14 @@ export function AudioBookListening({ chapters = [] }) {
           <span>{formattedCurrentTime}</span>
 
           <input
-            onChange={changeProgress}
             className={styles.progressBar}
+            onChange={e => jumpToTime(Number(e.target.value))}
             type="range"
             name="progress"
             id="progress"
-            value={progress}
+            value={currentTime}
+            step={1}
+            max={duration}
           />
 
           <span>{formattedDuration}</span>

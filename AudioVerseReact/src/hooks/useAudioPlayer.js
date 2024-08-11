@@ -75,14 +75,22 @@ export const useAudioPlayer = () => {
     return duration = durationMinutes + ":" + formatZero(durationSeconds);
   }
 
+  const jumpToTime = (time) => {
+    audioRef.current.currentTime = time;
+    setCurrentTime(time);
+    play();
+  }
+
   return {
     audioRef,
     duration: metadata.duration,
+    currentTime,
     formattedDuration: formatDuration(metadata.duration),
     formattedCurrentTime: formatCurrentTime(currentTime),
     isPlaying: metadata.isPlaying,
     play,
     pause,
-    togglePlay
+    togglePlay,
+    jumpToTime,
   }
 }
