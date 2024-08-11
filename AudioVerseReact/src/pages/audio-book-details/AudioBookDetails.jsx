@@ -55,7 +55,7 @@ export function AudioBookDetails() {
               <button onClick={listenAudioBook} className={styles.details__listen}>
                 {isListening ? "Cancelar" : "Ouvir"}
               </button>
-              <a className={`${styles.details__download} link`} href="#">Download.pdf</a>
+              <a className={`${styles.details__download} link`} href={audioBook.pdf} target="_blank">Download.pdf</a>
             </div>
           </div>
 
