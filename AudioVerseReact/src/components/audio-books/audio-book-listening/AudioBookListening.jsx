@@ -23,14 +23,14 @@ export function AudioBookListening({ chapters = [] }) {
     duration,
     currentTime,
     jumpToTime,
-  } = useAudioPlayer()
+  } = useAudioPlayer();
 
   const [volume, setVolume] = useState(25);
   const [currentChapter, setCurrentChapter] = useState(0);
 
   useEffect(() => {
     play()
-  }, [audioRef.current, currentChapter])
+  }, [audioRef.current, currentChapter]);
 
   function goToNextChapter() {
     audioRef.current.currentTime = 0
@@ -56,10 +56,10 @@ export function AudioBookListening({ chapters = [] }) {
   }
 
   function renderVolumeIcon() {
-    if (volume === 0) return <VolumeX />
-    if (volume < 25) return <Volume />
-    if (volume < 65) return <Volume1 />
-    return <Volume2 />
+    if (volume === 0) return <VolumeX />;
+    if (volume < 25) return <Volume />;
+    if (volume < 65) return <Volume1 />;
+    return <Volume2 />;
   }
 
   function removeSound() {
@@ -82,7 +82,7 @@ export function AudioBookListening({ chapters = [] }) {
       </audio>
 
       <div className={styles.infos}>
-        <span title={chapters[currentChapter].name}>{chapters[currentChapter].name}</span>
+        <span title={chapters[currentChapter].name}>Capítulos {chapters[currentChapter].name}</span>
         <cite>lido por: <strong>{chapters[currentChapter].reader}</strong></cite>
       </div>
 

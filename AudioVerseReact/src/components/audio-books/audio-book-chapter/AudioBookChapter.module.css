@@ -1,0 +1,14 @@
+.chapter{
+  display: flex;
+  justify-content: space-between;
+
+  & > h3{
+    color: var(--tertiary-color);
+    font-weight: 500;
+    font-size: 1.25rem;
+  }
+
+  & > a{
+    font-size: 1.125rem;
+  }
+}

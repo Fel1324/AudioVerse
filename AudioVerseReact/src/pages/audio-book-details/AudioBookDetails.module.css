@@ -45,7 +45,7 @@
     width: 12.5rem;
     height: 3.75rem;
 
-    margin: 3rem auto 2.5rem auto;
+    margin: 3rem auto 1.75rem auto;
   }
 
   & .details__download{
@@ -56,6 +56,8 @@
 }
 
 .details__chapters{
+  max-width: 31.25rem;
+  margin: 3rem auto 0 auto;
   text-align: left;
 
   & > .chapters__title{
@@ -63,13 +65,21 @@
 
     font-size: 1.625rem;
     font-weight: 500;
+  }
+}
 
-    margin-top: 2.25rem;
+.chapters__container{
+  margin-top: 1.25rem;
+
+  & > .chapters__list{
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .details__container > div {
+  .details__container > .details__audiobook {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:

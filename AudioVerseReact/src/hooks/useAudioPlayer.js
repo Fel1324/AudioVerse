@@ -1,21 +1,21 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
 export const useAudioPlayer = () => {
   const audioRef = useRef(null)
   const [metadata, setMetadata] = useState({
     isPlaying: false,
-    duration: 0
+    duration: 0,
   })
   const [currentTime, setCurrentTime] = useState(0);
 
   useEffect(() => {
-    const audioEl = audioRef.current
-    if (!audioEl) return
+    const audioEl = audioRef.current;
+    if (!audioEl) return;
 
     const onAudioMetadataLoad = () => {
       setMetadata(prevState => ({
         ...prevState,
-        duration: audioEl.duration
+        duration: audioEl.duration,
       }))
     }
 
@@ -37,7 +37,7 @@ export const useAudioPlayer = () => {
       await audioRef.current.play();
       setMetadata(prevState => ({
         ...prevState,
-        isPlaying: true
+        isPlaying: true,
       }));
     }
   }
@@ -47,16 +47,16 @@ export const useAudioPlayer = () => {
       audioRef.current.pause();
       setMetadata(prevState => ({
         ...prevState,
-        isPlaying: false
+        isPlaying: false,
       }));
     }
   }
 
   const togglePlay = async () => {
     if (metadata.isPlaying) {
-      pause()
+      pause();
     } else {
-      await play()
+      await play();
     }
   }
 

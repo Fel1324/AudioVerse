@@ -5,6 +5,7 @@ import { Header } from "../../components/layout/header/Header.jsx";
 import { AudioBookListening } from "../../components/audio-books/audio-book-listening/AudioBookListening.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx"
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
+import { AudioBookChapter } from "../../components/audio-books/audio-book-chapter/AudioBookChapter.jsx";
 
 import { api } from "../../lib/axios.js";
 import styles from "./AudioBookDetails.module.css";
@@ -36,7 +37,7 @@ export function AudioBookDetails() {
 
       <main className={`${styles.details} main`}>
         <div className={`${styles.details__container} container`}>
-          <div>
+          <section className={styles.details__audiobook}>
             <div className={styles.col_b__row_a}>
               <h1 className={styles.details__name}>{audioBook.name}</h1>
               <cite className={styles.details__author}>{audioBook.author}</cite>
@@ -57,10 +58,24 @@ export function AudioBookDetails() {
               </button>
               <a className={`${styles.details__download} link`} href={audioBook.pdf} target="_blank">Download.pdf</a>
             </div>
-          </div>
+          </section>
 
           <section className={styles.details__chapters}>
             <h2 className={styles.chapters__title}>Capítulos</h2>
+
+            <div className={styles.chapters__container}>
+              <ul className={styles.chapters__list}>
+                {audioBook.chapters && (
+                  audioBook.chapters.map((chapter) => (
+                    <AudioBookChapter
+                      key={chapter.name}
+                      name={chapter.name}
+                      source={chapter.source}
+                    />
+                  ))
+                )}
+              </ul>
+            </div>
           </section>
         </div>
       </main>
