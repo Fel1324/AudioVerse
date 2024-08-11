@@ -66,6 +66,12 @@ export function AudioBookListening({ chapters = [] }) {
     volume != 0 ? setVolume(0) : setVolume(50);
   }
 
+  useEffect(() => {
+    if(duration !== 0 && currentTime === duration){
+      goToNextChapter();
+    }
+  }, [currentTime, duration]);
+
   return (
     <aside className={styles.listening}>
       <audio
