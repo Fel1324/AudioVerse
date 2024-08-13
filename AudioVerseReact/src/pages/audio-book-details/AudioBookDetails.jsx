@@ -115,6 +115,7 @@ export function AudioBookDetails() {
                         name={chapter.name}
                         source={chapter.source}
                         onOpenTargetChapter={listenTargetAudioBook}
+                        active={isListening && currentChapter === index}
                       />
                     ))
                   )}

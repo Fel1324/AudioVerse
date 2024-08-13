@@ -1,6 +1,7 @@
 .chapter{
   display: flex;
   justify-content: space-between;
+  transition: all .3s ease-in-out;
 
   & > button{
     color: var(--tertiary-color);
@@ -21,6 +22,10 @@
       font-weight: 500;
     }
   }
+}
+
+.active{
+  background-color: var(--septenary-color);
 }
 
 @media screen and (min-width: 768px) {
