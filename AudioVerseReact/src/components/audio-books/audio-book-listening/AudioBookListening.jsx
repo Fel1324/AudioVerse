@@ -12,7 +12,7 @@ import { Volume2 } from "../../icons/Volume2";
 
 import styles from "./AudioBookListening.module.css";
 
-export function AudioBookListening({ chapters = [] }) {
+export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextChapter }) {
   const { 
     audioRef,
     formattedDuration,
@@ -26,28 +26,19 @@ export function AudioBookListening({ chapters = [] }) {
   } = useAudioPlayer();
 
   const [volume, setVolume] = useState(25);
-  const [currentChapter, setCurrentChapter] = useState(0);
 
   useEffect(() => {
     play()
-  }, [audioRef.current, currentChapter]);
+  }, [audioRef.current, chapter]);
 
   function goToNextChapter() {
     audioRef.current.currentTime = 0
-    if (currentChapter === chapters.length - 1) {
-      setCurrentChapter(0);
-      return;
-    }
-    setCurrentChapter(currentChapter + 1);
+    onGoToNextChapter();
   }
 
   function backToPrevChapter() {
     audioRef.current.currentTime = 0
-    if (currentChapter === 0) {
-      setCurrentChapter(chapters.length - 1);
-      return;
-    }
-    setCurrentChapter(currentChapter - 1);
+    onBackToNextChapter();
   }
 
   function changeVolume(e) {
@@ -76,18 +67,18 @@ export function AudioBookListening({ chapters = [] }) {
     <aside className={styles.listening}>
       <audio
         className={styles.audioRef}
-        src={chapters[currentChapter].source}
+        src={chapter.source}
         controls
         ref={audioRef}>
       </audio>
 
       <div className={styles.infos}>
-        <span title={`Capítulos ${chapters[currentChapter].name}`}>
-          Capítulos {chapters[currentChapter].name}
+        <span title={`Capítulos: ${chapter.name}`}>
+          Capítulos: {chapter.name}
         </span>
         
-        <cite title={`lido por: ${chapters[currentChapter].reader}`}>
-          lido por: <strong>{chapters[currentChapter].reader}</strong>
+        <cite title={`lido por: ${chapter.reader}`}>
+          lido por: <strong>{chapter.reader}</strong>
         </cite>
       </div>
 

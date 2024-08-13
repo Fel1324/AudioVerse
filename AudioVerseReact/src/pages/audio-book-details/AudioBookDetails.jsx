@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import { useAudioPlayer } from "../../hooks/useAudioPlayer.js";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx"
@@ -12,10 +13,12 @@ import { api } from "../../lib/axios.js";
 import styles from "./AudioBookDetails.module.css";
 
 export function AudioBookDetails() {
+  const { audioRef } = useAudioPlayer();
   const { audioBookId } = useParams();
   const [audioBook, setAudioBook] = useState({});
   const [isListening, setIsListening] = useState(false);
   const [isChaptersOpen, setIsChaptersOpen] = useState(false);
+  const [currentChapter, setCurrentChapter] = useState(0);
 
   function getAudioBookData(id) {
     api.get(`/audiobooks/${id}`)
@@ -35,6 +38,27 @@ export function AudioBookDetails() {
 
   function openChapters(){
     isChaptersOpen ? setIsChaptersOpen(false) : setIsChaptersOpen(true);
+  }
+
+  function listenTargetAudioBook(index){
+    setIsListening(true);
+    setCurrentChapter(index);
+  }
+
+  function onGoToNextChapter(){
+    if (currentChapter === audioBook.chapters.length - 1) {
+      setCurrentChapter(0);
+      return;
+    }
+    setCurrentChapter(currentChapter + 1);
+  }
+
+  function onBackToNextChapter(){
+    if (currentChapter === 0) {
+      setCurrentChapter(audioBook.chapters.length - 1);
+      return;
+    }
+    setCurrentChapter(currentChapter - 1);
   }
 
   return (
@@ -59,9 +83,11 @@ export function AudioBookDetails() {
 
             <div className={styles.col_b__row_b}>
               <p className={`${styles.details__synopsis} paragraph`}>{audioBook.synopsis}</p>
+
               <button onClick={listenAudioBook} className={styles.details__listen}>
                 {isListening ? "Cancelar" : "Ouvir"}
               </button>
+
               <a className={`${styles.details__download} link`} href={audioBook.pdf} target="_blank">Download.pdf</a>
             </div>
           </section>
@@ -82,11 +108,13 @@ export function AudioBookDetails() {
               <div className={styles.chapters__container}>
                 <ul className={styles.chapters__list}>
                   {audioBook.chapters && (
-                    audioBook.chapters.map((chapter) => (
+                    audioBook.chapters.map((chapter, index) => (
                       <AudioBookChapter
                         key={chapter.name}
+                        index={index}
                         name={chapter.name}
                         source={chapter.source}
+                        onOpenTargetChapter={listenTargetAudioBook}
                       />
                     ))
                   )}
@@ -99,7 +127,9 @@ export function AudioBookDetails() {
       
       {isListening &&
         <AudioBookListening
-          chapters={audioBook.chapters}
+          chapter={audioBook.chapters[currentChapter]}
+          onGoToNextChapter={onGoToNextChapter}
+          onBackToNextChapter={onBackToNextChapter}
         />
       }
       

@@ -2,14 +2,24 @@
   display: flex;
   justify-content: space-between;
 
-  & > h3{
+  & > button{
     color: var(--tertiary-color);
     font-weight: 500;
     font-size: 1.25rem;
+
+    transition: all .3s ease-in-out;
+    &:hover{
+      scale: 1.1;
+      font-weight: 700;
+    }
   }
 
   & > a{
     font-size: 1.125rem;
+
+    &:hover{
+      font-weight: 500;
+    }
   }
 }
 
