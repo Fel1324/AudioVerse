@@ -137,6 +137,10 @@ a{
   padding: 1.25rem 1.75rem 1.75rem 1.75rem;
 }
 
+.footer-mg-top{
+  margin-top: 8rem;
+}
+
 .form-container{
   display: flex;
   flex-direction: column;
@@ -252,6 +256,10 @@ a{
     padding-inline: 2rem;
   }
 
+  .footer-mg-top{
+    margin-top: 9rem;
+  }
+
   .display-grid {
     gap: 1.5rem;
   }
@@ -294,6 +302,10 @@ a{
 
     margin-inline: initial;
     padding: 1.25rem 1.75rem 1.75rem 1.75rem;
+  }
+
+  .footer-mg-top{
+    margin-top: 1.5rem;
   }
 }
 

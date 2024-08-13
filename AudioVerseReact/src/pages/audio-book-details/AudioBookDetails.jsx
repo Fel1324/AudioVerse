@@ -103,7 +103,11 @@ export function AudioBookDetails() {
         />
       }
       
-      <Footer />
+      {isListening ? (
+        <Footer className="footer-mg-top" />
+      ) : (
+        <Footer />
+      )}
     </>
   )
 }
