@@ -57,7 +57,7 @@
 
 .details__chapters{
   max-width: 31.25rem;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem auto;
   text-align: left;
 
   & > .chapters__title{

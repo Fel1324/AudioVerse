@@ -40,6 +40,14 @@
 
     max-width: 10.0625rem;
   }
+
+  & > cite{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    max-width: 10.0625rem;
+  }
 }
 
 .controls{

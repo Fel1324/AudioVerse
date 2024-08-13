@@ -82,8 +82,13 @@ export function AudioBookListening({ chapters = [] }) {
       </audio>
 
       <div className={styles.infos}>
-        <span title={chapters[currentChapter].name}>Capítulos {chapters[currentChapter].name}</span>
-        <cite>lido por: <strong>{chapters[currentChapter].reader}</strong></cite>
+        <span title={`Capítulos ${chapters[currentChapter].name}`}>
+          Capítulos {chapters[currentChapter].name}
+        </span>
+        
+        <cite title={`lido por: ${chapters[currentChapter].reader}`}>
+          lido por: <strong>{chapters[currentChapter].reader}</strong>
+        </cite>
       </div>
 
       <div className={styles.controls}>
