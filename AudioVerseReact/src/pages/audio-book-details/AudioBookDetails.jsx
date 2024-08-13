@@ -41,8 +41,12 @@ export function AudioBookDetails() {
   }
 
   function listenTargetAudioBook(index){
-    setIsListening(true);
-    setCurrentChapter(index);
+    if(isListening && currentChapter === index){
+      setIsListening(false);
+    } else {
+      setIsListening(true);
+      setCurrentChapter(index);
+    }
   }
 
   function onGoToNextChapter(){

@@ -3,6 +3,8 @@
   justify-content: space-between;
   transition: all .3s ease-in-out;
 
+  padding: .875rem .75rem;
+
   & > button{
     color: var(--tertiary-color);
     font-weight: 500;
@@ -26,6 +28,7 @@
 
 .active{
   background-color: var(--septenary-color);
+  border-radius: .5rem;
 }
 
 @media screen and (min-width: 768px) {

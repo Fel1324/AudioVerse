@@ -77,7 +77,6 @@
 
   & > .chapters__list{
     display: grid;
-    gap: 1.75rem;
   }
 }
 
@@ -92,7 +91,7 @@
   
     & > .chapters__list{
       grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-      gap: 3.5rem;
+      gap: 2.5rem;
     }
   }
 }
