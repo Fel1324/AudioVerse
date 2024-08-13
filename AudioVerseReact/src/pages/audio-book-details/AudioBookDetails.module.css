@@ -142,4 +142,8 @@
       height: 2.5rem;
     }
   }
+
+  .details__chapters{
+    margin-bottom: 1.5rem;
+  }
 }
