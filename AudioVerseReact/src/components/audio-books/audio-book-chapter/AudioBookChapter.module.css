@@ -12,3 +12,11 @@
     font-size: 1.125rem;
   }
 }
+
+@media screen and (min-width: 768px) {
+  .chapter{
+    flex-direction: column;
+    align-items: center;
+    gap: .625rem;
+  }
+}

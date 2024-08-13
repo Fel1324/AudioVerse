@@ -57,14 +57,18 @@
 
 .details__chapters{
   max-width: 31.25rem;
-  margin: 3rem auto 0 auto;
+  margin: 0 auto;
   text-align: left;
 
   & > .chapters__title{
     color: var(--secondary-color);
 
-    font-size: 1.625rem;
+    font-size: 2rem;
     font-weight: 500;
+
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
   }
 }
 
@@ -72,9 +76,24 @@
   margin-top: 1.25rem;
 
   & > .chapters__list{
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .details__chapters{
+    max-width: 68.75rem;
+    text-align: center;
+  }
+  
+  .chapters__container{
+    margin-top: 2rem;
+  
+    & > .chapters__list{
+      grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+      gap: 3.5rem;
+    }
   }
 }
 
@@ -122,9 +141,5 @@
       width: 2.5rem;
       height: 2.5rem;
     }
-  }
-
-  .details__chapters{
-    text-align: center;
   }
 }

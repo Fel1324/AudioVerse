@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 
 import { Header } from "../../components/layout/header/Header.jsx";
-import { AudioBookListening } from "../../components/audio-books/audio-book-listening/AudioBookListening.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx"
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
+import { AudioBookListening } from "../../components/audio-books/audio-book-listening/AudioBookListening.jsx";
 import { AudioBookChapter } from "../../components/audio-books/audio-book-chapter/AudioBookChapter.jsx";
+import { ChevronDown } from "../../components/icons/ChevronDown.jsx";
 
 import { api } from "../../lib/axios.js";
 import styles from "./AudioBookDetails.module.css";
@@ -14,6 +15,7 @@ export function AudioBookDetails() {
   const { audioBookId } = useParams();
   const [audioBook, setAudioBook] = useState({});
   const [isListening, setIsListening] = useState(false);
+  const [isChaptersOpen, setIsChaptersOpen] = useState(false);
 
   function getAudioBookData(id) {
     api.get(`/audiobooks/${id}`)
@@ -29,6 +31,10 @@ export function AudioBookDetails() {
 
   function listenAudioBook(){
     isListening ? setIsListening(false) : setIsListening(true);
+  }
+
+  function openChapters(){
+    isChaptersOpen ? setIsChaptersOpen(false) : setIsChaptersOpen(true);
   }
 
   return (
@@ -60,22 +66,33 @@ export function AudioBookDetails() {
             </div>
           </section>
 
-          <section className={styles.details__chapters}>
-            <h2 className={styles.chapters__title}>Capítulos</h2>
+          <hr className="line" />
 
-            <div className={styles.chapters__container}>
-              <ul className={styles.chapters__list}>
-                {audioBook.chapters && (
-                  audioBook.chapters.map((chapter) => (
-                    <AudioBookChapter
-                      key={chapter.name}
-                      name={chapter.name}
-                      source={chapter.source}
-                    />
-                  ))
-                )}
-              </ul>
-            </div>
+          <section className={styles.details__chapters}>
+            <button onClick={openChapters} className={styles.chapters__title}>
+              Capítulos
+              {isChaptersOpen ? (
+                <ChevronDown className={"chevron-up"} />
+              ) : (
+                <ChevronDown />
+              )}
+            </button>
+
+            {isChaptersOpen && (
+              <div className={styles.chapters__container}>
+                <ul className={styles.chapters__list}>
+                  {audioBook.chapters && (
+                    audioBook.chapters.map((chapter) => (
+                      <AudioBookChapter
+                        key={chapter.name}
+                        name={chapter.name}
+                        source={chapter.source}
+                      />
+                    ))
+                  )}
+                </ul>
+              </div>
+            )}
           </section>
         </div>
       </main>
