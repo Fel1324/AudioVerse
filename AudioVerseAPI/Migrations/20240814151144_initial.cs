@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AudioVerseAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class inicial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -104,6 +104,7 @@ namespace AudioVerseAPI.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     BookImage = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    ParentalRating = table.Column<int>(type: "int", nullable: false),
                     Active = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
@@ -304,45 +305,15 @@ namespace AudioVerseAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Favorite",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UserAppId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    BookId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Favorite", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Favorite_AspNetUsers_UserAppId",
-                        column: x => x.UserAppId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Favorite_Book_BookId",
-                        column: x => x.BookId,
-                        principalTable: "Book",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "GenreBook",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    GenreId = table.Column<int>(type: "int", nullable: false),
-                    BookId = table.Column<int>(type: "int", nullable: false)
+                    BookId = table.Column<int>(type: "int", nullable: false),
+                    GenreId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GenreBook", x => x.Id);
+                    table.PrimaryKey("PK_GenreBook", x => new { x.BookId, x.GenreId });
                     table.ForeignKey(
                         name: "FK_GenreBook_Book_BookId",
                         column: x => x.BookId,
@@ -406,21 +377,6 @@ namespace AudioVerseAPI.Migrations
                 column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Favorite_BookId",
-                table: "Favorite",
-                column: "BookId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Favorite_UserAppId",
-                table: "Favorite",
-                column: "UserAppId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_GenreBook_BookId",
-                table: "GenreBook",
-                column: "BookId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_GenreBook_GenreId",
                 table: "GenreBook",
                 column: "GenreId");
@@ -451,19 +407,16 @@ namespace AudioVerseAPI.Migrations
                 name: "Chapter");
 
             migrationBuilder.DropTable(
-                name: "Favorite");
-
-            migrationBuilder.DropTable(
                 name: "GenreBook");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Author");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Author");
 
             migrationBuilder.DropTable(
                 name: "Book");

@@ -36,6 +36,13 @@ public class BookController : ControllerBase
             book);
     }
 
+    [HttpGet]
+    public IEnumerable<ReadBookDto> RecoverBook([FromQuery] int skip = 0,
+    [FromQuery] int take = 50)
+    {
+        return _mapper.Map<List<ReadBookDto>>(_context.Books.ToList());
+    }
+
     [HttpGet("{id}")]
     public IActionResult RecoverBookById(int id)
     {

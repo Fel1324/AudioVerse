@@ -83,6 +83,9 @@ namespace AudioVerseAPI.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("ParentalRating")
+                        .HasColumnType("int");
+
                     b.Property<string>("PdfLink")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -131,30 +134,6 @@ namespace AudioVerseAPI.Migrations
                     b.ToTable("Chapter");
                 });
 
-            modelBuilder.Entity("AudioVerseAPI.Models.Favorite", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserAppId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("UserAppId");
-
-                    b.ToTable("Favorite");
-                });
-
             modelBuilder.Entity("AudioVerseAPI.Models.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -175,21 +154,13 @@ namespace AudioVerseAPI.Migrations
 
             modelBuilder.Entity("AudioVerseAPI.Models.GenreBook", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int?>("BookId")
                         .HasColumnType("int");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
+                    b.Property<int?>("GenreId")
                         .HasColumnType("int");
 
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
+                    b.HasKey("BookId", "GenreId");
 
                     b.HasIndex("GenreId");
 
@@ -422,35 +393,16 @@ namespace AudioVerseAPI.Migrations
                     b.Navigation("Book");
                 });
 
-            modelBuilder.Entity("AudioVerseAPI.Models.Favorite", b =>
-                {
-                    b.HasOne("AudioVerseAPI.Models.Book", "Book")
-                        .WithMany("Favorite")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AudioVerseAPI.Models.UserApp", "UserApp")
-                        .WithMany("Favorite")
-                        .HasForeignKey("UserAppId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("UserApp");
-                });
-
             modelBuilder.Entity("AudioVerseAPI.Models.GenreBook", b =>
                 {
                     b.HasOne("AudioVerseAPI.Models.Book", "Book")
-                        .WithMany("GenreBook")
+                        .WithMany("GenreBooks")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AudioVerseAPI.Models.Genre", "Genre")
-                        .WithMany("GenreBook")
+                        .WithMany("GenreBooks")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -522,19 +474,12 @@ namespace AudioVerseAPI.Migrations
 
                     b.Navigation("Chapters");
 
-                    b.Navigation("Favorite");
-
-                    b.Navigation("GenreBook");
+                    b.Navigation("GenreBooks");
                 });
 
             modelBuilder.Entity("AudioVerseAPI.Models.Genre", b =>
                 {
-                    b.Navigation("GenreBook");
-                });
-
-            modelBuilder.Entity("AudioVerseAPI.Models.UserApp", b =>
-                {
-                    b.Navigation("Favorite");
+                    b.Navigation("GenreBooks");
                 });
 #pragma warning restore 612, 618
         }
