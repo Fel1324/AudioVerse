@@ -27,7 +27,7 @@
 }
 
 .active{
-  background-color: var(--septenary-color);
+  background-color: var(--senary-color);
   border-radius: .5rem;
 }
 

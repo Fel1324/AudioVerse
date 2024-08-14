@@ -72,7 +72,7 @@
 }
 
 .volume{
-  display: flex;
+  display: none;
   align-items: center;
   gap: .5rem;
 
@@ -151,5 +151,9 @@
 
   .infos{
     text-align: left;
+  }
+
+  .volume{
+    display: flex;
   }
 }
