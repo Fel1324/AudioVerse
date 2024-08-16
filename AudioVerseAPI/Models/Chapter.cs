@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AudioVerseAPI.Models;
 
@@ -21,5 +22,6 @@ public class Chapter
     public string ChapterUrl { get; set; }
 
     public int BookId { get; set; }
-    public Book Book { get; set; }
+    [JsonIgnore]
+    public Book? Book { get; set; }
 }

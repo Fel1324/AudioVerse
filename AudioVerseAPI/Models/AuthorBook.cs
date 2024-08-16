@@ -6,10 +6,12 @@ namespace AudioVerseAPI.Models;
 [Table("AuthorBook")]
 public class AuthorBook
 {
-    public int? BookId { get; set; }
+    public int BookId { get; set; }
     [JsonIgnore]
-    public Book Book { get; set; }
-    public int? AuthorId { get; set; }
+    [ForeignKey("BookId")]
+    public Book? Book { get; set; }
+    public int AuthorId { get; set; }
     [JsonIgnore]
-    public Author Author { get; set; }
+    [ForeignKey("AuthorId")]
+    public Author? Author { get; set; }
 }
