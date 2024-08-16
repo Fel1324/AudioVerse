@@ -12,4 +12,8 @@ public class CreateChapterDto
     [Display(Name = "Url do capítulo")]
     [Required(ErrorMessage = "A url do capítulo deve ser preenchida")]
     public string ChapterUrl { get; set; }
+
+    [Display(Name = "Leitor do Capítulo")]
+    [Required(ErrorMessage = "O leitor do capítulo é obrigatorio")]
+    public string Reader { get; set; }
 }

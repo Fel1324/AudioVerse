@@ -1,7 +1,10 @@
-﻿namespace AudioVerseAPI.Data.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AudioVerseAPI.Data.Dtos;
 
 public class ReadChapterDto
 {
-    public string ChapterName { get; set; }
-    public string ChapterUrl { get; set; }
+    public string? ChapterName { get; set; }
+    public string? ChapterUrl { get; set; }
+    public string Reader { get; set; }
 }

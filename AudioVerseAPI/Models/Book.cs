@@ -32,8 +32,8 @@ public class Book
     [Required(ErrorMessage = "Por favor, atribua uma url(capa) do livro.")]
     public string BookImage { get; set; }
 
-    [Display(Name = "Faixa etária do livro.")]
-    [Required(ErrorMessage = "Por favor, atribua uma faixa etária para o livro.")]
+    [Display(Name = "Faixa etaria")]
+    [Required(ErrorMessage = "A faixa etaria do livro é obrigatoria")]
     public int ParentalRating { get; set; }
 
     [Required(ErrorMessage = "Por favor, informe se o livro está ativo ou não.")]
