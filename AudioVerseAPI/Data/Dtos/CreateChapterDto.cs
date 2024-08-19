@@ -16,4 +16,6 @@ public class CreateChapterDto
     [Display(Name = "Leitor do Capítulo")]
     [Required(ErrorMessage = "O leitor do capítulo é obrigatorio")]
     public string Reader { get; set; }
+
+    public int BookId { get; set; }
 }

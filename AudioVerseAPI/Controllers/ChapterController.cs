@@ -3,6 +3,7 @@ using AudioVerseAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using AudioVerseAPI.Data;
 using AutoMapper;
+using AudioVerseAPI.Data.Dtos;
 
 namespace AudioVerseAPI.Controllers;
 
@@ -21,39 +22,36 @@ public class ChapterController : ControllerBase
     }
 
 
-    // GET: api/Chapter
+    [HttpPost]
+    public IActionResult AddChapter(
+    [FromBody] CreateChapterDto chapterDto)
+    {
+        Chapter chapter = _mapper.Map<Chapter>(chapterDto);
+        _context.Chapters.Add(chapter);
+        _context.SaveChanges();
+        return CreatedAtAction(nameof(RecoverChapterById),
+            new { id = chapter.Id },
+            chapter);
+    }
+
     [HttpGet]
-        public async Task<ActionResult<IEnumerable<Chapter>>> GetChapters()
-        {
-            return await _context.Chapters.ToListAsync();
-        }
+    public IEnumerable<ReadChapterDto> RecoverChapter([FromQuery] int skip = 0,
+    [FromQuery] int take = 50)
+    {
+        return _mapper.Map<List<ReadChapterDto>>(_context.Chapters.ToList());
+    }
 
-        // GET: api/Chapter/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Chapter>> GetChapter(int id)
-        {
-            var chapter = await _context.Chapters.FindAsync(id);
+    [HttpGet("{id}")]
+    public IActionResult RecoverChapterById(int id)
+    {
+        var chapter = _context.Chapters
+            .FirstOrDefault(chapter => chapter.Id == id);
+        if (chapter == null) return NotFound();
+        var chapterDto = _mapper.Map<ReadChapterDto>(chapter);
+        return Ok(chapterDto);
+    }
 
-            if (chapter == null)
-            {
-                return NotFound();
-            }
-
-            return chapter;
-        }
-
-        // POST: api/Chapter
-        [HttpPost]
-        public async Task<ActionResult<Chapter>> PostChapter(Chapter chapter)
-        {
-            _context.Chapters.Add(chapter);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetChapter), new { id = chapter.Id }, chapter);
-        }
-
-        // PUT: api/Chapter/5
-        [HttpPut("{id}")]
+    [HttpPut("{id}")]
         public async Task<IActionResult> PutChapter(int id, Chapter chapter)
         {
             if (id != chapter.Id)
@@ -82,7 +80,6 @@ public class ChapterController : ControllerBase
             return NoContent();
         }
 
-        // DELETE: api/Chapter/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteChapter(int id)
         {

@@ -59,5 +59,12 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
             .HasForeignKey(genreBook => genreBook.BookId);
 
         /*-----------------------------------------------*/
+
+        builder.Entity<Chapter>()
+        .HasKey(c => c.Id); // Certifica-se de que `Id` é a chave primária
+
+        builder.Entity<Chapter>()
+            .Property(c => c.Id)
+            .ValueGeneratedOnAdd(); // Garantir que o Id é gerado automaticamente
     }
 }
