@@ -52,6 +52,10 @@
         display: block;
         width: min(40%, 34rem);
         height: 100%;
+
+        &:focus-within{
+          background-color: var(--nonary-color);
+        }
       }
     }
   }
