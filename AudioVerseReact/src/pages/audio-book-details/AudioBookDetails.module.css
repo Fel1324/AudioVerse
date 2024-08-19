@@ -52,6 +52,9 @@
     display: block;
     font-size: 1.5rem;
     text-align: center;
+
+    width: fit-content;
+    margin-inline: auto;
   }
 }
 

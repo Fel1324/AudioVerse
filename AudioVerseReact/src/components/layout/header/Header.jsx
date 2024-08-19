@@ -48,6 +48,11 @@ export function Header(){
                 </Link>
               </li>
               <li>
+                <Link className={`${styles.navbar__link} primary-navbar-link`} to="/favorites">
+                  Favoritos
+                </Link>
+              </li>
+              <li>
                 <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
                   Entrar
                 </Link>
