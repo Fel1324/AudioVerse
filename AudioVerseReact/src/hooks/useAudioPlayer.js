@@ -7,6 +7,7 @@ export const useAudioPlayer = () => {
     duration: 0,
   })
   const [currentTime, setCurrentTime] = useState(0);
+  const [volume, setVolume] = useState(50);
 
   useEffect(() => {
     const audioEl = audioRef.current;
@@ -32,8 +33,27 @@ export const useAudioPlayer = () => {
     }
   }, [])
 
+  const removeSound = () => {
+    audioRef.current.muted = !audioRef.current.muted;
+    if(audioRef.current.muted){
+      setVolume(0);
+      audioRef.current.volume = volume / 100;
+
+    } else {
+      setVolume(50);
+      audioRef.current.volume = 50 / 100;
+    }
+  }
+
+  const changeVolume = (e) => {
+    const v = Number(e.target.value)
+    setVolume(v);
+    audioRef.current.volume = v / 100;
+  }
+
   const play = async () => {
     if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
       await audioRef.current.play();
       setMetadata(prevState => ({
         ...prevState,
@@ -92,5 +112,8 @@ export const useAudioPlayer = () => {
     pause,
     togglePlay,
     jumpToTime,
+    removeSound,
+    changeVolume,
+    volume,
   }
 }

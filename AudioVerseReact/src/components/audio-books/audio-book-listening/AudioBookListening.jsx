@@ -23,9 +23,10 @@ export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextCha
     duration,
     currentTime,
     jumpToTime,
+    removeSound,
+    changeVolume,
+    volume,
   } = useAudioPlayer();
-
-  const [volume, setVolume] = useState(25);
 
   useEffect(() => {
     play()
@@ -41,20 +42,11 @@ export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextCha
     onBackToNextChapter();
   }
 
-  function changeVolume(e) {
-    const volumeValue = Number(e.target.value);
-    setVolume(volumeValue);
-  }
-
   function renderVolumeIcon() {
     if (volume === 0) return <VolumeX />;
     if (volume < 25) return <Volume />;
     if (volume < 65) return <Volume1 />;
     return <Volume2 />;
-  }
-
-  function removeSound() {
-    volume != 0 ? setVolume(0) : setVolume(50);
   }
 
   useEffect(() => {
@@ -126,6 +118,9 @@ export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextCha
           name="volume"
           id="volume"
           value={volume}
+          step={1}
+          min={0}
+          max={100}
         />
       </div>
     </aside>

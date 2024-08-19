@@ -1,0 +1,14 @@
+.message{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  height: calc(100vh - 18.75rem);
+
+  & > p{
+    color: var(--secondary-color);
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
