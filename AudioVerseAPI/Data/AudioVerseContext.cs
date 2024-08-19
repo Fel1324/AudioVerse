@@ -60,11 +60,13 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
 
         /*-----------------------------------------------*/
 
+/*          Colocar de volta se os testes derem erro.
         builder.Entity<Chapter>()
-        .HasKey(c => c.Id); // Certifica-se de que `Id` é a chave primária
+            .HasKey(c => c.Id); // Certifica-se de que `Id` é a chave primária
 
         builder.Entity<Chapter>()
             .Property(c => c.Id)
-            .ValueGeneratedOnAdd(); // Garantir que o Id é gerado automaticamente
-    }
+            .ValueGeneratedOnAdd(); // Garantir que o Id é gerado automaticamente*/
+
+}
 }
