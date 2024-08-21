@@ -49,6 +49,9 @@ export const useAudioPlayer = () => {
     const v = Number(e.target.value)
     setVolume(v);
     audioRef.current.volume = v / 100;
+
+    if (v === 0) audioRef.current.muted = true;
+    if (v !== 0) audioRef.current.muted = false;
   }
 
   const play = async () => {
