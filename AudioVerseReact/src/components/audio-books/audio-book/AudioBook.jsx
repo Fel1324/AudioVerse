@@ -1,8 +1,16 @@
+import { useState } from "react";
 import { BookMark } from "../../icons/BookMark.jsx";
 
 import styles from "./AudioBook.module.css";
+import { BookMarkFill } from "../../icons/BookMarkFill.jsx";
 
 export function AudioBook({ id, name, audioBookCover, parentalRating, onOpenAudioBook, alternativeStyle }) {
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  function favoriteAudioBook(){
+    isFavorited ? setIsFavorited(false) : setIsFavorited(true);
+  }
+
   return (
     <li id={id} className={styles.audiobook}>
       <h3 className={styles.audiobook__title} title={name}>{name}</h3>
@@ -10,12 +18,16 @@ export function AudioBook({ id, name, audioBookCover, parentalRating, onOpenAudi
       
       {alternativeStyle ? (
         <div>
-          <BookMark className={styles.bookMark} />
+          <button onClick={() => favoriteAudioBook()} className={styles.bookMark}>
+            {isFavorited ? <BookMarkFill /> : <BookMark />}
+          </button>
           <span className={`${styles.audiobook__parentalRating} ${styles.parentalRatingDesktop}`}>{parentalRating}</span>
         </div>
       ) : (
         <div>
-          <BookMark />
+          <button onClick={() => favoriteAudioBook()}>
+            {isFavorited ? <BookMarkFill /> : <BookMark />}
+          </button>
           <span className={styles.audiobook__parentalRating}>{parentalRating}</span>
         </div>
       )}
