@@ -22,6 +22,7 @@ public class AudioVerseContext :IdentityDbContext<UserApp>
     public DbSet<Book> Books { get; set; }
     public DbSet<Chapter> Chapters { get; set; }
     public DbSet<Genre> Genres { get; set; }
+    public DbSet<Favorito> Favoritos { get; set; } 
     public DbSet<GenreBook> GenreBooks { get; set; }
     public DbSet<UserApp> UserApps { get; set; }
     
