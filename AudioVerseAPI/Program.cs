@@ -9,7 +9,18 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
+var applicationName = "AudioVerse";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: applicationName,
+        policy =>
+        {
+            policy.WithOrigins("*");
+        });
+});
 
 var connectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
 
@@ -19,7 +30,7 @@ builder.Services.AddDbContext<AudioVerseAPI.Data.AudioVerseContext>(opts =>
 builder.Services
     .AddIdentity<UserApp, IdentityRole>()
     .AddEntityFrameworkStores<AudioVerseContext>()
-    .AddDefaultTokenProviders(); 
+    .AddDefaultTokenProviders();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Add services to the container.
@@ -62,6 +73,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
+app.UseCors(applicationName);
 
 app.UseAuthorization();
 

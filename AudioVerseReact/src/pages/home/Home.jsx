@@ -22,7 +22,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    api.get("/audiobooks")
+    api.get("/Book/detailed")
       .then(response => setAudioBook(response.data))
       .catch(err => console.log(err))
   }, []);
@@ -65,8 +65,8 @@ export function Home() {
                   <AudioBook
                     key={adbk.id}
                     id={adbk.id}
-                    name={adbk.name}
-                    audioBookCover={adbk.audioBookCover}
+                    name={adbk.title}
+                    audioBookCover={adbk.bookImage}
                     parentalRating={adbk.parentalRating}
                     onOpenAudioBook={openAudioBook}
                   />
