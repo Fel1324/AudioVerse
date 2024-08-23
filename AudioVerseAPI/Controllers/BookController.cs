@@ -80,13 +80,13 @@ public class BookController : ControllerBase
     public IActionResult RecoverDetailedBook(int id)
     {
         var book = _context.Books
-                .Where(b => b.Id == id)
-                .Include(b => b.Chapters)
-                .Include(b => b.GenreBooks)
-                .ThenInclude(gb => gb.Genre)
-                .Include(b => b.AuthorBooks)
-                .ThenInclude(ab => ab.Author)
-                .FirstOrDefault();
+            .Where(b => b.Id == id)
+            .Include(b => b.Chapters)
+            .Include(b => b.GenreBooks)
+            .ThenInclude(gb => gb.Genre)
+            .Include(b => b.AuthorBooks)
+            .ThenInclude(ab => ab.Author)
+            .FirstOrDefault();
         return Ok(book);
     }
 
@@ -94,12 +94,12 @@ public class BookController : ControllerBase
     public IActionResult RecoverAllDetailedBook()
     {
         var book = _context.Books
-                .Include(b => b.Chapters)
-                .Include(b => b.GenreBooks)
-                .ThenInclude(gb => gb.Genre)
-                .Include(b => b.AuthorBooks)
-                .ThenInclude(ab => ab.Author)
-                .ToList();
+            .Include(b => b.Chapters)
+            .Include(b => b.GenreBooks)
+            .ThenInclude(gb => gb.Genre)
+            .Include(b => b.AuthorBooks)
+            .ThenInclude(ab => ab.Author)
+            .ToList();
         return Ok(book);
     }
 }

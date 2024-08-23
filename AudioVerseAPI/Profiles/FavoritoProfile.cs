@@ -1,10 +1,15 @@
 ﻿using AudioVerseAPI.Data.Dtos;
 using AudioVerseAPI.Models;
 
+using AutoMapper;
+
 namespace AudioVerseAPI.Profiles;
 
-public class FavoritoProfile()
+public class FavoritoProfile : Profile
 {
-    CreateMap<CreateFavoritoDto, Favorito>();
-    CreateMap<Favorito, ReadFavoritoDto>();
+    public FavoritoProfile()
+    {
+        CreateMap<CreateFavoritoDto, Favorito>();
+        CreateMap<Favorito, ReadFavoritoDto>();
+    }
 }
