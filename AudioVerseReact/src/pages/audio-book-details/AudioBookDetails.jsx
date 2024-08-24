@@ -21,7 +21,7 @@ export function AudioBookDetails() {
   const [currentChapter, setCurrentChapter] = useState(0);
 
   function getAudioBookData(id) {
-    api.get(`/audiobooks/${id}`)
+    api.get(`/Book/detailed/${id}`)
       .then(response => {
         response.data && setAudioBook(response.data);
       })
@@ -73,13 +73,16 @@ export function AudioBookDetails() {
         <div className={`${styles.details__container} container`}>
           <section className={styles.details__audiobook}>
             <div className={styles.col_b__row_a}>
-              <h1 className={styles.details__name}>{audioBook.name}</h1>
-              <cite className={styles.details__author}>{audioBook.author}</cite>
+              <div className={styles.details__audiobookheader}>
+                <h1 className={styles.details__name}>{audioBook.title}</h1>
+                <span className={styles.details__yearpublication}>({audioBook.yearPublication})</span>
+              </div>
+              <cite className={styles.details__author}>Machado de Assis</cite>
             </div>
             
             <div className={styles.col_a}>
               <AudioBook
-                audioBookCover={audioBook.audioBookCover}
+                audioBookCover={audioBook.bookImage}
                 parentalRating={audioBook.parentalRating}
                 alternativeStyle
               />
@@ -92,7 +95,7 @@ export function AudioBookDetails() {
                 {isListening ? "Cancelar" : "Ouvir"}
               </button>
 
-              <a className={`${styles.details__download} link`} href={audioBook.pdf} target="_blank">Download.pdf</a>
+              <a className={`${styles.details__download} link`} href={audioBook.pdfLink} target="_blank">Download.pdf</a>
             </div>
           </section>
 
@@ -114,10 +117,10 @@ export function AudioBookDetails() {
                   {audioBook.chapters && (
                     audioBook.chapters.map((chapter, index) => (
                       <AudioBookChapter
-                        key={chapter.name}
+                        key={chapter.id}
                         index={index}
-                        name={chapter.name}
-                        source={chapter.source}
+                        name={chapter.chapterName}
+                        source={chapter.chapterUrl}
                         onOpenTargetChapter={listenTargetAudioBook}
                         active={isListening && currentChapter === index}
                       />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAudioPlayer } from "../../../hooks/useAudioPlayer";
 
 import { Prev } from "../../icons/Prev";
@@ -59,7 +59,7 @@ export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextCha
     <aside className={styles.listening}>
       <audio
         className={styles.audioRef}
-        src={chapter.source}
+        src={chapter.chapterUrl}
         controls
         ref={audioRef}>
       </audio>

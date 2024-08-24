@@ -22,7 +22,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    api.get("/Book/detailed")
+    api.get("/Book/detailed/")
       .then(response => setAudioBook(response.data))
       .catch(err => console.log(err))
   }, []);
