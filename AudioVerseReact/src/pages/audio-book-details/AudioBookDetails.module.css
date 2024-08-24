@@ -142,6 +142,10 @@
         gap: 1.25rem;
       }
 
+      & .details__yearpublication{
+        line-height: initial;
+      }
+
       & > .details__author{
         margin-bottom: 0;
       }
