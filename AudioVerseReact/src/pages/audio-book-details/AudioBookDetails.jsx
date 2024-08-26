@@ -77,7 +77,18 @@ export function AudioBookDetails() {
                 <h1 className={styles.details__name}>{audioBook.title}</h1>
                 <span className={styles.details__yearpublication}>({audioBook.yearPublication})</span>
               </div>
-              <cite className={styles.details__author}>Machado de Assis</cite>
+
+              <cite className={styles.details__author}>
+                {audioBook.authorBooks?.map((at) => at.author.authorName)}
+              </cite>
+
+              <div className={styles.details__genre}>
+                {audioBook.genreBooks?.map((ge) => {
+                  return (
+                    <span key={ge.genre.id}>{ge.genre.genreName}</span>
+                  )
+                })}
+              </div>
             </div>
             
             <div className={styles.col_a}>

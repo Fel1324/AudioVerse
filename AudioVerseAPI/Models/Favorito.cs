@@ -6,6 +6,7 @@ namespace AudioVerseAPI.Models;
 
 public class Favorito
 {
+    public int Id {get; set;}
     public int BookId { get; set; }
 
     [JsonIgnore]
