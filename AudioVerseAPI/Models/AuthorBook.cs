@@ -11,7 +11,6 @@ public class AuthorBook
     [ForeignKey("BookId")]
     public Book? Book { get; set; }
     public int AuthorId { get; set; }
-    [JsonIgnore]
     [ForeignKey("AuthorId")]
     public Author? Author { get; set; }
 }

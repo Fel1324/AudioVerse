@@ -1,6 +1,7 @@
 ﻿ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AudioVerseAPI.Models;
 
@@ -30,6 +31,6 @@ public class Author
     [Display(Name = "Ativo")]
     [Required(ErrorMessage = "Por favor, informe se o autor está ativo ou não.")]
     public bool Active { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<AuthorBook> AuthorBooks { get; set; }
 }
