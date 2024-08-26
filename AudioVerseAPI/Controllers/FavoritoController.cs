@@ -80,8 +80,23 @@ public class FavoritoController : ControllerBase
         return NoContent();
     }
 
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteFavorito(int id)
+    {
+        var favorito = await _context.Favoritos.FindAsync(id);
+        if (favorito == null)
+        {
+            return NotFound();
+        }
+
+        _context.Favoritos.Remove(favorito);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
     private bool FavoritoExists(int id)
     {
-        return _context.Favoritos.Any(e => e.Id == id);
+        return _context.Favoritos.Any(f => f.Id == id);
     }
 }

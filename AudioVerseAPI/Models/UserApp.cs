@@ -8,5 +8,5 @@ namespace AudioVerseAPI.Models;
 [Table("UserApp")]
 public class UserApp : IdentityUser
 {
-
+    public ICollection<Favorito> Favoritos { get; set; }
 }
