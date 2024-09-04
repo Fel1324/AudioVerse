@@ -45,17 +45,10 @@
   }
 }
 
-.home__filter {
-  margin-top: 2.5rem;
-  margin-bottom: 1.75rem;
-
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-}
-
 .home__audiobooks {
   & > .audiobooks__container {
+    margin-top: 3.125rem;
+    
     & > h2 {
       color: var(--secondary-color);
 

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
-import { AudioBookFilter } from "../../components/audio-books/audio-book-filter/AudioBookFilter.jsx";
 import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
@@ -51,11 +50,6 @@ export function Home() {
         </section>
 
         <div className={`${styles.home__container} container`}>
-          <div className={styles.home__filter}>
-            <AudioBookFilter name="Gênero" />
-            <AudioBookFilter name="Autor" />
-          </div>
-
           <section className={styles.home__audiobooks}>
             <div className={styles.audiobooks__container}>
               <h2>ÁudioBooks</h2>
