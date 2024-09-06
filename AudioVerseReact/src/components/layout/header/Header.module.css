@@ -26,6 +26,7 @@
         }
   
         &.openMenu{
+          transition: all .3s ease-in-out;
           border-radius: .375rem;
         }
       }
@@ -53,6 +54,7 @@
         width: min(40%, 34rem);
         height: 100%;
 
+        transition: all .2s ease-in-out;
         &:focus-within{
           -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
           -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
@@ -77,6 +79,16 @@
             text-transform: capitalize;
             margin-right: .75rem;
           }
+        }
+      }
+
+      & .header__button{
+        &.openMenu:hover,
+        &.openMenu:focus-within{
+          -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+          -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+          box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+          outline: none;
         }
       }
     }
