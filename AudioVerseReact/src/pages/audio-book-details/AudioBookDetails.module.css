@@ -170,7 +170,7 @@
       & > .details__audiobookheader{
         flex-direction: row;
         align-items: center;
-        gap: 1.25rem;
+        gap: 1.125rem;
       }
 
       & .details__yearpublication{
