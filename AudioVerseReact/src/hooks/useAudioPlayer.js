@@ -8,6 +8,7 @@ export const useAudioPlayer = () => {
   })
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(50);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const audioEl = audioRef.current;
@@ -24,12 +25,24 @@ export const useAudioPlayer = () => {
       setCurrentTime(audioEl.currentTime);
     }
 
+    const onAudioBookLoading = () => {
+      setIsLoading(true);
+    }
+
+    const onAudioBookLoaded = () => {
+      setIsLoading(false);
+    }
+
     audioEl.addEventListener("loadedmetadata", onAudioMetadataLoad);
     audioEl.addEventListener("timeupdate", onUpdateTime);
+    audioEl.addEventListener("loadstart", onAudioBookLoading);
+    audioEl.addEventListener("canplaythrough", onAudioBookLoaded);
 
     return () => {
       audioEl.removeEventListener("loadedmetadata", onAudioMetadataLoad)
       audioEl.removeEventListener("timeupdate", onUpdateTime);
+      audioEl.removeEventListener("loadstart", onAudioBookLoading);
+      audioEl.removeEventListener("canplaythrough", onAudioBookLoaded);
     }
   }, [])
 
@@ -118,5 +131,6 @@ export const useAudioPlayer = () => {
     removeSound,
     changeVolume,
     volume,
+    isLoading,
   }
 }

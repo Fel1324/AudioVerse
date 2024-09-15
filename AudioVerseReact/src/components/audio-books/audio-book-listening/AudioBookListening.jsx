@@ -11,6 +11,7 @@ import { Volume1 } from "../../icons/Volume1";
 import { Volume2 } from "../../icons/Volume2";
 
 import styles from "./AudioBookListening.module.css";
+import { AudioBookLoading } from "../audio-book-loading/AudioBookLoading";
 
 export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextChapter }) {
   const { 
@@ -26,6 +27,7 @@ export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextCha
     removeSound,
     changeVolume,
     volume,
+    isLoading,
   } = useAudioPlayer();
 
   useEffect(() => {
@@ -98,7 +100,7 @@ export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextCha
           </button>
 
           <button type="button" onClick={togglePlay}>
-            {isPlaying ? <Pause /> : <Play />}
+            {isLoading ? <AudioBookLoading /> : isPlaying ? <Pause /> : <Play />}
           </button>
 
           <button type="button" onClick={goToNextChapter}>
