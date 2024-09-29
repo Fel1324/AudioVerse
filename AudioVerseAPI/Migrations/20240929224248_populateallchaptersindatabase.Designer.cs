@@ -4,6 +4,7 @@ using AudioVerseAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AudioVerseAPI.Migrations
 {
     [DbContext(typeof(AudioVerseContext))]
-    partial class AudioVerseContextModelSnapshot : ModelSnapshot
+    [Migration("20240929224248_populateallchaptersindatabase")]
+    partial class populateallchaptersindatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1961,7 +1964,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 198,
                             BookId = 12,
-                            ChapterName = "1",
+                            ChapterName = "1 - A Lição de Violão",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_01_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -1969,7 +1972,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 199,
                             BookId = 12,
-                            ChapterName = "2",
+                            ChapterName = "2 - Reformas Radicais",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_02_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -1977,7 +1980,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 200,
                             BookId = 12,
-                            ChapterName = "3",
+                            ChapterName = "3 - A notícia do Genelício",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_03_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -1985,7 +1988,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 201,
                             BookId = 12,
-                            ChapterName = "4",
+                            ChapterName = "4 - Desastrosas consequências de um requerimento",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_04_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -1993,7 +1996,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 202,
                             BookId = 12,
-                            ChapterName = "5",
+                            ChapterName = "5 - O bibelot",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_05_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2001,7 +2004,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 203,
                             BookId = 12,
-                            ChapterName = "6",
+                            ChapterName = "6 - No 'Sossego'",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_06_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2009,7 +2012,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 204,
                             BookId = 12,
-                            ChapterName = "7",
+                            ChapterName = "7 - Espinhos e flores",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_07_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2017,7 +2020,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 205,
                             BookId = 12,
-                            ChapterName = "8",
+                            ChapterName = "8 - Golias",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_08_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2025,7 +2028,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 206,
                             BookId = 12,
-                            ChapterName = "9",
+                            ChapterName = "9 - 'Peço energia, sigo já'",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_09_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2033,7 +2036,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 207,
                             BookId = 12,
-                            ChapterName = "10",
+                            ChapterName = "10 - O trovador",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_10_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2041,7 +2044,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 208,
                             BookId = 12,
-                            ChapterName = "11",
+                            ChapterName = "11 - Patriotas",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_11_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2049,7 +2052,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 209,
                             BookId = 12,
-                            ChapterName = "12",
+                            ChapterName = "12 - Você, Quaresma, é um visionário",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_12_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2057,7 +2060,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 210,
                             BookId = 12,
-                            ChapterName = "13",
+                            ChapterName = "13 - ... e tornaram logo silenciosos",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_13_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2065,7 +2068,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 211,
                             BookId = 12,
-                            ChapterName = "14",
+                            ChapterName = "14 - O Boqueirão",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_14_barreto.mp3",
                             Reader = "Miramontes"
                         },
@@ -2073,7 +2076,7 @@ namespace AudioVerseAPI.Migrations
                         {
                             Id = 212,
                             BookId = 12,
-                            ChapterName = "15",
+                            ChapterName = "15 - A afilhada",
                             ChapterUrl = "https://ia801307.us.archive.org/34/items/triste_fim_policarpo_quaresma_fm_librivox/tristefimdepolicarpoquaresma_15_barreto.mp3",
                             Reader = "Miramontes"
                         });

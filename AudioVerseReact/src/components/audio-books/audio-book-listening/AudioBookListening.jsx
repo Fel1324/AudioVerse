@@ -68,7 +68,7 @@ export function AudioBookListening({ chapter, onGoToNextChapter, onBackToNextCha
 
       <div className={styles.infos}>
         <span title={`Capítulos: ${chapter.chapterName}`}>
-          Capítulos: {chapter.chapterName}
+          Capítulo(s): {chapter.chapterName}
         </span>
         
         <cite title={`lido por: ${chapter.reader}`}>

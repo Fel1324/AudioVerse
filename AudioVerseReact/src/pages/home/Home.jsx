@@ -66,15 +66,6 @@ export function Home() {
                   />
                 ))}
               </ul>
-
-              <button className={styles.audiobooks__listenMore}>
-                <div className={styles.listenMore__line} />
-                <span>
-                  Ouvir mais
-                  <HeadPhones />
-                </span>
-                <div className={styles.listenMore__line} />
-              </button>
             </div>
           </section>
 

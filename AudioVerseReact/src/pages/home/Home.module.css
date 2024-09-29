@@ -62,49 +62,6 @@
 
       margin-bottom: 1.125rem;
     }
-
-    & > .audiobooks__listenMore {
-      width: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin-top: 1.75rem;
-
-      & > .listenMore__line {
-        width: 35%;
-        height: .125rem;
-
-        flex-grow: 1;
-
-        background-color: var(--secondary-color);
-      }
-
-      & > span {
-        width: 45%;
-        max-width: 7.1875rem;
-
-        border: .125rem solid var(--secondary-color);
-        border-radius: .5rem;
-
-        padding-inline: .5rem;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: .25rem;
-
-        font-size: 1rem;
-        font-weight: 500;
-
-        color: var(--secondary-color);
-
-        &:hover{
-          background-color: var(--senary-color);
-        }
-      }
-    }
   }
 }
 
