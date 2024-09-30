@@ -74,8 +74,10 @@ export function AudioBookDetails() {
           <section className={styles.details__audiobook}>
             <div className={styles.col_b__row_a}>
               <div className={styles.details__audiobookheader}>
-                <h1 className={styles.details__name}>{audioBook.title}</h1>
-                <span className={styles.details__yearpublication}>({audioBook.yearPublication})</span>
+                <h1 className={styles.details__name}>
+                  {audioBook.title}
+                  <span className={styles.details__yearpublication}>({audioBook.yearPublication})</span>
+                </h1>
               </div>
 
               <cite className={styles.details__author}>

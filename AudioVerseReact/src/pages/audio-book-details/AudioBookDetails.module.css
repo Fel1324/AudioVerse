@@ -2,11 +2,6 @@
   max-width: 68.75rem;
   text-align: center;
 
-  & .details__audiobookheader{
-    display: flex;
-    flex-direction: column;
-  }
-
   & .details__name{
     color: var(--primary-color);
 
@@ -19,6 +14,8 @@
   & .details__yearpublication{
     color: var(--secondary-color);
     opacity: .7;
+    display: block;
+
     line-height: 1.5;
   }
 
@@ -167,13 +164,9 @@
       grid-area: col-b--row-a;
       align-self: end;
 
-      & > .details__audiobookheader{
-        flex-direction: row;
-        align-items: center;
-        gap: 1.125rem;
-      }
-
       & .details__yearpublication{
+        display: inline;
+        margin-left: 1rem;
         line-height: initial;
       }
 
