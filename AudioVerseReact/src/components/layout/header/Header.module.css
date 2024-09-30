@@ -1,6 +1,10 @@
 .header{
   padding: 1rem 1rem 1.5rem 1rem;
 
+  &.headerBoxShadow{
+    box-shadow: 0 0 1rem var(--primary-shadow);
+  }
+
   & > .header__container{
     display: flex;
     align-items: center;

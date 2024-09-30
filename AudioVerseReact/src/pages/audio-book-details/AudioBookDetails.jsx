@@ -67,9 +67,9 @@ export function AudioBookDetails() {
 
   return (
     <>
-      <Header />
+      <Header headerBoxShadow />
 
-      <main className={`${styles.details} main`}>
+      <main className={`${styles.details} main main-pd-bottom`}>
         <div className={`${styles.details__container} container`}>
           <section className={styles.details__audiobook}>
             <div className={styles.col_b__row_a}>

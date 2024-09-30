@@ -10,7 +10,7 @@ import { InputSearch } from "../input-search/InputSearch.jsx";
 import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
-export function Header(){
+export function Header({ headerBoxShadow }){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setSearchIsOpen] = useState(false);
 
@@ -31,7 +31,7 @@ export function Header(){
   }
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${headerBoxShadow ? styles.headerBoxShadow : null}`}>
       <div className={styles.header__container}>
         <Link to="/">
           <img src={logo} alt="Logo AudioVerse" />

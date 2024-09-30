@@ -12,7 +12,7 @@ export function Favorites(){
     <>
       <Header />
 
-      <main className={`${styles.favorites} main`}>
+      <main className={`${styles.favorites} main main-pd-bottom`}>
         {favorites.length === 0 && (
           <div className={styles.message}>
             <p>Você ainda não favoritou nenhum audiobook!</p>

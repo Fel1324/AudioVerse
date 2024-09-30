@@ -116,13 +116,16 @@ a{
   }
 }
 
-.main {
+.main{
   width: 100%;
-
   flex-grow: 1;
 }
 
-.container {
+.main-pd-bottom{
+  padding-bottom: 1.5rem;
+}
+
+.container{
   width: min(100%, 75rem);
   padding: 1rem;
   margin-inline: auto;
@@ -132,7 +135,7 @@ a{
   padding: 1.75rem;
 }
 
-.secondary-logo {
+.secondary-logo{
   border-radius: 50%;
   width: 4.5rem;
 }
@@ -153,7 +156,7 @@ a{
   gap: 1.25rem;
 }
 
-.display-grid {
+.display-grid{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9.625rem, 1fr));
   column-gap: 1rem;

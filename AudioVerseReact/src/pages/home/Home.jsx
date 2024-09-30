@@ -28,9 +28,9 @@ export function Home() {
 
   return (
     <>
-      <Header />
+      <Header headerBoxShadow={false} />
 
-      <main className={`${styles.home} main`}>
+      <main className={`${styles.home} main main-pd-bottom`}>
         <section className={styles.home__banner}>
           <div className={styles.banner__container}>
             <div className={styles.openBookDesktop}>
