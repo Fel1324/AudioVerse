@@ -87,12 +87,8 @@
       }
 
       & .header__button{
-        &.openMenu:hover,
-        &.openMenu:focus-within{
-          -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
-          -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
-          box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
-          outline: none;
+        &.openMenu{
+          display: none;
         }
       }
     }

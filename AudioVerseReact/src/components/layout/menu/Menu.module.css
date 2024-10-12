@@ -6,7 +6,7 @@
 
   width: 20rem;
   height: auto;
-  min-height: 14.25rem;
+  min-height: 13rem;
 
   padding: 1.5625rem 1rem 1.5rem 1rem;
 
@@ -27,45 +27,16 @@
   flex-direction: column;
   gap: 1.25rem;
 
-  & > .fontInput {
-    display: flex;
-    align-items: center;
-  }
-
-  & a, label {
+  & a {
     color: var(--tertiary-color);
 
     font-size: 1.5rem;
     font-weight: 500;
   }
-
-  & input {
-    border-radius: .625rem;
-    background-color: var(--septenary-color);
-    color: var(--primary-color);
-
-    font-size: 1.25rem;
-    font-weight: 500;
-    text-align: center;
-    vertical-align: middle;
-
-    width: 3rem;
-    min-height: 2.25rem;
-
-    margin-left: .625rem;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .menu{
-    width: 22.25rem;
-    min-height: fit-content;
-    padding-bottom: 2rem;
-  }
-
-  .menu__header, .menu__body {  
-    & a{
-      display: none;
-    }
+    display: none;
   }
 }

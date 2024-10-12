@@ -21,11 +21,6 @@ export function Menu({closeMenu}) {
         <li>
           <Link to="/favorites">Favoritos</Link>
         </li>
-
-        <li className={styles.fontInput}>
-          <label htmlFor="font">Fonte: </label>
-          <input type="number" defaultValue={12} min={12} max={24}/>
-        </li>
       </ul>
     </nav>
   )

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
@@ -15,7 +16,14 @@ export function Favorites(){
       <main className={`${styles.favorites} main main-pd-bottom`}>
         {favorites.length === 0 && (
           <div className={styles.message}>
-            <p>Você ainda não favoritou nenhum audiobook!</p>
+            <div>
+              <p>
+                Você ainda não está logado em sua conta! Para acessar seus audiobooks favoritos faça <Link to="/login">login</Link> agora mesmo!
+              </p>
+              <p>
+                Se não criou uma conta ainda não perca tempo, se <Link to="/register">cadastre</Link> imediatamente!
+              </p>
+            </div>
           </div>
         )}
       </main>
