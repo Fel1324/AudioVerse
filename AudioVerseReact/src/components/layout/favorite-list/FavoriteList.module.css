@@ -1,0 +1,5 @@
+div.message{
+  & p.paragraph{
+    font-size: 2rem;
+  }
+}

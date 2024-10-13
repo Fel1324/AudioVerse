@@ -1,21 +1,24 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
+import { FavoriteList } from "../../components/layout/favorite-list/FavoriteList.jsx";
 
 import styles from "./Favorites.module.css";
+import { useAuth } from "../../hooks/useAuth.js";
 
 export function Favorites(){
-  const [favorites, setFavorites] = useState([]);
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
-      <Header />
+      <Header headerBoxShadow />
 
       <main className={`${styles.favorites} main main-pd-bottom`}>
-        {favorites.length === 0 && (
-          <div className={styles.message}>
+        {isLoggedIn ? (
+          <FavoriteList />
+        ) : (
+          <div className="favorite-message">
             <div>
               <p>
                 Você ainda não está logado em sua conta! Para acessar seus audiobooks favoritos faça <Link to="/login">login</Link> agora mesmo!

@@ -15,7 +15,6 @@ export function Header({ headerBoxShadow }){
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setSearchIsOpen] = useState(false);
-  const navigate = useNavigate();
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -34,8 +33,8 @@ export function Header({ headerBoxShadow }){
   }
 
   function logOut(){
+    localStorage.removeItem("Token");
     setIsLoggedIn(false);
-    navigate("/login");
   }
 
   return (

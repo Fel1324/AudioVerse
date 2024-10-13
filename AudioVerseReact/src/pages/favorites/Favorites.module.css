@@ -1,31 +1,3 @@
 .favorites{
   padding-inline: 1rem;
 }
-
-.message{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-  height: calc(100vh - 18.75rem);
-
-  & p{
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    font-weight: 500;
-
-    max-width: 58rem;
-    &:last-child{
-      margin-top: .875rem;
-      font-size: 1.125rem;
-    }
-
-    & a{
-      color: var(--link-color);
-      &:hover{
-        text-decoration: underline;
-      }
-    }
-  }
-}
