@@ -1,19 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
 import { useAuth } from "../../hooks/useAuth.js";
-import { Link } from "react-router-dom";
+import { api } from "../../lib/axios.js";
 
 import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
 import { PasswordInput } from "../../components/forms/password-input/PasswordInput";
 
 import logo from "../../assets/logo.svg";
 import styles from "./Login.module.css";
-import { useState } from "react";
 
 export function Login() {
   const { isLoggedIn, setIsLoggedIn} = useAuth();
-  const navigate = useNavigate();
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   
   function onChangeUserName(e){
     setUserName(e.target.value);
@@ -29,14 +30,23 @@ export function Login() {
 
   function confirmLogin(e){
     e.preventDefault();
-    setIsLoggedIn(true);
-    
+
+    api.post("/UserApp/login", {
+        username: userName,
+        password: password
+      })
+      .then(response => {
+        setIsLoggedIn(true);
+        localStorage.setItem("Token", response.data);
+      })
+      .catch(error => console.error(error));
+  }
+
+  useEffect(() => {
     if(isLoggedIn){
       navigate("/");
-    } else {
-      alert('diajduaoi');
     }
-  }
+  }, [isLoggedIn]);
 
   return (
     <div className="page-account">

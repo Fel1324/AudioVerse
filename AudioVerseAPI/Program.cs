@@ -18,7 +18,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: applicationName,
         policy =>
         {
-            policy.WithOrigins("*");
+            policy.WithOrigins("*").
+                WithHeaders("content-type").
+                AllowAnyMethod();
         });
 });
 
