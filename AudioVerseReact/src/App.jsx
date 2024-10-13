@@ -29,6 +29,6 @@ export function App() {
       element: <Favorites />,
     },
   ]);
-
+  
   return <RouterProvider router={router} />
 }

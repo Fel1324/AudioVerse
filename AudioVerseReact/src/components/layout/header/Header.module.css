@@ -79,7 +79,8 @@
           display: flex;
           gap: 1.25rem;
 
-          & a.navbar__link{
+          & a.navbar__link,
+          & button.navbar__link{
             text-transform: capitalize;
             margin-right: .75rem;
           }

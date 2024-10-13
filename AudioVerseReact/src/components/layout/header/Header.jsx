@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth.js";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Menu } from "../menu/Menu.jsx";
 import { OpenMenu } from "../../icons/OpenMenu.jsx";
@@ -11,8 +12,10 @@ import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
 export function Header({ headerBoxShadow }){
+  const { isLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setSearchIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -28,6 +31,10 @@ export function Header({ headerBoxShadow }){
 
   function closeSearch(){
     setSearchIsOpen(false);
+  }
+
+  function logOut(){
+    navigate("/login");
   }
 
   return (
@@ -53,9 +60,13 @@ export function Header({ headerBoxShadow }){
                 </Link>
               </li>
               <li>
-                <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
-                  Entrar
-                </Link>
+                {isLoggedIn ? (
+                  <button onClick={logOut} className={`${styles.navbar__link} primary-navbar-link`}>Sair</button>
+                ) : (
+                  <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
+                    Entrar
+                  </Link>
+                )}
               </li>
             </ul>
           </nav>
