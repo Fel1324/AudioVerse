@@ -29,15 +29,9 @@ export function Register() {
           <form onSubmit={navigateToLogin} className={styles.register__form} autoComplete="on">
             <div className="form-container">
               <DefaultInput
-                type="email"
-                name="email"
-                content="Email"
-                autoComplete="email"
-              />
-              <DefaultInput
                 type="text"
                 name="name"
-                content="Nome"
+                content="Nome de usuário"
                 autoComplete="name"
               />
               <PasswordInput

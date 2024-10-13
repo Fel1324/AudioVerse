@@ -34,10 +34,10 @@ export function Login() {
           <form onSubmit={navigateToHome} className={styles.login__form} autoComplete="on">
             <div className="form-container">
               <DefaultInput
-                type="email"
-                name="email"
-                content="Email"
-                autoComplete="email"
+                type="text"
+                name="name"
+                content="Nome de usuário"
+                autoComplete="name"
               />
               <PasswordInput
                 name="password"
