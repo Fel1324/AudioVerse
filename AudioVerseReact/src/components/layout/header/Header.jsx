@@ -12,7 +12,7 @@ import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
 export function Header({ headerBoxShadow }){
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setSearchIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ export function Header({ headerBoxShadow }){
   }
 
   function logOut(){
+    setIsLoggedIn(false);
     navigate("/login");
   }
 

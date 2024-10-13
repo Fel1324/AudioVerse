@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth.js";
 import { Link } from "react-router-dom";
 
 import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
@@ -6,16 +7,35 @@ import { PasswordInput } from "../../components/forms/password-input/PasswordInp
 
 import logo from "../../assets/logo.svg";
 import styles from "./Login.module.css";
+import { useState } from "react";
 
 export function Login() {
+  const { isLoggedIn, setIsLoggedIn} = useAuth();
   const navigate = useNavigate();
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
   
+  function onChangeUserName(e){
+    setUserName(e.target.value);
+  }
+
+  function onChangePassword(e){
+    setPassword(e.target.value);
+  }
+
   function navigateToRegister(){
     navigate("/register");
   }
 
-  function navigateToHome(){
-    navigate("/");
+  function confirmLogin(e){
+    e.preventDefault();
+    setIsLoggedIn(true);
+    
+    if(isLoggedIn){
+      navigate("/");
+    } else {
+      alert('diajduaoi');
+    }
   }
 
   return (
@@ -31,19 +51,23 @@ export function Login() {
           <h1 className={styles.login__title}>Login</h1>
           <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
 
-          <form onSubmit={navigateToHome} className={styles.login__form} autoComplete="on">
+          <form onSubmit={confirmLogin} className={styles.login__form} autoComplete="on">
             <div className="form-container">
               <DefaultInput
                 type="text"
                 name="name"
                 content="Nome de usuário"
                 autoComplete="name"
+                onChange={onChangeUserName}
+                value={userName}
               />
               <PasswordInput
                 name="password"
                 id="password"
                 content="Senha"
                 autoComplete="current-password"
+                onChange={onChangePassword}
+                value={password}
               />
             </div>
 

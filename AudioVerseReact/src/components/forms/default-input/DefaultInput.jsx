@@ -1,6 +1,6 @@
 import { useId } from "react"
 
-export function DefaultInput({type, name, content, autoComplete}){
+export function DefaultInput({type, name, content, autoComplete, value, onChange}){
   const id = useId();
   
   return(
@@ -13,9 +13,12 @@ export function DefaultInput({type, name, content, autoComplete}){
         name={name}
         placeholder={content}
         autoComplete={autoComplete}
-        minLength="14"
-        maxLength="60"
-        required />
+        minLength="8"
+        maxLength="32"
+        required
+        onChange={onChange}
+        value={value}
+      />
     </div>
   )
 }
