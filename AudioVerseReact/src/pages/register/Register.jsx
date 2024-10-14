@@ -18,23 +18,17 @@ export function Register() {
   function createAccount(data){
     console.log(data);
 
-    // if(password === confirmPassword){
-    //   api.post("/UserApp/cadastro", {
-    //     username: data.username,
-    //     password: data.password,
-    //     rePassword: data.confirmPassword
-    //   })
-    //   .then(response => {
-    //     if(response.status === 200){
-    //       alert("usuario cadastrado!");
-    //       navigate("/login");
-    //     }
-    //   })
-    //   .catch(error => console.error(error));
-
-    // } else {
-    //   alert("Senhas diferentes!");
-    // }
+    api.post("/UserApp/cadastro", {
+      username: data.username,
+      password: data.password,
+      rePassword: data.confirmPassword
+    })
+    .then(response => {
+      if(response.status === 200){
+        navigate("/login");
+      }
+    })
+    .catch(error => console.error(error));
   }
 
   return (
