@@ -1,6 +1,6 @@
-import { useId } from "react"
+import { useId, forwardRef } from "react"
 
-export function DefaultInput({type, name, content, autoComplete, value, onChange}){
+export const DefaultInput = forwardRef(function ({content, autoComplete, name, onChange, error}, ref){
   const id = useId();
   
   return(
@@ -8,17 +8,14 @@ export function DefaultInput({type, name, content, autoComplete, value, onChange
       <label className="label" htmlFor={id}>{content}</label>
       <input
         id={id}
-        className="input"
-        type={type}
-        name={name}
+        type="text"
+        className={`input ${error && 'input-error'}`}
         placeholder={content}
         autoComplete={autoComplete}
-        minLength="8"
-        maxLength="32"
-        required
+        ref={ref}
+        name={name}
         onChange={onChange}
-        value={value}
       />
     </div>
   )
-}
+})

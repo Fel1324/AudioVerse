@@ -15,6 +15,7 @@
 :root {  
   /* COLORS */
   --link-color: #4A91B9;
+  --error-color: #b94a4a;
   --neutral-light-color: #FFF;
   --neutral-dark-color: #000;
   --primary-gradient: linear-gradient(180deg, #EDCDAF80 0%, #F9F2E6 50%, #EDCDAF80 100%);
@@ -44,6 +45,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --link-color: #87CCf5;
+    --error-color: #FF9292;
     --primary-gradient: linear-gradient(180deg, #7E5226 0%, #5C3B1D, #7E5226 100%);
     --secondary-gradient: linear-gradient(180deg, #8A5F36 0%, #D48F50 100%);
     --tertiary-gradient: linear-gradient(180deg, #5B3B1D 0%, #7A4B20 56.5%, #5B3B1D 100%);
@@ -233,7 +235,7 @@ a{
 .input{
   background-color: var(--secondary-shadow);
   border-radius: .5rem;
-  border: .0938rem solid transparent;
+  border: .125rem solid var(--primary-color);
   outline: none;
   color: var(--tertiary-color);
 
@@ -243,7 +245,7 @@ a{
   font-size: 1.125rem;
 
   /* &:focus-within{
-    border-color: var(--first-special-color);
+    border-color: var(--tertiary-color);
   } */
   &::placeholder{
     color: var(--tertiary-color);
@@ -253,6 +255,17 @@ a{
     font-style: italic;
     font-weight: 400;
   }
+}
+
+.input-error{
+  border-color: var(--error-color);
+}
+
+.error-message{
+  color: var(--error-color);
+  margin-top: .25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
 }
 
 .line{

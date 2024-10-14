@@ -10,18 +10,10 @@
 
 .login__form{  
   margin-block: 3rem;
-}
 
-.login__forgot{
-  display: block;
-
-  color: var(--octonary-color);
-
-  margin-top: .625rem;
-  margin-bottom: 1.875rem;
-
-  font-size: 1.25rem;
-  font-style: italic;
+  & > button[type="submit"]{
+    margin-top: 1.875rem;
+  }
 }
 
 .login__footer{

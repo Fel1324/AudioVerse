@@ -80,8 +80,6 @@ export function Login() {
                 value={password}
               />
             </div>
-
-            <Link className={styles.login__forgot} to="#">esqueceu sua senha?</Link>
             <button className="submit" type="submit">Entrar</button>
           </form>
 
