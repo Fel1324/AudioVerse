@@ -1,15 +1,19 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
 import { PasswordInput } from "../../components/forms/password-input/PasswordInput";
 
-import logo from "../../assets/logo.svg";
 import { api } from "../../lib/axios";
+import { useAuth } from "../../hooks/useAuth.js";
+
+import logo from "../../assets/logo.svg";
 import styles from "./Register.module.css";
 
 export function Register() {
   const { register, handleSubmit, watch, formState: {errors}} = useForm();
+  const { isLoggedIn, setIsLoggedIn} = useAuth();
   const navigate = useNavigate();
 
   const password = watch('password');
@@ -24,11 +28,25 @@ export function Register() {
     })
     .then(response => {
       if(response.status === 200){
-        navigate("/login");
+        api.post("/UserApp/login", {
+          username: data.username,
+          password: data.password
+        })
+        .then(response => {
+          setIsLoggedIn(true);
+          localStorage.setItem("Token", response.data);
+        })
+        .catch(error => console.error(error));
       }
     })
     .catch(error => console.error(error));
   }
+
+  useEffect(() => {
+    if(isLoggedIn){
+      navigate("/");
+    }
+  }, [isLoggedIn]);
 
   return (
     <div className="page-account">
@@ -72,6 +90,13 @@ export function Register() {
                     pattern: {
                       value: /^[A-Z][A-Za-z\d!@#$%^&*]*$/,
                       message: 'A senha deve começar com uma letra maiúscula, conter números e apenas os caracteres especiais: !@#$%^&*'
+                    },
+                    validate: value => {
+                      const hasNumber = /\d/.test(value);
+                      const hasSpecialChar = /[!@#$%^&*]/.test(value);
+                      if (!hasNumber) return 'A senha deve conter pelo menos um número';
+                      if (!hasSpecialChar) return 'A senha deve conter pelo menos um caractere especial permitido (!@#$%^&*)';
+                      return true;
                     },
                   })}
                 />
