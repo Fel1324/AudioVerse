@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -44,13 +43,12 @@ export function Register() {
           <p className="paragraph">Mergulhe em audiobooks de obras de domínio público, disponíveis para ouvir a qualquer momento, em qualquer lugar.</p>
           <h1 className={styles.register__title}>Crie sua conta</h1>
         
-          <form onSubmit={handleSubmit(createAccount)} className={styles.register__form} autoComplete="on">
+          <form onSubmit={handleSubmit(createAccount)} className={styles.register__form} autoComplete="off">
             <div className="form-container">
               <div>
                 <DefaultInput
                   error={errors?.username && true}
                   content="Nome de usuário"
-                  autoComplete="name"
                   {...register('username', {
                     required: { message: 'O nome de usuário é obrigatório!', value: true },
                     minLength: { message: 'O nome de usuário deve ter mais de 3 caracteres', value: 3},
@@ -67,7 +65,6 @@ export function Register() {
                 <PasswordInput
                   error={errors?.password && true}
                   content="Senha"
-                  autoComplete="new-password"
                   {...register('password', {
                     required: { message: 'A senha é obrigatória!', value: true },
                     minLength: { message: 'A senha deve ter mais de 8 caracteres', value: 8},
@@ -84,7 +81,6 @@ export function Register() {
                 <PasswordInput
                   error={errors?.confirmPassword && true}
                   content="Confirme a Senha"
-                  autoComplete="new-password"
                   {...register('confirmPassword', {
                     required: { message: 'A confirmação da senha é obrigatória!', value: true },
                     validate: value => value === password || 'As senhas não correspondem!'

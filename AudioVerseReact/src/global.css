@@ -26,6 +26,7 @@
   --tertiary-shadow: #BB6618;
   --quaternary-shadow: #A36B3B;
   --primary-color: #5B3B1D;
+  --primary-color-opacity: #5B3B1D7A;
   --secondary-color: #69421D;
   --tertiary-color: #35210F;
   --quaternary-color: #EECBAC;
@@ -54,6 +55,7 @@
     --tertiary-shadow: #503217;
     --quaternary-shadow: #503217;
     --primary-color: #EECBAC;
+    --primary-color-opacity: #EECBAC8E;
     --secondary-color: #E0B083;
     --tertiary-color: #F5E5D7;
     --quaternary-color: #4A2E14;
@@ -235,7 +237,7 @@ a{
 .input{
   background-color: var(--secondary-shadow);
   border-radius: .5rem;
-  border: .125rem solid var(--primary-color);
+  border: .125rem solid var(--primary-color-opacity);
   outline: none;
   color: var(--tertiary-color);
 
@@ -244,9 +246,9 @@ a{
 
   font-size: 1.125rem;
 
-  /* &:focus-within{
-    border-color: var(--tertiary-color);
-  } */
+  &:focus-within{
+    border-color: var(--primary-color);
+  }
   &::placeholder{
     color: var(--tertiary-color);
     opacity: .6;

@@ -5,7 +5,7 @@ import { PasswordEyeOff } from "../../icons/PasswordEyeOff.jsx";
 
 import styles from "./PasswordInput.module.css";
 
-export const PasswordInput = forwardRef(function ({content, autoComplete, name, onChange, error}, ref){
+export const PasswordInput = forwardRef(function ({content, name, onChange, error}, ref){
   const id = useId();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -21,7 +21,6 @@ export const PasswordInput = forwardRef(function ({content, autoComplete, name, 
         type={showPassword ? "text" : "password"}
         id={id}
         placeholder={content}
-        autoComplete={autoComplete}
         ref={ref}
         name={name}
         onChange={onChange}

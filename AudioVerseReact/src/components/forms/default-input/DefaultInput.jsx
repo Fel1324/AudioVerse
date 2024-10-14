@@ -1,6 +1,6 @@
 import { useId, forwardRef } from "react"
 
-export const DefaultInput = forwardRef(function ({content, autoComplete, name, onChange, error}, ref){
+export const DefaultInput = forwardRef(function ({content, name, onChange, error}, ref){
   const id = useId();
   
   return(
@@ -11,7 +11,6 @@ export const DefaultInput = forwardRef(function ({content, autoComplete, name, o
         type="text"
         className={`input ${error && 'input-error'}`}
         placeholder={content}
-        autoComplete={autoComplete}
         ref={ref}
         name={name}
         onChange={onChange}

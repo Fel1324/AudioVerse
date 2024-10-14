@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 
 import { useAuth } from "../../hooks/useAuth.js";
@@ -12,28 +13,19 @@ import styles from "./Login.module.css";
 
 export function Login() {
   const { isLoggedIn, setIsLoggedIn} = useAuth();
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   
-  function onChangeUserName(e){
-    setUserName(e.target.value);
-  }
-
-  function onChangePassword(e){
-    setPassword(e.target.value);
-  }
-
   function navigateToRegister(){
     navigate("/register");
   }
 
-  function confirmLogin(e){
-    e.preventDefault();
+  function confirmLogin(data){
+    console.log(data);
 
     api.post("/UserApp/login", {
-        username: userName,
-        password: password
+        username: data.username,
+        password: data.password
       })
       .then(response => {
         setIsLoggedIn(true);
@@ -61,23 +53,19 @@ export function Login() {
           <h1 className={styles.login__title}>Login</h1>
           <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
 
-          <form onSubmit={confirmLogin} className={styles.login__form} autoComplete="on">
+          <form onSubmit={handleSubmit(confirmLogin)} className={styles.login__form} autoComplete="off">
             <div className="form-container">
               <DefaultInput
                 type="text"
                 name="name"
                 content="Nome de usuário"
-                autoComplete="name"
-                onChange={onChangeUserName}
-                value={userName}
+                {...register('username')}
               />
               <PasswordInput
                 name="password"
                 id="password"
                 content="Senha"
-                autoComplete="current-password"
-                onChange={onChangePassword}
-                value={password}
+                {...register('password')}
               />
             </div>
             <button className="submit" type="submit">Entrar</button>
