@@ -5,10 +5,10 @@
   color: var(--tertiary-color);
 
   padding: .5rem .75rem;
-
-  width: 78%;
+  width: 80%;
   height: 2.25rem;
 
+  
   font-size: 1.125rem;
 
   &::placeholder {
@@ -26,6 +26,15 @@
 
 @media screen and (min-width: 768px) {
   .InputSearch{
-    width: auto;
+    display: block !important;
+    width: min(50%, 34rem);
+    height: 100%;
+
+    transition: all .2s ease-in-out;
+    &:focus-within{
+      -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+      -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+      box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+    }
   }
 }

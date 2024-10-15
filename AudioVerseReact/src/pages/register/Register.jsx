@@ -19,8 +19,6 @@ export function Register() {
   const password = watch('password');
 
   function createAccount(data){
-    console.log(data);
-
     api.post("/UserApp/cadastro", {
       username: data.username,
       password: data.password,

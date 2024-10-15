@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "../../../hooks/useAuth.js";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Menu } from "../menu/Menu.jsx";
 import { OpenMenu } from "../../icons/OpenMenu.jsx";
-import { Search } from "../search/Search.jsx";
 import { SearchIcon } from "../../icons/SearchIcon.jsx";
 import { InputSearch } from "../input-search/InputSearch.jsx";
+import { CloseMenu } from "../../icons/CloseMenu";
 
 import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
@@ -15,6 +15,10 @@ export function Header({ headerBoxShadow }){
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setSearchIsOpen] = useState(false);
+  // const [text, setText] = useState('');
+
+  // console.log(text);
+  
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -44,7 +48,7 @@ export function Header({ headerBoxShadow }){
           <img src={logo} alt="Logo AudioVerse" />
         </Link>
 
-        <InputSearch />
+        <InputSearch className="input-none" onChange={(search) => setText()} />
 
         <div>
           <nav className={styles.navbar}>
@@ -81,7 +85,14 @@ export function Header({ headerBoxShadow }){
         </div>
       </div>
 
-      {isSearchOpen && <Search closeSearch={closeSearch} />}
+      {isSearchOpen && (
+        <aside className={styles.search}>
+          <InputSearch onChange={(search) => setText()} />
+          <button onClick={closeSearch} className="button-close">
+            <CloseMenu />
+          </button>
+        </aside>
+      )}
       {isMenuOpen && <Menu closeMenu={closeMenu} />}
     </header>
   )

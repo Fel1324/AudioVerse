@@ -218,8 +218,8 @@ a{
   color: var(--link-color);
 }
 
-.input-search--fgrow{
-  flex-grow: 1;
+.input-none{
+  display: none;
 }
 
 .input-group{

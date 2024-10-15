@@ -21,8 +21,6 @@ export function Login() {
   }
 
   function confirmLogin(data){
-    console.log(data);
-
     api.post("/UserApp/login", {
         username: data.username,
         password: data.password
