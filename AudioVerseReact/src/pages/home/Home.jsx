@@ -8,15 +8,12 @@ import { AudioBookCarousel } from "../../components/audio-books/audio-book-carou
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
 
-import { useDeBounce } from "../../hooks/useDeBounce.js";
 import { api } from "../../lib/axios.js";
 import styles from "./Home.module.css";
 
 export function Home() {
   const navigate = useNavigate();
   const [audioBook, setAudioBook] = useState([]);
-  const [text, setText] = useState('');
-  const debouncedSearch = useDeBounce(text);
 
   function openAudioBook(id) {
     navigate(`/audiobook/${id}`);
@@ -28,19 +25,22 @@ export function Home() {
       .catch(err => console.log(err));
   }, []);
 
-  useEffect(() => {
-    if(debouncedSearch){
-      api.get(`/Book/detailed/filter/${debouncedSearch}`)
-        .then(response => {
-          response.data.id ? navigate(`/audiobook/${response.data.id}`) : alert("Nenhum resultado encontrado!");
-        })
-        .catch(err => console.log(err));
-    }
-  }, [debouncedSearch])
+  function filterAudioBook(e){
+    e.preventDefault();
+    const inputValue = e.target.children[0].value;
+
+    api.get(`/Book/detailed/filter/${inputValue}`)
+      .then(response => {
+        response.data.id ? navigate(`/audiobook/${response.data.id}`) : alert("Nenhum resultado encontrado!");
+      })
+      .catch(err => console.log(err));
+
+    e.target.reset();
+  }
 
   return (
     <>
-      <Header headerBoxShadow={false} value={text} onChange={search => setText(search)} />
+      <Header headerBoxShadow={false} onSubmit={filterAudioBook} />
 
       <main className={`${styles.home} main main-pd-bottom`}>
         <section className={styles.home__banner}>

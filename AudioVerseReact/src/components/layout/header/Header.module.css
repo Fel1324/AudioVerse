@@ -42,24 +42,6 @@
   }
 }
 
-.search {
-  background: var(--septenary-color);
-
-  width: 100%;
-  min-height: 5.875rem;
-
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
-
-  padding: 1.5625rem 1rem 1.5rem 1rem;
-}
-
 @media screen and (min-width: 768px) {
   .header{
     & > .header__container{

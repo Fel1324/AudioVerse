@@ -11,10 +11,9 @@ import { CloseMenu } from "../../icons/CloseMenu";
 import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
-export function Header({ headerBoxShadow, value, onChange }){
+export function Header({ headerBoxShadow, onSubmit }){
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setSearchIsOpen] = useState(false);
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -22,10 +21,6 @@ export function Header({ headerBoxShadow, value, onChange }){
 
   function closeMenu(){
     setIsMenuOpen(false);
-  }
-
-  function openSearch(){
-    setSearchIsOpen(true);
   }
 
   function closeSearch(){
@@ -44,7 +39,7 @@ export function Header({ headerBoxShadow, value, onChange }){
           <img src={logo} alt="Logo AudioVerse" />
         </Link>
 
-        <InputSearch className="input-none" value={value} onChange={onChange} />
+        <InputSearch onSubmit={onSubmit} />
 
         <div>
           <nav className={styles.navbar}>
@@ -71,24 +66,12 @@ export function Header({ headerBoxShadow, value, onChange }){
             </ul>
           </nav>
 
-          <button onClick={openSearch} className={`${styles.header__button} ${styles.openSearch}`} aria-label="Abrir barra de pesquisa">
-            <SearchIcon />
-          </button>
-
           <button onClick={openMenu} className={`${styles.header__button} ${styles.openMenu}`} aria-label="Abrir menu lateral">
             <OpenMenu />
           </button>
         </div>
       </div>
 
-      {isSearchOpen && (
-        <aside className={styles.search}>
-          <InputSearch value={value} onChange={onChange} />
-          <button onClick={closeSearch} className="button-close">
-            <CloseMenu />
-          </button>
-        </aside>
-      )}
       {isMenuOpen && <Menu closeMenu={closeMenu} />}
     </header>
   )
