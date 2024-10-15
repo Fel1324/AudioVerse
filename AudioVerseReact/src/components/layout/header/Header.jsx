@@ -11,14 +11,10 @@ import { CloseMenu } from "../../icons/CloseMenu";
 import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
-export function Header({ headerBoxShadow }){
+export function Header({ headerBoxShadow, value, onChange }){
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setSearchIsOpen] = useState(false);
-  // const [text, setText] = useState('');
-
-  // console.log(text);
-  
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -48,7 +44,7 @@ export function Header({ headerBoxShadow }){
           <img src={logo} alt="Logo AudioVerse" />
         </Link>
 
-        <InputSearch className="input-none" onChange={(search) => setText()} />
+        <InputSearch className="input-none" value={value} onChange={onChange} />
 
         <div>
           <nav className={styles.navbar}>
@@ -87,7 +83,7 @@ export function Header({ headerBoxShadow }){
 
       {isSearchOpen && (
         <aside className={styles.search}>
-          <InputSearch onChange={(search) => setText()} />
+          <InputSearch value={value} onChange={onChange} />
           <button onClick={closeSearch} className="button-close">
             <CloseMenu />
           </button>

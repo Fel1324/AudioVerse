@@ -90,6 +90,20 @@ public class BookController : ControllerBase
         return Ok(book);
     }
 
+    [HttpGet("detailed/filter/{title}")]
+    public IActionResult RecoverDetailedBookTitle(string title)
+    {
+        var book = _context.Books
+            .Where(b => b.Title == title)
+            .Include(b => b.Chapters)
+            .Include(b => b.GenreBooks)
+            .ThenInclude(gb => gb.Genre)
+            .Include(b => b.AuthorBooks)
+            .ThenInclude(ab => ab.Author)
+            .FirstOrDefault();
+        return Ok(book);
+    }
+
     [HttpGet("detailed")]
     public IActionResult RecoverAllDetailedBook()
     {

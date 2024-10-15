@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom"
 import { useAudioPlayer } from "../../hooks/useAudioPlayer.js";
 
@@ -10,15 +11,19 @@ import { AudioBookChapter } from "../../components/audio-books/audio-book-chapte
 import { ChevronDown } from "../../components/icons/ChevronDown.jsx";
 
 import { api } from "../../lib/axios.js";
+import { useDeBounce } from "../../hooks/useDeBounce.js";
 import styles from "./AudioBookDetails.module.css";
 
 export function AudioBookDetails() {
+  const navigate = useNavigate();
   const { audioRef } = useAudioPlayer();
   const { audioBookId } = useParams();
   const [audioBook, setAudioBook] = useState({});
   const [isListening, setIsListening] = useState(false);
   const [isChaptersOpen, setIsChaptersOpen] = useState(false);
   const [currentChapter, setCurrentChapter] = useState(0);
+  const [text, setText] = useState('');
+  const debouncedSearch = useDeBounce(text);
 
   function getAudioBookData(id) {
     api.get(`/Book/detailed/${id}`)
@@ -31,6 +36,16 @@ export function AudioBookDetails() {
   useEffect(() => {
     getAudioBookData(audioBookId);
   }, [audioBookId]);
+
+  useEffect(() => {
+    if(debouncedSearch){
+      api.get(`/Book/detailed/filter/${debouncedSearch}`)
+        .then(response => {
+          response.data.id ? navigate(`/audiobook/${response.data.id}`) : alert("Nenhum resultado encontrado!");
+        })
+        .catch(err => console.log(err));
+    }
+  }, [debouncedSearch])
 
   function listenAudioBook(){
     isListening ? setIsListening(false) : setIsListening(true);
@@ -67,7 +82,7 @@ export function AudioBookDetails() {
 
   return (
     <>
-      <Header headerBoxShadow />
+      <Header headerBoxShadow value={text} onChange={search => setText(search)} />
 
       <main className={`${styles.details} main main-pd-bottom`}>
         <div className={`${styles.details__container} container`}>
