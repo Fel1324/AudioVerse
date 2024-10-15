@@ -4,6 +4,7 @@
 
   & .details__name{
     color: var(--primary-color);
+    margin-top: 1.5rem;
 
     font-size: 1.75rem;
     font-weight: 700;
@@ -166,6 +167,10 @@
     & > .col_b__row_a{
       grid-area: col-b--row-a;
       align-self: end;
+
+      & .details__name{
+        margin-top: 0;
+      }
 
       & .details__yearpublication{
         display: inline;

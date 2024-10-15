@@ -71,13 +71,17 @@ export function AudioBookDetails() {
     e.preventDefault();
     const inputValue = e.target.children[0].value;
 
-    api.get(`/Book/detailed/filter/${inputValue}`)
-      .then(response => {
-        response.data.id ? navigate(`/audiobook/${response.data.id}`) : alert("Nenhum resultado encontrado!");
-      })
-      .catch(err => console.log(err));
+    if(inputValue.length > 0){
+      api.get(`/Book/detailed/filter/${inputValue}`)
+        .then(response => {
+          response.data.id ? navigate(`/audiobook/${response.data.id}`) : alert("Nenhum resultado encontrado!");
+        })
+        .catch(err => console.log(err));
+  
+      e.target.reset();
+    }
 
-    e.target.reset();
+    return;
   }
 
   return (

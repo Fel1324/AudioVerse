@@ -4,7 +4,7 @@
   align-items: center;
 
   border-radius: .75rem;
-  width: 40%;
+  width: 64%;
   max-width: 33.25rem;
 }
 
@@ -43,6 +43,7 @@
 
 @media screen and (min-width: 768px) {
   .formSearch{
+    width: 40%;
     transition: all .2s ease-in-out;
     &:focus-within{
       -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
