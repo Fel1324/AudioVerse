@@ -23,10 +23,6 @@ export function Header({ headerBoxShadow, onSubmit }){
     setIsMenuOpen(false);
   }
 
-  function closeSearch(){
-    setSearchIsOpen(false);
-  }
-
   function logOut(){
     localStorage.removeItem("Token");
     setIsLoggedIn(false);
@@ -35,7 +31,7 @@ export function Header({ headerBoxShadow, onSubmit }){
   return (
     <header className={`${styles.header} ${headerBoxShadow ? styles.headerBoxShadow : null}`}>
       <div className={styles.header__container}>
-        <Link to="/">
+        <Link to="/" className="logo">
           <img src={logo} alt="Logo AudioVerse" />
         </Link>
 

@@ -139,8 +139,30 @@ a{
   padding: 1.75rem;
 }
 
-.secondary-logo{
+.logo{
   border-radius: 50%;
+  outline: none;
+  transition: all .3s;
+  &:focus-within{
+    scale: 1.1;
+    -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+    -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+    box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+  }
+
+  & > img{
+    border-radius: 50%;
+    transition: all .3s;
+    &:hover{
+      scale: 1.1;
+      -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+      -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+      box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+    }
+  }
+}
+
+.secondary-logo{
   width: 4.5rem;
 }
 

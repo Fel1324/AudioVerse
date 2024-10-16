@@ -49,7 +49,7 @@ export function Register() {
   return (
     <div className="page-account">
       <header className="secondary-header">
-        <Link to="/">
+        <Link to="/" className="logo">
           <img className="secondary-logo" src={logo} alt="logo AudioVerse" />
         </Link>
       </header>
