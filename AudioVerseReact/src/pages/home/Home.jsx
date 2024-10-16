@@ -7,6 +7,7 @@ import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx
 import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
+import { Message } from "../../components/layout/message/Message.jsx";
 
 import { api } from "../../lib/axios.js";
 import styles from "./Home.module.css";
@@ -14,6 +15,7 @@ import styles from "./Home.module.css";
 export function Home() {
   const navigate = useNavigate();
   const [audioBook, setAudioBook] = useState([]);
+  const [message, setMessage] = useState(false);
 
   function openAudioBook(id) {
     navigate(`/audiobook/${id}`);
@@ -32,7 +34,7 @@ export function Home() {
     if(inputValue.length > 0){
       api.get(`/Book/detailed/filter/${inputValue}`)
         .then(response => {
-          response.data.id ? navigate(`/audiobook/${response.data.id}`) : alert("Nenhum resultado encontrado!");
+          response.data.id ? navigate(`/audiobook/${response.data.id}`) : setMessage(true);
         })
         .catch(err => console.log(err));
   
@@ -42,8 +44,17 @@ export function Home() {
     return;
   }
 
+  setTimeout(() => {
+    if(message){
+      setMessage(false)
+    }
+    clearTimeout();
+  }, 3000)
+
   return (
     <>
+      {message && <Message text={"Nenhum resultado encontrado!"} />}
+
       <Header headerBoxShadow={false} onSubmit={filterAudioBook} />
 
       <main className={`${styles.home} main main-pd-bottom`}>

@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 import { Menu } from "../menu/Menu.jsx";
 import { OpenMenu } from "../../icons/OpenMenu.jsx";
-import { SearchIcon } from "../../icons/SearchIcon.jsx";
 import { InputSearch } from "../input-search/InputSearch.jsx";
-import { CloseMenu } from "../../icons/CloseMenu";
+import { Message } from "../../../components/layout/message/Message.jsx";
 
 import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
@@ -14,6 +13,7 @@ import styles from "./Header.module.css";
 export function Header({ headerBoxShadow, onSubmit }){
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [message, setMessage] = useState(false);
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -26,49 +26,61 @@ export function Header({ headerBoxShadow, onSubmit }){
   function logOut(){
     localStorage.removeItem("Token");
     setIsLoggedIn(false);
+    setMessage(true);
   }
 
+  setTimeout(() => {
+    if(message){
+      setMessage(false)
+    }
+    clearTimeout();
+  }, 3000)
+
   return (
-    <header className={`${styles.header} ${headerBoxShadow ? styles.headerBoxShadow : null}`}>
-      <div className={styles.header__container}>
-        <Link to="/" className="logo">
-          <img src={logo} alt="Logo AudioVerse" />
-        </Link>
+    <>
+      {message && <Message text={"Você saiu de sua conta!"} />}
 
-        <InputSearch onSubmit={onSubmit} />
+      <header className={`${styles.header} ${headerBoxShadow ? styles.headerBoxShadow : null}`}>
+        <div className={styles.header__container}>
+          <Link to="/" className="logo">
+            <img src={logo} alt="Logo AudioVerse" />
+          </Link>
 
-        <div>
-          <nav className={styles.navbar}>
-            <ul>
-              <li>
-                <Link className={`${styles.navbar__link} primary-navbar-link`} to="/">
-                  Início
-                </Link>
-              </li>
-              <li>
-                <Link className={`${styles.navbar__link} primary-navbar-link`} to="/favorites">
-                  Favoritos
-                </Link>
-              </li>
-              <li>
-                {isLoggedIn ? (
-                  <button onClick={logOut} className={`${styles.navbar__link} primary-navbar-link`}>Sair</button>
-                ) : (
-                  <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
-                    Entrar
+          <InputSearch onSubmit={onSubmit} />
+
+          <div>
+            <nav className={styles.navbar}>
+              <ul>
+                <li>
+                  <Link className={`${styles.navbar__link} primary-navbar-link`} to="/">
+                    Início
                   </Link>
-                )}
-              </li>
-            </ul>
-          </nav>
+                </li>
+                <li>
+                  <Link className={`${styles.navbar__link} primary-navbar-link`} to="/favorites">
+                    Favoritos
+                  </Link>
+                </li>
+                <li>
+                  {isLoggedIn ? (
+                    <button onClick={logOut} className={`${styles.navbar__link} primary-navbar-link`}>Sair</button>
+                  ) : (
+                    <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
+                      Entrar
+                    </Link>
+                  )}
+                </li>
+              </ul>
+            </nav>
 
-          <button onClick={openMenu} className={`${styles.header__button} ${styles.openMenu}`} aria-label="Abrir menu lateral">
-            <OpenMenu />
-          </button>
+            <button onClick={openMenu} className={`${styles.header__button} ${styles.openMenu}`} aria-label="Abrir menu lateral">
+              <OpenMenu />
+            </button>
+          </div>
         </div>
-      </div>
 
-      {isMenuOpen && <Menu closeMenu={closeMenu} />}
-    </header>
+        {isMenuOpen && <Menu closeMenu={closeMenu} />}
+      </header>
+    </>
   )
 }

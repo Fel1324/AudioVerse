@@ -9,6 +9,7 @@ import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx
 import { AudioBookListening } from "../../components/audio-books/audio-book-listening/AudioBookListening.jsx";
 import { AudioBookChapter } from "../../components/audio-books/audio-book-chapter/AudioBookChapter.jsx";
 import { ChevronDown } from "../../components/icons/ChevronDown.jsx";
+import { Message } from "../../components/layout/message/Message.jsx";
 
 import { api } from "../../lib/axios.js";
 import styles from "./AudioBookDetails.module.css";
@@ -21,6 +22,7 @@ export function AudioBookDetails() {
   const [isListening, setIsListening] = useState(false);
   const [isChaptersOpen, setIsChaptersOpen] = useState(false);
   const [currentChapter, setCurrentChapter] = useState(0);
+  const [message, setMessage] = useState(false);
 
   function getAudioBookData(id) {
     api.get(`/Book/detailed/${id}`)
@@ -74,7 +76,7 @@ export function AudioBookDetails() {
     if(inputValue.length > 0){
       api.get(`/Book/detailed/filter/${inputValue}`)
         .then(response => {
-          response.data.id ? navigate(`/audiobook/${response.data.id}`) : alert("Nenhum resultado encontrado!");
+          response.data.id ? navigate(`/audiobook/${response.data.id}`) : setMessage(true);;
         })
         .catch(err => console.log(err));
   
@@ -84,8 +86,17 @@ export function AudioBookDetails() {
     return;
   }
 
+  setTimeout(() => {
+    if(message){
+      setMessage(false)
+    }
+    clearTimeout();
+  }, 3000)
+
   return (
     <>
+      {message && <Message text={"Nenhum resultado encontrado!"} />}
+
       <Header headerBoxShadow onSubmit={filterAudioBook} />
 
       <main className={`${styles.details} main main-pd-bottom`}>
