@@ -13,7 +13,7 @@ import styles from "./Login.module.css";
 
 export function Login() {
   const { isLoggedIn, setIsLoggedIn} = useAuth();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: {errors} } = useForm();
   const navigate = useNavigate();
   
   function navigateToRegister(){
@@ -53,18 +53,28 @@ export function Login() {
 
           <form onSubmit={handleSubmit(confirmLogin)} className={styles.login__form} autoComplete="off">
             <div className="form-container">
-              <DefaultInput
-                type="text"
-                name="name"
-                content="Nome de usuário"
-                {...register('username')}
-              />
-              <PasswordInput
-                name="password"
-                id="password"
-                content="Senha"
-                {...register('password')}
-              />
+              <div>
+                <DefaultInput
+                  type="text"
+                  name="name"
+                  content="Nome de usuário"
+                  {...register('username', {
+                    required: { message: 'O nome de usuário é obrigatório!', value: true },
+                  })}
+                />
+                {errors?.username?.message && <p className="error-message">{errors?.username?.message}</p>}
+              </div>
+              <div>
+                <PasswordInput
+                  name="password"
+                  id="password"
+                  content="Senha"
+                  {...register('password', {
+                    required: { message: 'A senha é obrigatória!', value: true },
+                  })}
+                />
+                {errors?.password?.message && <p className="error-message">{errors?.password?.message}</p>}
+              </div>
             </div>
             <button className="submit" type="submit">Entrar</button>
           </form>
