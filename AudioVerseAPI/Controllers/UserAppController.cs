@@ -11,7 +11,7 @@ namespace AudioVerseAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserAppController : ControllerBase 
+public class UserAppController : ControllerBase
 {
     private UserAppService _userAppService;
 
@@ -30,16 +30,22 @@ public class UserAppController : ControllerBase
         }
         catch (ApplicationException ex)
         {
-            return BadRequest(ex.Message);  
+            return BadRequest(ex.Message);
         }
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync(LoginUserAppDto dto)
     {
-        var token = await _userAppService.Login(dto);
-        return Ok(token);
+        try
+        {
+            var token = await _userAppService.Login(dto);
+            return Ok(token);
+        }
+        catch (ApplicationException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
     }
 }
-
 

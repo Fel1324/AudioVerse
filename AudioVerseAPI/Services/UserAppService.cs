@@ -37,31 +37,35 @@ public class UserAppService
 
             if (result.Errors.Any(e => e.Code == "DuplicateUserName"))
             {
-                throw new ApplicationException("Usuário já cadastrado.");
+                throw new ApplicationException("Esse usuário já foi cadastrado.");
             }
 
             throw new ApplicationException($"Falha ao cadastrar: {string.Join(", ", errorMessages)}");
         }
     }
 
+ 
     public async Task<string> Login(LoginUserAppDto dto)
     {
-        var result = await _signInManager.PasswordSignInAsync
-            (dto.Username, dto.Password, false, false);
+        
+        var userApp = _signInManager.UserManager.Users
+            .FirstOrDefault(user => user.NormalizedUserName == dto.Username.ToUpper());
+
+        if (userApp == null)
+        {
+            throw new ApplicationException("Usuário não encontrado.");
+        }
+
+        
+        var result = await _signInManager.PasswordSignInAsync(dto.Username, dto.Password, false, false);
 
         if (!result.Succeeded)
         {
-            throw new ApplicationException("Usuário não autenticado!");
+            throw new ApplicationException("Senha incorreta.");
         }
 
-        var userApp = _signInManager
-            .UserManager
-            .Users
-            .FirstOrDefault(user => user.NormalizedUserName ==
-                dto.Username.ToUpper());
-
+        
         var token = _tokenService.GenerateToken(userApp);
-
         return token;
     }
 }
