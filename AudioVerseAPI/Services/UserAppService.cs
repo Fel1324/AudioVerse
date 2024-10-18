@@ -27,15 +27,20 @@ public class UserAppService
 
     public async Task Register(CreateUserAppDto dto)
     {
-        UserApp userApp = _mapper.Map<UserApp> (dto);
+        UserApp userApp = _mapper.Map<UserApp>(dto);
 
-        IdentityResult result = await _userManager.CreateAsync
-            (userApp, dto.Password);
+        IdentityResult result = await _userManager.CreateAsync(userApp, dto.Password);
 
         if (!result.Succeeded)
         {
-          throw new ApplicationException("Falha ao cadastrar: Sua senha deve conter a primeira letra maíuscula," +
-          "números e caracteres especiais");
+            var errorMessages = result.Errors.Select(e => e.Description).ToList();
+
+            if (result.Errors.Any(e => e.Code == "DuplicateUserName" || e.Code == "DuplicateEmail"))
+            {
+                throw new ApplicationException("Usuário ou email já cadastrado.");
+            }
+
+            throw new ApplicationException($"Falha ao cadastrar: {string.Join(", ", errorMessages)}");
         }
     }
 

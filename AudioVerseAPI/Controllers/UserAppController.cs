@@ -23,8 +23,15 @@ public class UserAppController : ControllerBase
     [HttpPost("cadastro")]
     public async Task<IActionResult> RegisterAppUser(CreateUserAppDto dto)
     {
-        await _userAppService.Register(dto);
-        return Ok("Usúario Cadastrado!");
+        try
+        {
+            await _userAppService.Register(dto);
+            return Ok("Usuário Cadastrado!");
+        }
+        catch (ApplicationException ex)
+        {
+            return BadRequest(ex.Message);  
+        }
     }
 
     [HttpPost("login")]
