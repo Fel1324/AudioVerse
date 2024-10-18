@@ -8,7 +8,7 @@
   top: 5.25rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 100000;
 
   border: .25rem solid var(--senary-color);
   border-radius: .75rem;

@@ -37,7 +37,7 @@ public class UserAppService
 
             if (result.Errors.Any(e => e.Code == "DuplicateUserName"))
             {
-                throw new ApplicationException("Este usuário já foi cadastrado.");
+                throw new ApplicationException("Este usuário já foi cadastrado!");
             }
 
             throw new ApplicationException($"Falha ao cadastrar: {string.Join(", ", errorMessages)}");
@@ -53,7 +53,7 @@ public class UserAppService
 
         if (userApp == null)
         {
-            throw new ApplicationException("Usuário não encontrado.");
+            throw new ApplicationException("Nome ou senha inválidos!");
         }
 
         
@@ -61,7 +61,7 @@ public class UserAppService
 
         if (!result.Succeeded)
         {
-            throw new ApplicationException("Senha incorreta.");
+            throw new ApplicationException("Nome ou senha inválidos!");
         }
 
         
