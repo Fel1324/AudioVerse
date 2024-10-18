@@ -35,9 +35,9 @@ public class UserAppService
         {
             var errorMessages = result.Errors.Select(e => e.Description).ToList();
 
-            if (result.Errors.Any(e => e.Code == "DuplicateUserName" || e.Code == "DuplicateEmail"))
+            if (result.Errors.Any(e => e.Code == "DuplicateUserName"))
             {
-                throw new ApplicationException("Usuário ou email já cadastrado.");
+                throw new ApplicationException("Usuário já cadastrado.");
             }
 
             throw new ApplicationException($"Falha ao cadastrar: {string.Join(", ", errorMessages)}");
