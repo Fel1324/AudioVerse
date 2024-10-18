@@ -37,7 +37,7 @@ public class UserAppService
 
             if (result.Errors.Any(e => e.Code == "DuplicateUserName"))
             {
-                throw new ApplicationException("Esse usuário já foi cadastrado.");
+                throw new ApplicationException("Este usuário já foi cadastrado.");
             }
 
             throw new ApplicationException($"Falha ao cadastrar: {string.Join(", ", errorMessages)}");
