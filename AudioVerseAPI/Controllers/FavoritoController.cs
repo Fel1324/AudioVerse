@@ -43,11 +43,11 @@ public class FavoritoController : ControllerBase
 
     [HttpGet("{id}")]
     public IActionResult RecoverFavoritoById(int id)
-    {
+    {       
         var favorito = _context.Favoritos
             .FirstOrDefault(favorito => favorito.Id == id);
         if (favorito == null) return NotFound();
-        var favoritoDto = _mapper.Map<ReadFavoritoDto>(favorito);
+            var favoritoDto = _mapper.Map<ReadFavoritoDto>(favorito);
         return Ok(favoritoDto);
     }
 
@@ -83,13 +83,13 @@ public class FavoritoController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteFavorito(int id)
     {
-        var favorito = await _context.Favoritos.FindAsync(id);
-        if (favorito == null)
+        var userApp = await _context.UserApps.FindAsync(id);
+        if (userApp == null)
         {
             return NotFound();
         }
 
-        _context.Favoritos.Remove(favorito);
+        _context.UserApps.Remove(userApp);
         await _context.SaveChangesAsync();
 
         return NoContent();
