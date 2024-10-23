@@ -42,4 +42,5 @@ public class Book
     public ICollection<Chapter> Chapters { get; set; } 
     public ICollection<GenreBook> GenreBooks { get; set; }
     public ICollection<AuthorBook> AuthorBooks { get; set; }
+    public ICollection<Favorito> Favoritos { get; set; }
 }

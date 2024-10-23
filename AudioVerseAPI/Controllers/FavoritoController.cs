@@ -43,13 +43,34 @@ public class FavoritoController : ControllerBase
 
     [HttpGet("{id}")]
     public IActionResult RecoverFavoritoById(int id)
-    {       
+    {
         var favorito = _context.Favoritos
+            .Include(f => f.UserApp) 
+            .Include(f => f.Book)
+                .ThenInclude(b => b.GenreBooks) 
             .FirstOrDefault(favorito => favorito.Id == id);
+
         if (favorito == null) return NotFound();
-            var favoritoDto = _mapper.Map<ReadFavoritoDto>(favorito);
+
+        var favoritoDto = _mapper.Map<ReadFavoritoDto>(favorito);
+
         return Ok(favoritoDto);
     }
+
+    [HttpGet("favorito/user")]
+    public IActionResult RecoverDetailedBookTitle(string title)
+    {
+        var book = _context.Books
+            .Where(b => b.Title == title)
+            .Include(b => b.GenreBooks)
+            .ThenInclude(gb => gb.Genre)
+            .Include(b => b.AuthorBooks)
+            .ThenInclude(ab => ab.Author)
+            .Include(b => b.Favoritos)
+            .FirstOrDefault();
+        return Ok(book);
+    }
+
 
     [HttpPut("{id}")]
     public async Task<IActionResult> PutFavorito(int id, Favorito favorito)
