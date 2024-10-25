@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AudioVerseAPI.Migrations
 {
     [DbContext(typeof(AudioVerseContext))]
-    [Migration("20240930002547_correcterrorsname")]
-    partial class correcterrorsname
+    [Migration("20241025141553_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -2093,17 +2093,17 @@ namespace AudioVerseAPI.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserAppId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("DateAdded")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("UserAppId1")
+                    b.Property<string>("UserAppId")
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("UserAppId1");
+                    b.HasIndex("UserAppId");
 
                     b.ToTable("Favoritos");
                 });
@@ -2629,14 +2629,14 @@ namespace AudioVerseAPI.Migrations
             modelBuilder.Entity("AudioVerseAPI.Models.Favorito", b =>
                 {
                     b.HasOne("AudioVerseAPI.Models.Book", "Book")
-                        .WithMany()
+                        .WithMany("Favoritos")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("AudioVerseAPI.Models.UserApp", "UserApp")
                         .WithMany("Favoritos")
-                        .HasForeignKey("UserAppId1");
+                        .HasForeignKey("UserAppId");
 
                     b.Navigation("Book");
 
@@ -2723,6 +2723,8 @@ namespace AudioVerseAPI.Migrations
                     b.Navigation("AuthorBooks");
 
                     b.Navigation("Chapters");
+
+                    b.Navigation("Favoritos");
 
                     b.Navigation("GenreBooks");
                 });

@@ -57,48 +57,16 @@ public class FavoritoController : ControllerBase
         return Ok(favoritoDto);
     }
 
-    [HttpGet("favorito/user")]
-    public IActionResult RecoverDetailedBookTitle(string title)
+    [HttpGet("byuser/{user}")]
+    public IActionResult RecoverDetailedBookTitle(string user)
     {
-        var book = _context.Books
-            .Where(b => b.Title == title)
-            .Include(b => b.GenreBooks)
-            .ThenInclude(gb => gb.Genre)
-            .Include(b => b.AuthorBooks)
-            .ThenInclude(ab => ab.Author)
-            .Include(b => b.Favoritos)
+        var book = _context.Favoritos
+            .Where(f => f.UserAppId == user)
+            .Include(f => f.Book)
+            .ThenInclude(b => b.GenreBooks)
+            .ThenInclude(g => g.Genre)
             .FirstOrDefault();
         return Ok(book);
-    }
-
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutFavorito(int id, Favorito favorito)
-    {
-        if (id != favorito.Id)
-        {
-            return BadRequest();
-        }
-
-        _context.Entry(favorito).State = EntityState.Modified;
-
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!FavoritoExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
-
-        return NoContent();
     }
 
     [HttpDelete("{id}")]

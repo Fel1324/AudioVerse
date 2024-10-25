@@ -12,8 +12,11 @@ public class Favorito
     [JsonIgnore]
     public Book? Book { get; set; }
 
-    public int UserAppId { get; set; }
+    public string? UserAppId { get; set; }
 
     [JsonIgnore]
+    [ForeignKey("UserAppId")]
     public UserApp? UserApp { get; set; }
+
+    public DateTime? DateAdded { get; set; } = DateTime.Now;
 }
