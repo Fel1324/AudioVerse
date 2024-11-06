@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
+import { useMessage } from "../../hooks/useMessage.js";
 
 import { useAuth } from "../../hooks/useAuth.js";
 import { api } from "../../lib/axios.js";
@@ -13,11 +14,10 @@ import logo from "../../assets/logo.svg";
 import styles from "./Login.module.css";
 
 export function Login() {
+  const { message, setMessage, messageText, setMessageText } = useMessage();
   const { isLoggedIn, setIsLoggedIn} = useAuth();
   const { register, handleSubmit, formState: {errors} } = useForm();
   const navigate = useNavigate();
-  const [message, setMessage] = useState();
-  const [messageText, setMessageText] = useState('');
   
   function navigateToRegister(){
     navigate("/register");
@@ -37,13 +37,6 @@ export function Login() {
         setMessageText(error.response.data);
       });
   }
-
-  setTimeout(() => {
-    if(message){
-      setMessage(false)
-    }
-    clearTimeout();
-  }, 3000)
 
   useEffect(() => {
     if(isLoggedIn){

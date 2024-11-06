@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth.js";
+import { useMessage } from "../../../hooks/useMessage.js";
+import { Link } from "react-router-dom";
 
 import { Message } from "../../../components/layout/message/Message.jsx";
 import { CloseMenu } from "../../icons/CloseMenu";
@@ -9,20 +9,13 @@ import styles from "./Menu.module.css";
 
 export function Menu({closeMenu}) {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const [message, setMessage] = useState(false);
+  const { message, setMessage } = useMessage();
 
   function logOut(){
     localStorage.removeItem("Token");
     setIsLoggedIn(false);
     setMessage(true);
   }
-
-  setTimeout(() => {
-    if(message){
-      setMessage(false)
-    }
-    clearTimeout();
-  }, 3000)
 
   return (
     <>

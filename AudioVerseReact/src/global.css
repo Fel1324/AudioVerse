@@ -144,7 +144,6 @@ a{
   outline: none;
   transition: all .3s;
   &:focus-within{
-    scale: 1.1;
     -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
     -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
     box-shadow: 0 0 .75rem .0625rem var(--secondary-color);

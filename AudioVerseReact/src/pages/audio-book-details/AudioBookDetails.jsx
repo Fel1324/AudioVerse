@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom"
-import { useAudioPlayer } from "../../hooks/useAudioPlayer.js";
+import { useMessage } from "../../hooks/useMessage.js";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx"
@@ -16,13 +16,12 @@ import styles from "./AudioBookDetails.module.css";
 
 export function AudioBookDetails() {
   const navigate = useNavigate();
-  const { audioRef } = useAudioPlayer();
+  const { message, setMessage } = useMessage();
   const { audioBookId } = useParams();
   const [audioBook, setAudioBook] = useState({});
   const [isListening, setIsListening] = useState(false);
   const [isChaptersOpen, setIsChaptersOpen] = useState(false);
   const [currentChapter, setCurrentChapter] = useState(0);
-  const [message, setMessage] = useState(false);
 
   function getAudioBookData(id) {
     api.get(`/Book/detailed/${id}`)
@@ -85,13 +84,6 @@ export function AudioBookDetails() {
 
     return;
   }
-
-  setTimeout(() => {
-    if(message){
-      setMessage(false)
-    }
-    clearTimeout();
-  }, 3000)
 
   return (
     <>

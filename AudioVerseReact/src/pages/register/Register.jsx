@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useMessage } from "../../hooks/useMessage.js";
 
 import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
 import { PasswordInput } from "../../components/forms/password-input/PasswordInput";
@@ -13,11 +14,10 @@ import logo from "../../assets/logo.svg";
 import styles from "./Register.module.css";
 
 export function Register() {
+  const { message, setMessage, messageText, setMessageText } = useMessage();
   const { register, handleSubmit, watch, formState: {errors}} = useForm();
   const { isLoggedIn, setIsLoggedIn} = useAuth();
   const navigate = useNavigate();
-  const [message, setMessage] = useState();
-  const [messageText, setMessageText] = useState('');
 
   const password = watch('password');
 
@@ -45,13 +45,6 @@ export function Register() {
       setMessageText(error.response.data);
     });
   }
-
-  setTimeout(() => {
-    if(message){
-      setMessage(false)
-    }
-    clearTimeout();
-  }, 3000)
 
   useEffect(() => {
     if(isLoggedIn){

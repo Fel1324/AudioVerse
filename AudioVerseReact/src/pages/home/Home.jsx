@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMessage } from "../../hooks/useMessage.js";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { AudioBook } from "../../components/audio-books/audio-book/AudioBook.jsx";
-import { AudioBookCarousel } from "../../components/audio-books/audio-book-carousel/AudioBookCarousel.jsx";
 import { OpenBook } from "../../components/icons/OpenBook.jsx";
 import { OpenBookDesktop } from "../../components/icons/OpenBookDesktop.jsx";
 import { Message } from "../../components/layout/message/Message.jsx";
@@ -13,9 +13,9 @@ import { api } from "../../lib/axios.js";
 import styles from "./Home.module.css";
 
 export function Home() {
+  const { message, setMessage } = useMessage();
   const navigate = useNavigate();
   const [audioBook, setAudioBook] = useState([]);
-  const [message, setMessage] = useState(false);
 
   function openAudioBook(id) {
     navigate(`/audiobook/${id}`);
@@ -43,13 +43,6 @@ export function Home() {
 
     return;
   }
-
-  setTimeout(() => {
-    if(message){
-      setMessage(false)
-    }
-    clearTimeout();
-  }, 3000)
 
   return (
     <>

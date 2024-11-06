@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useMessage } from "../../hooks/useMessage.js";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
@@ -11,9 +11,9 @@ import { api } from "../../lib/axios.js";
 import { useAuth } from "../../hooks/useAuth.js";
 
 export function Favorites(){
+  const { message, setMessage } = useMessage();
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
-  const [message, setMessage] = useState(false);
 
   function filterAudioBook(e){
     e.preventDefault();
@@ -31,13 +31,6 @@ export function Favorites(){
 
     return;
   }
-
-  setTimeout(() => {
-    if(message){
-      setMessage(false)
-    }
-    clearTimeout();
-  }, 3000)
 
   return (
     <>

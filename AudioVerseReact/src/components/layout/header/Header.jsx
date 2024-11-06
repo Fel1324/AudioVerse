@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../../hooks/useAuth.js";
+import { useMessage } from "../../../hooks/useMessage.js";
 import { Link } from "react-router-dom";
 
 import { Menu } from "../menu/Menu.jsx";
@@ -11,9 +12,9 @@ import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
 export function Header({ headerBoxShadow, onSubmit }){
+  const { message, setMessage } = useMessage();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [message, setMessage] = useState(false);
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -28,13 +29,6 @@ export function Header({ headerBoxShadow, onSubmit }){
     setIsLoggedIn(false);
     setMessage(true);
   }
-
-  setTimeout(() => {
-    if(message){
-      setMessage(false)
-    }
-    clearTimeout();
-  }, 3000)
 
   return (
     <>
