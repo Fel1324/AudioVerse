@@ -13,7 +13,7 @@ import { api } from "../../lib/axios.js";
 import styles from "./Home.module.css";
 
 export function Home() {
-  const { message, setMessage } = useMessage();
+  const { message, setMessage, messageText, setMessageText } = useMessage();
   const navigate = useNavigate();
   const [audioBook, setAudioBook] = useState([]);
 
@@ -31,6 +31,12 @@ export function Home() {
       api.get(`/Book/detailed/filter/${inputValue}`)
         .then(response => {
           response.data.id ? navigate(`/audiobook/${response.data.id}`) : setMessage(true);
+          if(response.data.id){
+            navigate(`/audiobook/${response.data.id}`);
+          } else {
+            setMessage(true);
+            setMessageText("Nenhum resultado encontrado!");
+          }
         })
         .catch(err => console.log(err));
   
@@ -42,7 +48,7 @@ export function Home() {
 
   return (
     <>
-      {message && <Message text={"Nenhum resultado encontrado!"} />}
+      {message && <Message text={messageText} />}
 
       <Header headerBoxShadow={false} onSubmit={filterAudioBook} />
 

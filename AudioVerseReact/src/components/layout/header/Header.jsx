@@ -12,7 +12,7 @@ import logo from "../../../assets/logo.svg";
 import styles from "./Header.module.css";
 
 export function Header({ headerBoxShadow, onSubmit }){
-  const { message, setMessage } = useMessage();
+  const { message, setMessage, messageText, setMessageText } = useMessage();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,6 +28,7 @@ export function Header({ headerBoxShadow, onSubmit }){
     localStorage.removeItem("Token");
     setIsLoggedIn(false);
     setMessage(true);
+    setMessageText("Você saiu de sua conta!");
   }
 
   function logIn(){
@@ -36,7 +37,7 @@ export function Header({ headerBoxShadow, onSubmit }){
 
   return (
     <>
-      {message && <Message text={"Você saiu de sua conta!"} />}
+      {message && <Message text={messageText} />}
 
       <header className={`${styles.header} ${headerBoxShadow ? styles.headerBoxShadow : null}`}>
         <div className={styles.header__container}>

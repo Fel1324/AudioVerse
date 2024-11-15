@@ -9,17 +9,18 @@ import styles from "./Menu.module.css";
 
 export function Menu({closeMenu}) {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const { message, setMessage } = useMessage();
+  const { message, setMessage, messageText, setMessageText } = useMessage();
 
   function logOut(){
     localStorage.removeItem("Token");
     setIsLoggedIn(false);
     setMessage(true);
+    setMessageText("Você saiu de sua conta!");
   }
 
   return (
     <>
-      {message && <Message text={"Você saiu de sua conta!"} />}
+      {message && <Message text={messageText} />}
 
       <nav className={styles.menu}>
         <div className={styles.menu__header}>

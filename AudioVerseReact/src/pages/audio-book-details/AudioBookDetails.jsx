@@ -16,7 +16,7 @@ import styles from "./AudioBookDetails.module.css";
 
 export function AudioBookDetails() {
   const navigate = useNavigate();
-  const { message, setMessage } = useMessage();
+  const { message, setMessage, messageText, setMessageText } = useMessage();
   const { audioBookId } = useParams();
   const [audioBook, setAudioBook] = useState({});
   const [isListening, setIsListening] = useState(false);
@@ -75,7 +75,12 @@ export function AudioBookDetails() {
     if(inputValue.length > 0){
       api.get(`/Book/detailed/filter/${inputValue}`)
         .then(response => {
-          response.data.id ? navigate(`/audiobook/${response.data.id}`) : setMessage(true);;
+          if(response.data.id){
+            navigate(`/audiobook/${response.data.id}`)
+          } else {
+            setMessage(true);
+            setMessageText("Nenhum resultado encontrado!");
+          }
         })
         .catch(err => console.log(err));
   
@@ -87,7 +92,7 @@ export function AudioBookDetails() {
 
   return (
     <>
-      {message && <Message text={"Nenhum resultado encontrado!"} />}
+      {message && <Message text={messageText} />}
 
       <Header headerBoxShadow onSubmit={filterAudioBook} />
 

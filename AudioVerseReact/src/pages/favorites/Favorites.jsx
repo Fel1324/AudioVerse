@@ -11,7 +11,7 @@ import { api } from "../../lib/axios.js";
 import { useAuth } from "../../hooks/useAuth.js";
 
 export function Favorites(){
-  const { message, setMessage } = useMessage();
+  const { message, setMessage, messageText, setMessageText } = useMessage();
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -22,7 +22,12 @@ export function Favorites(){
     if(inputValue.length > 0){
       api.get(`/Book/detailed/filter/${inputValue}`)
         .then(response => {
-          response.data.id ? navigate(`/audiobook/${response.data.id}`) : setMessage(true);
+          if(response.data.id){
+            navigate(`/audiobook/${response.data.id}`)  
+          } else {
+            setMessage(true);
+            setMessageText("Nenhum resultado encontrado!");
+          }
         })
         .catch(err => console.log(err));
   
@@ -34,7 +39,7 @@ export function Favorites(){
 
   return (
     <>
-      {message && <Message text={"Nenhum resultado encontrado!"} />}
+      {message && <Message text={messageText} />}
 
       <Header headerBoxShadow onSubmit={filterAudioBook} />
 
