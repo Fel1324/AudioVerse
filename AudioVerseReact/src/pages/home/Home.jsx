@@ -17,10 +17,6 @@ export function Home() {
   const navigate = useNavigate();
   const [audioBook, setAudioBook] = useState([]);
 
-  function openAudioBook(id) {
-    navigate(`/audiobook/${id}`);
-  }
-
   useEffect(() => {
     api.get("/Book/detailed/")
       .then(response => setAudioBook(response.data))
@@ -82,14 +78,11 @@ export function Home() {
                     name={adbk.title}
                     audioBookCover={adbk.bookImage}
                     parentalRating={adbk.parentalRating}
-                    onOpenAudioBook={openAudioBook}
                   />
                 ))}
               </ul>
             </div>
           </section>
-
-          {/* <AudioBookCarousel /> */}
         </div>
       </main>
 

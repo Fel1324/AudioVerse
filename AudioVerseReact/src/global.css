@@ -124,10 +124,6 @@ a{
   flex-grow: 1;
 }
 
-.main-pd-bottom{
-  padding-bottom: 1.5rem;
-}
-
 .container{
   width: min(100%, 75rem);
   padding: 1rem;
@@ -171,7 +167,7 @@ a{
 }
 
 .footer-mg-top{
-  margin-top: 8rem;
+  margin-top: 3rem;
 }
 
 .form-container{
@@ -342,12 +338,12 @@ a{
     padding-inline: 2rem;
   }
 
-  .footer-mg-top{
-    margin-top: 9rem;
-  }
-
   .display-grid {
     gap: 1.5rem;
+  }
+
+  .footer-mg-top{
+    margin-top: 4rem;
   }
 }
 
@@ -391,7 +387,7 @@ a{
   }
 
   .footer-mg-top{
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
 }
 

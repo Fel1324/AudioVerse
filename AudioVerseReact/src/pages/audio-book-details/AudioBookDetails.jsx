@@ -91,7 +91,7 @@ export function AudioBookDetails() {
 
       <Header headerBoxShadow onSubmit={filterAudioBook} />
 
-      <main className={`${styles.details} main main-pd-bottom`}>
+      <main className={`${styles.details} main`}>
         <div className={`${styles.details__container} container`}>
           <section className={styles.details__audiobook}>
             <div className={styles.col_b__row_a}>

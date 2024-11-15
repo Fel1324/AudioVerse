@@ -116,9 +116,6 @@
     gap: .25rem;
 
     transition: scale .3s;
-    &:hover{
-      scale: 1.1;
-    }
   }
 }
 
@@ -213,5 +210,11 @@
 
   .details__chapters{
     margin-bottom: 1.5rem;
+
+    & > .chapters__title{
+      &:hover{
+        scale: 1.1;
+      }
+    }
   }
 }
