@@ -244,6 +244,15 @@ a{
   }
 }
 
+.linkBack{
+  width: 100%;
+  margin-bottom: .5rem;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .input-none{
   display: none;
 }

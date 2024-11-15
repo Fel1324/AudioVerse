@@ -16,3 +16,24 @@
 .register__submit{
   margin-top: 2.75rem;
 }
+
+.register__footer{
+  text-align: left;
+  margin-top: 2rem;
+
+  & > .register__paragraph{
+    color: var(--primary-color);
+  }
+
+  & > .register__button{
+    background-color: var(--quaternary-color);
+    border-radius: .625rem;
+    color: var(--primary-color);
+
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    padding: .5rem 1.125rem;
+    margin-top: .75rem;
+  }
+}
