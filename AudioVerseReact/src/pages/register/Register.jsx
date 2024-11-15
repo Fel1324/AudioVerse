@@ -5,6 +5,7 @@ import { useMessage } from "../../hooks/useMessage.js";
 
 import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
 import { PasswordInput } from "../../components/forms/password-input/PasswordInput";
+import { ArrowLeft } from "../../components/icons/ArrowLeft.jsx";
 import { Message } from "../../components/layout/message/Message.jsx";
 
 import { api } from "../../lib/axios";
@@ -52,6 +53,14 @@ export function Register() {
     }
   }, [isLoggedIn]);
 
+  function navigateToHome(){
+    navigate("/");
+  }
+
+  function navigateToLogin(){
+    navigate("/login");
+  }
+
   return (
     <>
       {message && <Message text={messageText} />}
@@ -65,6 +74,12 @@ export function Register() {
 
         <main className="main">
           <div className="secondary-container">
+            <div className="linkBack">
+              <button onClick={navigateToHome} aria-label="Voltar para página inicial" title="Voltar para página inicial">
+                <ArrowLeft />
+              </button>
+            </div>
+
             <p className="paragraph">Mergulhe em audiobooks de obras de domínio público, disponíveis para ouvir a qualquer momento, em qualquer lugar.</p>
             <h1 className={styles.register__title}>Crie sua conta</h1>
           
@@ -126,6 +141,11 @@ export function Register() {
                 Criar
               </button>
             </form>
+            
+            <div className={styles.register__footer}>
+              <p className={`${styles.register__paragraph} paragraph`}>Já tem uma conta?</p>
+              <button className={styles.register__button} onClick={navigateToLogin}>Fazer login</button>
+            </div>
           </div>
         </main>
       </div>

@@ -8,6 +8,7 @@ import { api } from "../../lib/axios.js";
 
 import { DefaultInput } from "../../components/forms/default-input/DefaultInput";
 import { PasswordInput } from "../../components/forms/password-input/PasswordInput";
+import { ArrowLeft } from "../../components/icons/ArrowLeft.jsx";
 import { Message } from "../../components/layout/message/Message.jsx";
 
 import logo from "../../assets/logo.svg";
@@ -21,6 +22,10 @@ export function Login() {
   
   function navigateToRegister(){
     navigate("/register");
+  }
+
+  function navigateToHome(){
+    navigate("/");
   }
 
   function confirmLogin(data){
@@ -57,6 +62,12 @@ export function Login() {
 
         <main className={`main`}>
           <div className="secondary-container">
+            <div className="linkBack">
+              <button onClick={navigateToHome} aria-label="Voltar para página inicial" title="Voltar para página inicial">
+                <ArrowLeft />
+              </button>
+            </div>
+
             <h1 className={styles.login__title}>Login</h1>
             <p className="paragraph">Explore clássicos em áudio: AudioVerse, sua porta de entrada para os principais audiobooks de domínio público.</p>
 

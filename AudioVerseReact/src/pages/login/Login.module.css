@@ -9,7 +9,7 @@
 }
 
 .login__form{  
-  margin-block: 3rem;
+  margin-block: 2rem;
 
   & > button[type="submit"]{
     margin-top: 1.875rem;
