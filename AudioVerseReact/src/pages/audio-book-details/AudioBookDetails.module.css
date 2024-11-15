@@ -80,8 +80,14 @@
 
     width: 12.5rem;
     height: 3.75rem;
-
     margin: 3rem auto 1.75rem auto;
+
+    &:hover{
+      border: .125rem solid var(--primary-color);
+    }
+    &:active{
+      filter: brightness(1.2);
+    }
   }
 
   & .details__download{
@@ -108,6 +114,11 @@
     display: inline-flex;
     align-items: center;
     gap: .25rem;
+
+    transition: scale .3s;
+    &:hover{
+      scale: 1.1;
+    }
   }
 }
 

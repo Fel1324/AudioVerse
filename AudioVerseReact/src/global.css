@@ -238,6 +238,9 @@ a{
 
 .link {
   color: var(--link-color);
+  &:hover{
+    text-decoration: underline;
+  }
 }
 
 .input-none{

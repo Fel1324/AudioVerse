@@ -44,13 +44,6 @@
   }
 }
 
-.bookMarkHover{
-  transition: scale .3s;
-  &:hover{
-    scale: 1.1;
-  }
-}
-
 @media screen and (min-width: 1024px) {
   .audiobook{
     & > div{
