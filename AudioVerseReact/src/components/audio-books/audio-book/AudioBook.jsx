@@ -25,7 +25,7 @@ export function AudioBook({ id, name, audioBookCover, parentalRating, onOpenAudi
         </div>
       ) : (
         <div>
-          <button onClick={() => favoriteAudioBook()}>
+          <button className={styles.bookMarkHover} onClick={() => favoriteAudioBook()}>
             {isFavorited ? <BookMarkFill /> : <BookMark />}
           </button>
           <span className={styles.audiobook__parentalRating}>{parentalRating}</span>

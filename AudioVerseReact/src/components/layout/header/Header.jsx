@@ -30,6 +30,10 @@ export function Header({ headerBoxShadow, onSubmit }){
     setMessage(true);
   }
 
+  function logIn(){
+    message && setMessage(false);
+  }
+
   return (
     <>
       {message && <Message text={"Você saiu de sua conta!"} />}
@@ -46,20 +50,20 @@ export function Header({ headerBoxShadow, onSubmit }){
             <nav className={styles.navbar}>
               <ul>
                 <li>
-                  <Link className={`${styles.navbar__link} primary-navbar-link`} to="/">
+                  <Link className={`primary-navbar-link`} to="/">
                     Início
                   </Link>
                 </li>
                 <li>
-                  <Link className={`${styles.navbar__link} primary-navbar-link`} to="/favorites">
+                  <Link className={`primary-navbar-link`} to="/favorites">
                     Favoritos
                   </Link>
                 </li>
-                <li>
+                <li className={styles.account}>
                   {isLoggedIn ? (
-                    <button onClick={logOut} className={`${styles.navbar__link} primary-navbar-link`}>Sair</button>
+                    <button onClick={logOut} className={`primary-navbar-link`}>Sair</button>
                   ) : (
-                    <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
+                    <Link onClick={logIn} className={`primary-navbar-link`} to="/login">
                       Entrar
                     </Link>
                   )}

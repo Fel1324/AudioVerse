@@ -20,6 +20,11 @@
   align-items: center;
 
   margin-bottom: 2rem;
+
+  & > button,
+  & > a{
+    text-transform: uppercase;
+  }
 }
 
 .menu__body {

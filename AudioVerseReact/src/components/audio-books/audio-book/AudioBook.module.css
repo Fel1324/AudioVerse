@@ -11,8 +11,13 @@
 
   & > img{
     width: 100%;
-
     cursor: pointer;
+
+    &:hover{
+      -webkit-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+      -moz-box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+      box-shadow: 0 0 .75rem .0625rem var(--secondary-color);
+    }
   }
 
   & > div{
@@ -36,6 +41,13 @@
       width: 1.75rem;
       height: 1.75rem;
     }
+  }
+}
+
+.bookMarkHover{
+  transition: scale .3s;
+  &:hover{
+    scale: 1.1;
   }
 }
 

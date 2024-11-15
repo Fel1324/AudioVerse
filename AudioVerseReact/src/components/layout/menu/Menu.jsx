@@ -24,9 +24,9 @@ export function Menu({closeMenu}) {
       <nav className={styles.menu}>
         <div className={styles.menu__header}>
           {isLoggedIn ? (
-            <button onClick={logOut} className={`${styles.navbar__link} primary-navbar-link`}>Sair</button>
+            <button onClick={logOut} className={`primary-navbar-link`}>Sair</button>
           ) : (
-            <Link className={`${styles.navbar__link} primary-navbar-link`} to="/login">
+            <Link className={`primary-navbar-link`} to="/login">
               Entrar
             </Link>
           )}
