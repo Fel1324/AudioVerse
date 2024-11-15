@@ -47,5 +47,20 @@ public class UserAppController : ControllerBase
             return Unauthorized(ex.Message);
         }
     }
+
+    [HttpGet("userinfo")]
+    public IActionResult GetUserInfo()
+    {
+        // Obtém o ID do usuário do token JWT
+        var userId = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+        if (userId == null)
+        {
+            return Unauthorized(new { Message = "Usuário não autenticado." });
+        }
+
+        return Ok(new { UserId = userId });
+    }
+
 }
 
