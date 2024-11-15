@@ -119,6 +119,11 @@ a{
   }
 }
 
+.link--active{
+  filter: brightness(1.4);
+  border-bottom: .125rem solid var(--primary-color);
+}
+
 .main{
   width: 100%;
   flex-grow: 1;

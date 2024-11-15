@@ -1,6 +1,6 @@
 import { useAuth } from "../../../hooks/useAuth.js";
 import { useMessage } from "../../../hooks/useMessage.js";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { Message } from "../../../components/layout/message/Message.jsx";
 import { CloseMenu } from "../../icons/CloseMenu";
@@ -10,6 +10,7 @@ import styles from "./Menu.module.css";
 export function Menu({closeMenu}) {
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const { message, setMessage, messageText, setMessageText } = useMessage();
+  const { pathname } = useLocation();
 
   function logOut(){
     localStorage.removeItem("Token");
@@ -38,11 +39,19 @@ export function Menu({closeMenu}) {
 
         <ul className={styles.menu__body}>
           <li>
-            <Link to="/">Início</Link>
+            {pathname === "/" ? (
+              <Link className="link--active" to="/">Início</Link>
+            ) : (
+              <Link to="/">Início</Link>
+            )}
           </li>
 
           <li>
-            <Link to="/favorites">Favoritos</Link>
+            {pathname === "/favorites" ? (
+              <Link className="link--active" to="/favorites">Favoritos</Link>
+            ) : (
+              <Link to="/favorites">Favoritos</Link>
+            )}
           </li>
         </ul>
       </nav>

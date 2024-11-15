@@ -1,3 +1,7 @@
+.home{
+  padding-bottom: 1rem;
+}
+
 .home__banner {
   box-shadow: 0 .25rem .375rem 0 var(--primary-shadow);
   border-radius: 0 2rem 0 2rem;

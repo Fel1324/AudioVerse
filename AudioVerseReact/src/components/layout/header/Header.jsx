@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../../../hooks/useAuth.js";
 import { useMessage } from "../../../hooks/useMessage.js";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { Menu } from "../menu/Menu.jsx";
 import { OpenMenu } from "../../icons/OpenMenu.jsx";
@@ -15,6 +15,7 @@ export function Header({ headerBoxShadow, onSubmit }){
   const { message, setMessage, messageText, setMessageText } = useMessage();
   const { isLoggedIn, setIsLoggedIn } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { pathname } = useLocation();
 
   function openMenu(){
     setIsMenuOpen(true);
@@ -51,14 +52,26 @@ export function Header({ headerBoxShadow, onSubmit }){
             <nav className={styles.navbar}>
               <ul>
                 <li>
-                  <Link className={`primary-navbar-link`} to="/">
-                    Início
-                  </Link>
+                  { pathname === "/" ? (
+                    <Link className={`primary-navbar-link link--active`} to="/">
+                      Início
+                    </Link>
+                  ) : (
+                    <Link className={`primary-navbar-link`} to="/">
+                      Início
+                    </Link>
+                  )}
                 </li>
                 <li>
-                  <Link className={`primary-navbar-link`} to="/favorites">
-                    Favoritos
-                  </Link>
+                  { pathname === "/favorites" ? (
+                    <Link className={`primary-navbar-link link--active`} to="/favorites">
+                      Favoritos
+                    </Link>
+                  ) : (
+                    <Link className={`primary-navbar-link`} to="/favorites">
+                      Favoritos
+                    </Link>
+                  )}
                 </li>
                 <li className={styles.account}>
                   {isLoggedIn ? (
