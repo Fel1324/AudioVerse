@@ -13,6 +13,12 @@
 
   & > button[type="submit"]{
     margin-top: 1.875rem;
+    border: .125rem solid transparent;
+
+    transition: border-color .3s;
+    &:hover{
+      border-color: var(--primary-color);
+    }
   }
 }
 
@@ -33,5 +39,12 @@
 
     padding: .5rem 1.125rem;
     margin-top: .75rem;
+
+    border: .125rem solid transparent;
+
+    transition: border-color .3s;
+    &:hover{
+      border-color: var(--primary-color);
+    }
   }
 }

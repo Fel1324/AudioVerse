@@ -251,6 +251,13 @@ a{
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  & > button{
+    transition: scale .3s;
+    &:hover{
+      scale: 1.2;
+    }
+  }
 }
 
 .input-none{
