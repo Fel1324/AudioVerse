@@ -4,6 +4,7 @@ using AudioVerseAPI.Services;
 
 using AutoMapper;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -48,18 +49,26 @@ public class UserAppController : ControllerBase
         }
     }
 
-    // [HttpGet("userinfo")]
-    // public IActionResult GetUserInfo()
-    // {
-    //     // Obtém o ID do usuário do token JWT
-    //     var userId = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+    [HttpGet("userinfo")]
+    public IActionResult GetUserInfo()
+    {
+        var userId = User.FindFirst("id")?.Value; 
+        var username = User.FindFirst("username")?.Value; 
 
-    //     if (userId == null)
-    //     {
-    //         return Unauthorized(new { Message = "Usuário não autenticado." });
-    //     }
+        if (userId == null)
+        {
+            return Unauthorized(new
+            {
+                Message = "Usuário não autenticado.",
+                Claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList() 
+            });
+        }
 
-    //     return Ok(new { UserId = userId });
-    // }
+        return Ok(new
+        {
+            UserId = userId,
+            Username = username,
+            Token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "")
+        });
+    }
 }
-

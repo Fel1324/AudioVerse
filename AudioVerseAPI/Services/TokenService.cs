@@ -23,7 +23,7 @@ public class TokenService
         Claim[] claims = new Claim[]
         {
             new Claim("username", userApp.UserName),
-            // new Claim("id", userApp.Id)
+            new Claim("id", userApp.Id)
         };
 
     var tokenKey = new SymmetricSecurityKey
