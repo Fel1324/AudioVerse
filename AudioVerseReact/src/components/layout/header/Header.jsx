@@ -52,26 +52,14 @@ export function Header({ headerBoxShadow, onSubmit }){
             <nav className={styles.navbar}>
               <ul>
                 <li>
-                  { pathname === "/" ? (
-                    <Link className={`primary-navbar-link link--active`} to="/">
-                      Início
-                    </Link>
-                  ) : (
-                    <Link className={`primary-navbar-link`} to="/">
-                      Início
-                    </Link>
-                  )}
+                  <Link className={`primary-navbar-link ${pathname === "/" && "link--active"}`} to="/">
+                    Início
+                  </Link>
                 </li>
                 <li>
-                  { pathname === "/favorites" ? (
-                    <Link className={`primary-navbar-link link--active`} to="/favorites">
-                      Favoritos
-                    </Link>
-                  ) : (
-                    <Link className={`primary-navbar-link`} to="/favorites">
-                      Favoritos
-                    </Link>
-                  )}
+                  <Link className={`primary-navbar-link ${pathname === "/favorites" && "link--active"}`} to="/favorites">
+                    Favoritos
+                  </Link>
                 </li>
                 <li className={styles.account}>
                   {isLoggedIn ? (
