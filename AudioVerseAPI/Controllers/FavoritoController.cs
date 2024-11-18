@@ -69,42 +69,26 @@ public class FavoritoController : ControllerBase
         return Ok(book);
     }
 
-    // Comentei porque não tava dando pra rodar a API
-    
-    // [HttpGet("user-token/{userId}")]
-    // public IActionResult GetUserTokenAndId(string userId)
-    // {
-    //     var user = _context.UserApps
-    //         .Where(u => u.Id == userId)
-    //         .Select(u => new
-    //         {
-    //             Id = u.Id,
-    //             Token = u.Token 
-    //         })
-    //         .FirstOrDefault();
-
-    //     if (user == null)
-    //     {
-    //         return NotFound(new { Message = "Usuário não encontrado." });
-    //     }
-
-    //     return Ok(user);
-    // }
-
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteFavorito(int id)
     {
-        var userApp = await _context.UserApps.FindAsync(id);
-        if (userApp == null)
+        
+        var favorito = await _context.Favoritos.FindAsync(id);
+
+        
+        if (favorito == null)
         {
             return NotFound();
         }
 
-        _context.UserApps.Remove(userApp);
+        
+        _context.Favoritos.Remove(favorito);
         await _context.SaveChangesAsync();
 
+        
         return NoContent();
     }
+
 
     private bool FavoritoExists(int id)
     {
