@@ -92,6 +92,10 @@ button {
   font-family: var(--default-font);
   background: none;
   cursor: pointer;
+
+  &:disabled{
+    display: none;
+  }
 }
 
 cite{

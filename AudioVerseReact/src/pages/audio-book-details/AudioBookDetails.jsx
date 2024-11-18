@@ -122,6 +122,7 @@ export function AudioBookDetails() {
             
             <div className={styles.col_a}>
               <AudioBook
+                id={audioBook.id}
                 audioBookCover={audioBook.bookImage}
                 parentalRating={audioBook.parentalRating}
                 alternativeStyle

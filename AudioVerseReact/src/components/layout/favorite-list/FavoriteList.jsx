@@ -1,9 +1,6 @@
-import { useState } from "react";
 import styles from "./FavoriteList.module.css";
 
 export function FavoriteList(){
-  const [favorites, setFavorites] = useState([]);
-
   return (
     <div className="favorite-message">
       {favorites.length === 0 ? (

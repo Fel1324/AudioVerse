@@ -65,7 +65,7 @@ public class FavoritoController : ControllerBase
             .Include(f => f.Book)
             .ThenInclude(b => b.GenreBooks)
             .ThenInclude(g => g.Genre)
-            .FirstOrDefault();
+            .ToList();
         return Ok(book);
     }
 

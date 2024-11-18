@@ -16,7 +16,7 @@ import styles from "./Login.module.css";
 
 export function Login() {
   const { message, setMessage, messageText, setMessageText } = useMessage();
-  const { isLoggedIn, setIsLoggedIn, userInfo, setUserInfo} = useAuth();
+  const { isLoggedIn, setIsLoggedIn, setUserInfo} = useAuth();
   const { register, handleSubmit, formState: {errors} } = useForm();
   const navigate = useNavigate();
   

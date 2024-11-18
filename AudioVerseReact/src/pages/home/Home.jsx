@@ -30,7 +30,6 @@ export function Home() {
     if(inputValue.length > 0){
       api.get(`/Book/detailed/filter/${inputValue}`)
         .then(response => {
-          response.data.id ? navigate(`/audiobook/${response.data.id}`) : setMessage(true);
           if(response.data.id){
             navigate(`/audiobook/${response.data.id}`);
           } else {
