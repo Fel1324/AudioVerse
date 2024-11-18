@@ -49,6 +49,7 @@ public class UserAppController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpGet("userinfo")]
     public IActionResult GetUserInfo()
     {

@@ -35,11 +35,12 @@ public class TokenService
             (tokenKey, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken
-            (
-            expires: DateTime.Now.AddMinutes(10),
+        (
+            expires: DateTime.UtcNow.AddMinutes(10),
             claims: claims,
             signingCredentials: signingCredentials
-            );
+        );
+
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }

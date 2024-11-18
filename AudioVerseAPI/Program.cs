@@ -8,16 +8,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var applicationName = "AudioVerse";
 
 var builder = WebApplication.CreateBuilder(args);
 
-/*CÓDIGO DO AUTHORIZATION NO SWAGGER
-var builder = WebApplication.CreateBuilder(args);
-
-// Outras configurações do builder...
-
+// Configuração do Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -53,113 +50,74 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Outras configurações do builder...
-
-
+// Configuração do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: applicationName,
         policy =>
         {
-            policy.WithOrigins("*").
-                WithHeaders("content-type").
-                AllowAnyMethod();
+            policy.WithOrigins("*")
+                  .WithHeaders("content-type")
+                  .AllowAnyMethod();
         });
 });
 
+// Configuração do banco de dados
 var connectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
 
-builder.Services.AddDbContext<AudioVerseAPI.Data.AudioVerseContext>(opts =>
+builder.Services.AddDbContext<AudioVerseContext>(opts =>
     opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-builder.Services
-    .AddIdentity<UserApp, IdentityRole>()
+// Configuração do Identity
+builder.Services.AddIdentity<UserApp, IdentityRole>()
     .AddEntityFrameworkStores<AudioVerseContext>()
     .AddDefaultTokenProviders();
 
+// Configuração do AutoMapper e Serviços
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-// Add services to the container.
-
 builder.Services.AddScoped<UserAppService>();
 builder.Services.AddScoped<TokenService>();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+// Configuração da autenticação com JWT
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme =
-        JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
 {
-    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey
-            (Encoding.UTF8.GetBytes
-            ("9ASHDA98H9ah9ha9H9A89n0fjhkjsjafkjhakhfhal8e789798qy23yhuiyhyhuya")),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("9ASHDA98H9ah9ha9H9A89n0fjhkjsjafkjhakhfhal8e789798qy23yhuiyhyhuya")),
         ValidateAudience = false,
         ValidateIssuer = false,
         ClockSkew = TimeSpan.Zero
     };
-}); 
-*/
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: applicationName,
-        policy =>
+    // Adicionando eventos para depuração
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
         {
-            policy.WithOrigins("*").
-                WithHeaders("content-type").
-                AllowAnyMethod();
-        });
-});
-
-var connectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
-
-builder.Services.AddDbContext<AudioVerseAPI.Data.AudioVerseContext>(opts =>
-    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
-builder.Services
-    .AddIdentity<UserApp, IdentityRole>()
-    .AddEntityFrameworkStores<AudioVerseContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-// Add services to the container.
-
-builder.Services.AddScoped<UserAppService>();
-builder.Services.AddScoped<TokenService>();
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme =
-        JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey
-            (Encoding.UTF8.GetBytes
-            ("9ASHDA98H9ah9ha9H9A89n0fjhkjsjafkjhakhfhal8e789798qy23yhuiyhyhuya")),
-        ValidateAudience = false,
-        ValidateIssuer = false,
-        ClockSkew = TimeSpan.Zero
+            Console.WriteLine($"Authentication failed: {context.Exception.Message}");
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            Console.WriteLine($"Token validated for user: {context.Principal?.Identity?.Name}");
+            return Task.CompletedTask;
+        }
     };
 });
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure o pipeline de requisição HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -169,20 +127,16 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-
 app.UseCors(applicationName);
-
 app.UseAuthorization();
 
 app.MapControllers();
 
+// Aplicar migrações no banco de dados
 using (var scope = app.Services.CreateScope())
 {
-    //var readDbContext = scope.ServiceProvider.GetRequiredService<ReadDbContext>();
-    var writeDbContext = scope.ServiceProvider.GetRequiredService<AudioVerseContext>();
-
-    //readDbContext.Database.Migrate();
-    writeDbContext.Database.Migrate();
+    var dbContext = scope.ServiceProvider.GetRequiredService<AudioVerseContext>();
+    dbContext.Database.Migrate();
 }
 
 app.Run();
