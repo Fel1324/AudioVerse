@@ -14,7 +14,7 @@ var applicationName = "AudioVerse";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuração do Swagger
+// Configuraï¿½ï¿½o do Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 
-    // Configuração para o JWT
+    // Configuraï¿½ï¿½o para o JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -50,35 +50,36 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configuração do CORS
+// Configuraï¿½ï¿½o do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: applicationName,
         policy =>
         {
             policy.WithOrigins("*")
-                  .WithHeaders("content-type")
-                  .AllowAnyMethod();
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .WithHeaders("Authorization", "Content-Type");
         });
 });
 
-// Configuração do banco de dados
+// Configuraï¿½ï¿½o do banco de dados
 var connectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
 
 builder.Services.AddDbContext<AudioVerseContext>(opts =>
     opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-// Configuração do Identity
+// Configuraï¿½ï¿½o do Identity
 builder.Services.AddIdentity<UserApp, IdentityRole>()
     .AddEntityFrameworkStores<AudioVerseContext>()
     .AddDefaultTokenProviders();
 
-// Configuração do AutoMapper e Serviços
+// Configuraï¿½ï¿½o do AutoMapper e Serviï¿½os
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UserAppService>();
 builder.Services.AddScoped<TokenService>();
 
-// Configuração da autenticação com JWT
+// Configuraï¿½ï¿½o da autenticaï¿½ï¿½o com JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -95,7 +96,7 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 
-    // Adicionando eventos para depuração
+    // Adicionando eventos para depuraï¿½ï¿½o
     options.Events = new JwtBearerEvents
     {
         OnAuthenticationFailed = context =>
@@ -117,7 +118,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure o pipeline de requisição HTTP
+// Configure o pipeline de requisiï¿½ï¿½o HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -132,7 +133,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Aplicar migrações no banco de dados
+// Aplicar migraï¿½ï¿½es no banco de dados
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AudioVerseContext>();

@@ -9,8 +9,13 @@ export function AuthProvider({ children }){
     return !!token;
   });
 
+  const [userInfo, setUserInfo] = useState({
+    userId: localStorage.getItem("UserId"),
+    userName: localStorage.getItem("UserName")
+  });
+
   return (
-    <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn}}>
+    <AuthContext.Provider value={{isLoggedIn, setIsLoggedIn, userInfo, setUserInfo}}>
       {children}
     </AuthContext.Provider>
   )

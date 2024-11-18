@@ -16,7 +16,7 @@ import styles from "./Login.module.css";
 
 export function Login() {
   const { message, setMessage, messageText, setMessageText } = useMessage();
-  const { isLoggedIn, setIsLoggedIn} = useAuth();
+  const { isLoggedIn, setIsLoggedIn, userInfo, setUserInfo} = useAuth();
   const { register, handleSubmit, formState: {errors} } = useForm();
   const navigate = useNavigate();
   
@@ -45,6 +45,19 @@ export function Login() {
 
   useEffect(() => {
     if(isLoggedIn){
+      api.get("/UserApp/userinfo", {
+        headers: {"Authorization": `Bearer ${localStorage.getItem("Token")}`},
+      })
+        .then(response => {
+          setUserInfo({
+            userId: localStorage.setItem("UserId", response.data.userId),
+            userName: localStorage.setItem("UserName", response.data.username)
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+        
       navigate("/");
     }
   }, [isLoggedIn]);
