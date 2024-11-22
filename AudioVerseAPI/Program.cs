@@ -14,7 +14,7 @@ var applicationName = "AudioVerse";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configura��o do Swagger
+// Configurações do Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"
     });
 
-    // Configura��o para o JWT
+    // Configurações para o JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -50,7 +50,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configura��o do CORS
+// Configurações do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: applicationName,
@@ -63,23 +63,23 @@ builder.Services.AddCors(options =>
         });
 });
 
-// Configura��o do banco de dados
+// Configurações do banco de dados
 var connectionString = builder.Configuration.GetConnectionString("AudioVerseConnection");
 
 builder.Services.AddDbContext<AudioVerseContext>(opts =>
     opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-// Configura��o do Identity
+// Configurações do Identity
 builder.Services.AddIdentity<UserApp, IdentityRole>()
     .AddEntityFrameworkStores<AudioVerseContext>()
     .AddDefaultTokenProviders();
 
-// Configura��o do AutoMapper e Servi�os
+// Configurações do AutoMapper e Serviços
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UserAppService>();
 builder.Services.AddScoped<TokenService>();
 
-// Configura��o da autentica��o com JWT
+// Configurações da autenticação com JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -96,7 +96,7 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 
-    // Adicionando eventos para depura��o
+    // Adicionando eventos para depuração
     options.Events = new JwtBearerEvents
     {
         OnAuthenticationFailed = context =>
@@ -118,7 +118,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure o pipeline de requisi��o HTTP
+// Configure o pipeline de requisição HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -133,7 +133,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Aplicar migra��es no banco de dados
+// Aplicar migration no banco de dados
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AudioVerseContext>();

@@ -57,17 +57,42 @@ public class FavoritoController : ControllerBase
         return Ok(favoritoDto);
     }
 
-    [HttpGet("byuser/{user}")]
-    public IActionResult RecoverDetailedBookTitle(string user)
+    [HttpGet("byuser/{userId}")]
+    public IActionResult RecoverDetailedBookTitle(string userId)
     {
-        var book = _context.Favoritos
-            .Where(f => f.UserAppId == user)
+        // Busca os favoritos do usuário, incluindo detalhes do livro e seus relacionamentos
+        var favoritos = _context.Favoritos
+            .Where(f => f.UserAppId == userId)
             .Include(f => f.Book)
-            .ThenInclude(b => b.GenreBooks)
-            .ThenInclude(g => g.Genre)
+                .ThenInclude(b => b.Chapters) // Inclui capítulos
+            .Include(f => f.Book)
+                .ThenInclude(b => b.GenreBooks) // Inclui os gêneros associados
+                    .ThenInclude(gb => gb.Genre)
             .ToList();
-        return Ok(book);
+
+        // Mapeia para um DTO para incluir apenas os dados desejados na resposta
+        var favoritosDto = favoritos.Select(f => new
+        {
+            FavoritoId = f.Id,
+            Book = new
+            {
+                f.Book.Id,
+                f.Book.Title,
+                f.Book.AuthorBooks,
+                f.Book.BookImage,
+                Genres = f.Book.GenreBooks.Select(gb => gb.Genre.GenreName),
+                Chapters = f.Book.Chapters.Select(c => new
+                {
+                    c.Id,
+                    c.ChapterName
+                })
+            },
+            f.DateAdded
+        });
+
+        return Ok(favoritosDto);
     }
+
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteFavorito(int id)
