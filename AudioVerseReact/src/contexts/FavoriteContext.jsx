@@ -21,7 +21,7 @@ export function FavoriteProvider({ children }){
   }, [isLoggedIn])
 
   const isFavorited = (id) => {
-    const foundFavorite = favorites.find(favorite => favorite.bookId === id);
+    const foundFavorite = favorites.find(favorite => favorite.book.id === id);
     return !!foundFavorite;
   }
 
@@ -46,10 +46,10 @@ export function FavoriteProvider({ children }){
   const unfavoriteAudioBook = async (audioBookId) => {
     if (!isLoggedIn) return
 
-    const favorite = favorites.find(f => f.bookId === audioBookId);
-    await api.delete(`/Favorito/${favorite.id}`)
+    const favorite = favorites.find(f => f.book.id === audioBookId);
+    await api.delete(`/Favorito/${favorite.favoritoId}`)
 
-    setFavorites(prev => prev.filter(fav => fav.id !== favorite.id));
+    setFavorites(prev => prev.filter(fav => fav.favoritoId !== favorite.favoritoId));
   }
 
   return (

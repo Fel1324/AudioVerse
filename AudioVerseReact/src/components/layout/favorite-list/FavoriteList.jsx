@@ -12,7 +12,7 @@ export function FavoriteList(){
         </div> 
       ) : (
         <div>
-          <p>AudioBooks favoritados {favorites.length}</p>
+          {console.log(favorites)}
         </div>
       )}
     </div>
