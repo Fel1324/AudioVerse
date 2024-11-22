@@ -3,3 +3,7 @@ div.message{
     font-size: 2rem;
   }
 }
+
+.favoritesContent{
+  margin-block: 1.5rem;
+}

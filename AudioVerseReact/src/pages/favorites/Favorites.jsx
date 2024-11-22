@@ -6,7 +6,6 @@ import { Footer } from "../../components/layout/footer/Footer.jsx";
 import { FavoriteList } from "../../components/layout/favorite-list/FavoriteList.jsx";
 import { Message } from "../../components/layout/message/Message.jsx";
 
-import styles from "./Favorites.module.css";
 import { api } from "../../lib/axios.js";
 import { useAuth } from "../../hooks/useAuth.js";
 
@@ -43,21 +42,23 @@ export function Favorites(){
 
       <Header headerBoxShadow onSubmit={filterAudioBook} />
 
-      <main className={`${styles.favorites} main main-pd-bottom`}>
-        {isLoggedIn ? (
-          <FavoriteList />
-        ) : (
-          <div className="favorite-message">
-            <div>
-              <p>
-                Você ainda não está logado em sua conta! Para acessar seus audiobooks favoritos faça <Link to="/login">login</Link> agora mesmo!
-              </p>
-              <p>
-                Se não criou uma conta ainda não perca tempo, se <Link to="/register">cadastre</Link> imediatamente!
-              </p>
+      <main className={`main main-pd-bottom`}>
+        <div className="container">
+          {isLoggedIn ? (
+            <FavoriteList />
+          ) : (
+            <div className="favorite-message">
+              <div>
+                <p>
+                  Você ainda não está logado em sua conta! Para acessar seus audiobooks favoritos faça <Link to="/login">login</Link> agora mesmo!
+                </p>
+                <p>
+                  Se não criou uma conta ainda não perca tempo, se <Link to="/register">cadastre</Link> imediatamente!
+                </p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
 
       <Footer />

@@ -358,6 +358,10 @@ a{
   }
 }
 
+.favorite-parental-rating{
+  display: none !important;
+}
+
 @media screen and (min-width: 768px) {
   .container{
     padding-inline: 2rem;

@@ -6,7 +6,7 @@ import { BookMarkFill } from "../../icons/BookMarkFill.jsx";
 
 import styles from "./AudioBook.module.css";
 
-export function AudioBook({ id, name, audioBookCover, parentalRating, alternativeStyle }) {
+export function AudioBook({ id, name, audioBookCover, parentalRating, alternativeStyle, noParentalRating }) {
   const { isFavorited, favoriteAudioBook, unfavoriteAudioBook } = useFavorite();
   const { isLoggedIn } = useAuth();
 
@@ -28,6 +28,7 @@ export function AudioBook({ id, name, audioBookCover, parentalRating, alternativ
                 <BookMark />
               </button>
             )}
+          
             <span className={`${styles.audiobook__parentalRating} ${styles.parentalRatingDesktop}`}>{parentalRating}</span>
           </div>
 
@@ -43,7 +44,7 @@ export function AudioBook({ id, name, audioBookCover, parentalRating, alternativ
                 <BookMark />
               </button>
             )}
-            <span className={styles.audiobook__parentalRating}>{parentalRating}</span>
+            <span className={`${styles.audiobook__parentalRating} ${noParentalRating}`}>{parentalRating}</span>
           </div>
         )}
     </li>
