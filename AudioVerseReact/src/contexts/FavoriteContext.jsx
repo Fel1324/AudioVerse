@@ -26,9 +26,9 @@ export function FavoriteProvider({ children }){
   }
 
   const favoriteAudioBook = async (audioBookId) => {
+    if (!isLoggedIn) return;
+    
     try {
-      if (!isLoggedIn) return
-
       await api.post("/Favorito", {
         userAppId: userInfo.userId,
         bookId: audioBookId,
