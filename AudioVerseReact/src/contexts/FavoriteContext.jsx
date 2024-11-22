@@ -53,7 +53,7 @@ export function FavoriteProvider({ children }){
   }
 
   return (
-    <FavoriteContext.Provider value={{isFavorited, favoriteAudioBook, unfavoriteAudioBook}}>
+    <FavoriteContext.Provider value={{isFavorited, favoriteAudioBook, unfavoriteAudioBook, favorites}}>
       {children}
     </FavoriteContext.Provider>
   )
