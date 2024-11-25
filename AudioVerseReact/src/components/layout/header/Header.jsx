@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../../hooks/useAuth.js";
 import { useMessage } from "../../../hooks/useMessage.js";
 import { Link, useLocation } from "react-router-dom";
+import { api } from "../../../lib/axios.js";
 
 import { Menu } from "../menu/Menu.jsx";
 import { OpenMenu } from "../../icons/OpenMenu.jsx";
@@ -26,10 +27,21 @@ export function Header({ headerBoxShadow, onSubmit }){
   }
 
   function logOut(){
-    localStorage.removeItem("Token");
-    setIsLoggedIn(false);
-    setMessage(true);
-    setMessageText("Você saiu de sua conta!");
+    api.post("/UserApp/logout", {}, {
+      headers: {"Authorization": `Bearer ${localStorage.getItem("Token")}`},
+    })
+      .then(response => {
+        console.log(response);
+        localStorage.removeItem("Token");
+        localStorage.removeItem("UserName");
+        localStorage.removeItem("UserId");
+        setIsLoggedIn(false);
+        setMessage(true);
+        setMessageText("Você saiu de sua conta!");
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   function logIn(){

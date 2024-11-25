@@ -49,6 +49,19 @@ export function Register() {
 
   useEffect(() => {
     if(isLoggedIn){
+      api.get("/UserApp/userinfo", {
+        headers: {"Authorization": `Bearer ${localStorage.getItem("Token")}`},
+      })
+        .then(response => {
+          setUserInfo({
+            userId: localStorage.setItem("UserId", response.data.userId),
+            userName: localStorage.setItem("UserName", response.data.username)
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
       navigate("/");
       window.location.reload();
     }

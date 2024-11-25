@@ -13,10 +13,21 @@ export function Menu({closeMenu}) {
   const { pathname } = useLocation();
 
   function logOut(){
-    localStorage.removeItem("Token");
-    setIsLoggedIn(false);
-    setMessage(true);
-    setMessageText("Você saiu de sua conta!");
+    api.post("/UserApp/logout", {}, {
+      headers: {"Authorization": `Bearer ${localStorage.getItem("Token")}`},
+    })
+      .then(response => {
+        console.log(response);
+        localStorage.removeItem("Token");
+        localStorage.removeItem("UserName");
+        localStorage.removeItem("UserId");
+        setIsLoggedIn(false);
+        setMessage(true);
+        setMessageText("Você saiu de sua conta!");
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   return (
