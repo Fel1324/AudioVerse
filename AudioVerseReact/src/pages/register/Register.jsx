@@ -50,6 +50,7 @@ export function Register() {
   useEffect(() => {
     if(isLoggedIn){
       navigate("/");
+      window.location.reload();
     }
   }, [isLoggedIn]);
 
