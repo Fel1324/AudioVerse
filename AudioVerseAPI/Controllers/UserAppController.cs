@@ -50,6 +50,14 @@ public class UserAppController : ControllerBase
     }
 
     [Authorize]
+    [HttpPost("logout")]
+    public IActionResult Logout()
+    {
+        return Ok(new { Message = "Logout realizado com sucesso!" });
+    }
+
+
+    [Authorize]
     [HttpGet("userinfo")]
     public IActionResult GetUserInfo()
     {
