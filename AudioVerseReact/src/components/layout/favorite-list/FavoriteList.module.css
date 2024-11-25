@@ -4,6 +4,24 @@ div.message{
   }
 }
 
+.favoritesHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  margin-bottom: 2rem;
+
+  & h1{
+    color: var(--primary-color);
+  }
+
+  & span{
+    font-size: 1.25rem;
+    color: var(--secondary-color);
+  }
+}
+
 .favoritesContent{
   margin-block: 1.5rem;
 }

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useMessage } from "../../hooks/useMessage.js";
-import { useFavorite } from "../../hooks/useFavorite.js";
+import { useAuth } from "../../hooks/useAuth.js";
 
 import { Header } from "../../components/layout/header/Header.jsx";
 import { Footer } from "../../components/layout/footer/Footer.jsx";
@@ -8,12 +8,10 @@ import { FavoriteList } from "../../components/layout/favorite-list/FavoriteList
 import { Message } from "../../components/layout/message/Message.jsx";
 
 import { api } from "../../lib/axios.js";
-import { useAuth } from "../../hooks/useAuth.js";
 
 export function Favorites(){
   const { message, setMessage, messageText, setMessageText } = useMessage();
-  const { isLoggedIn, userInfo } = useAuth();
-  const { favorites } = useFavorite();
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
 
   function filterAudioBook(e){
@@ -46,13 +44,6 @@ export function Favorites(){
 
       <main className={`main main-pd-bottom`}>
         <div className="container">
-          {isLoggedIn && (
-            <div>
-              <h1>{userInfo.userName}</h1>
-              <span>Número de favoritos {favorites.length}</span>
-            </div>
-          )}
-
           {isLoggedIn ? (
             <FavoriteList />
           ) : (
