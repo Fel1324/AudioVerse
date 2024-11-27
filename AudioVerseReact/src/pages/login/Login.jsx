@@ -61,7 +61,7 @@ export function Login() {
       navigate("/");
       setTimeout(() => {
         window.location.reload();
-      }, 2000)
+      }, 100)
     }
   }, [isLoggedIn]);
 
