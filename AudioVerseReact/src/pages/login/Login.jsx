@@ -59,7 +59,9 @@ export function Login() {
         });
         
       navigate("/");
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000)
     }
   }, [isLoggedIn]);
 

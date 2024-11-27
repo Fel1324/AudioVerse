@@ -17,7 +17,7 @@ import styles from "./Register.module.css";
 export function Register() {
   const { message, setMessage, messageText, setMessageText } = useMessage();
   const { register, handleSubmit, watch, formState: {errors}} = useForm();
-  const { isLoggedIn, setIsLoggedIn} = useAuth();
+  const { isLoggedIn, setIsLoggedIn, setUserInfo } = useAuth();
   const navigate = useNavigate();
 
   const password = watch('password');
@@ -63,7 +63,9 @@ export function Register() {
         });
 
       navigate("/");
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000)
     }
   }, [isLoggedIn]);
 
