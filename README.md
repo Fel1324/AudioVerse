@@ -106,6 +106,8 @@
 * Adobe Photoshop
 * C#
 * .NET
+* Entity Framework
+* Identity
 * MySQL
 * Docker
 * HTML e CSS
