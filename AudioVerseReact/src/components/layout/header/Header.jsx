@@ -31,7 +31,6 @@ export function Header({ headerBoxShadow, onSubmit }){
       headers: {"Authorization": `Bearer ${localStorage.getItem("Token")}`},
     })
       .then(response => {
-        console.log(response);
         localStorage.removeItem("Token");
         localStorage.removeItem("UserName");
         localStorage.removeItem("UserId");

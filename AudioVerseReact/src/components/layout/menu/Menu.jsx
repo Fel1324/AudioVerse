@@ -1,6 +1,7 @@
 import { useAuth } from "../../../hooks/useAuth.js";
 import { useMessage } from "../../../hooks/useMessage.js";
 import { Link, useLocation } from "react-router-dom";
+import { api } from "../../../lib/axios.js";
 
 import { Message } from "../../../components/layout/message/Message.jsx";
 import { CloseMenu } from "../../icons/CloseMenu";
@@ -17,7 +18,6 @@ export function Menu({closeMenu}) {
       headers: {"Authorization": `Bearer ${localStorage.getItem("Token")}`},
     })
       .then(response => {
-        console.log(response);
         localStorage.removeItem("Token");
         localStorage.removeItem("UserName");
         localStorage.removeItem("UserId");
